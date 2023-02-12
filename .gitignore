@@ -46,11 +46,13 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+.vscode/
 
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.blend1.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
@@ -70,3 +72,13 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# temp Blender Models
+*.blend1
+*.blend1.meta
+/[Aa]ssets/[Mm]odels/*.blend1
+
+# Discord Rich presence Addons
+.erp
+/[Aa]ssets/ERP
+/[Aa]ssets/ERP.meta
