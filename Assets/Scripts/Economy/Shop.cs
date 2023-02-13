@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Shop : MonoBehaviour {
+public class Shop : Singleton<Shop> {
 
     private Currency[] currencies;
 
-    private Dictionary<string, Currency> currencyMap;
+    public Dictionary<string, Currency> currencyMap;
 
     private void Start() {
         currencies = GameObject.Find("Currency Handler").GetComponents<Currency>();
@@ -27,11 +27,10 @@ public class Shop : MonoBehaviour {
         }*/
     }
 
-    public void BuyTower() {
-        //Hier noch irgendwie getter rein, der benötigten Coin Type vom Tower holt
-        Currency baseCoin;
-        if(currencyMap.TryGetValue("Base Coin", out baseCoin)) {
-            if(baseCoin.SubstractBalance(10))
+    public void BuyTower(string CoinType) {
+        Currency Coin;
+        if(currencyMap.TryGetValue(CoinType, out Coin)) {
+            if(Coin.SubstractBalance(10))
                 Debug.Log("Tower bought");
             else
                 Debug.Log("Not enough money");
