@@ -6,51 +6,42 @@ using UnityEngine;
 namespace Money {
     public interface Currency {
         int GetBalance();
-        void AddBalance(int amount);
-        void SubstractBalance(int amount);
+        /// <summary>
+        /// Addiert einen Betrag zum Kontostand
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns> "true", wenn der Kontostand danach > 0, ansonsten "false" </returns>
+        bool AddBalance(int amount);
+        /// <summary>
+        /// Subtrahiert einen Betrag vom Kontostand
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns> "true", wenn der Kontostand danach > 0, ansonsten "false" </returns>
+        bool SubstractBalance(int amount);
     }
 
-    public class MoneyPast : MonoBehaviour, Currency {
+    public class Money : MonoBehaviour, Currency {
         
         private int balance;
         
         int Currency.GetBalance() {
             return balance;
         }
-        void Currency.AddBalance(int amount) {
-            balance += amount;
+        bool Currency.AddBalance(int amount) {
+            if (balance + amount < 0)
+                return false;
+            else {
+                balance += amount;
+                return true;
+            }
         }
-        void Currency.SubstractBalance(int amount) {
-            balance -= amount; 
-        }
-    }
-    
-    public class MoneyPresent : MonoBehaviour, Currency {
-        
-        private int balance;
-
-        int Currency.GetBalance() {
-            return balance;
-        }
-        void Currency.AddBalance(int amount) {
-            balance += amount;
-        }
-        void Currency.SubstractBalance(int amount) {
-            balance -= amount;
-        }
-    }
-
-    public class MoneyFuture : MonoBehaviour, Currency {
-        private int balance;
-
-        int Currency.GetBalance() {
-            return balance;
-        }
-        void Currency.AddBalance(int amount) {
-            balance += amount;
-        }
-        void Currency.SubstractBalance(int amount) {
-            balance -= amount;
+        bool Currency.SubstractBalance(int amount) {
+            if(balance - amount < 0)
+                return false;
+            else {
+                balance -= amount;
+                return true;
+            }
         }
     }
 }
