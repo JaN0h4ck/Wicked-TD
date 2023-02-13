@@ -30,6 +30,7 @@ public class Money : MonoBehaviour, Currency {
             return false;
         else {
             balance += amount;
+            balanceText.text = currencyName + ": " + balance;
             return true;
         }
     }
@@ -39,11 +40,12 @@ public class Money : MonoBehaviour, Currency {
             return false;
         else {
             balance -= amount;
+            balanceText.text = currencyName + ": " + balance;
             return true;
         }
     }
 
-    string GetName() {
+    public string GetName() {
         return currencyName;
     }
 }
