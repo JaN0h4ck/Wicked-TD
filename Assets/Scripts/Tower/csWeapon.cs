@@ -16,6 +16,9 @@ public class csWeapon : MonoBehaviour
     private float fShootRange;
 
     [SerializeField]
+    private float fBulletSpeed;
+
+    [SerializeField]
     private GameObject gPrefabBullet;
 
     [SerializeField]
@@ -90,7 +93,17 @@ public class csWeapon : MonoBehaviour
     #region Bullet
     private void SetupBullet()
     {
-        //GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
+        GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
+
+        csBullet Bullet = gTemp.GetComponent<csBullet>();
+        if (Bullet != null)
+        {
+            Bullet.ShootAt(tsTarget, fBulletSpeed);
+        }
+        else
+        {
+            Debug.LogError("(csWepon): your bullet" + gTemp.name + " isnt setup correctly, the csBullet Script i missing");
+        }
         
     }
     #endregion
