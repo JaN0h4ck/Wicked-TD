@@ -92,7 +92,15 @@ public class csWeapon : MonoBehaviour
     private void Shoot()
     {
         Debug.Log("(Tower): Shoot " + gameObject.name);
-        SetupBullet();
+        if (TryBuyAmmunition())
+        {
+            TryDisableSiren();
+            SetupBullet();
+        }
+        else
+        {
+            EnableSiren();
+        }
     }
 
     /// <summary>
@@ -103,6 +111,48 @@ public class csWeapon : MonoBehaviour
         GameObject gTemp = Instantiate(gRangeIndicatorPrefab, this.transform.position, Quaternion.identity);
         gTemp.transform.localScale = new Vector2(0.115f*fShootRange,0.115f*fShootRange);
     }
+
+    #region Money
+
+    private bool TryBuyAmmunition()
+    {
+        Currency temp;
+        if (Shop.Instance.currencyMap.TryGetValue("Gold",out temp))
+        {
+            if(temp.SubstractBalance(gPrefabBullet.GetComponent<csBullet>().GetAmmoCosts()))
+            {
+                return true;
+            }
+        }
+        else
+        {
+            Debug.LogError("Currency not found");
+            
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Displays a siren under the tower
+    /// This shows the player that the tower cant buy ammo anymore
+    /// </summary>
+    private void EnableSiren()
+    {
+        this.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// Deactivates the out of money siren, this check wether the siren is activ or not before disabling it
+    /// </summary>
+    private void TryDisableSiren()
+    {
+        GameObject temp = this.transform.GetChild(0).gameObject;
+        if(temp.activeSelf==true)
+        {
+            temp.SetActive(false);
+        }
+    }
+    #endregion
 
     #region Bullet
     private void SetupBullet()

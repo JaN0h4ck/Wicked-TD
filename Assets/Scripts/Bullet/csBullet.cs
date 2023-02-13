@@ -5,6 +5,9 @@ using UnityEngine;
 public class csBullet : MonoBehaviour
 {
     #region Variables
+    [SerializeField]
+    private int iShootCost;
+
     private csTransformations2D Transformation;
 
     private ParticleSystem psTrailEffect;
@@ -56,6 +59,13 @@ public class csBullet : MonoBehaviour
         } else {
             return false;
         }
+    }
+    #endregion
+
+    #region Utility
+    public int GetAmmoCosts()
+    {
+        return iShootCost;
     }
     #endregion
 }

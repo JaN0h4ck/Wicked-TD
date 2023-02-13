@@ -13,6 +13,9 @@ public class csTowerBaseScript : MonoBehaviour
 
     private csTowerManager TowerManager;
 
+    [SerializeField]
+    private float fBuildCost;
+
     #endregion
     #region Setup
     private void Start()
