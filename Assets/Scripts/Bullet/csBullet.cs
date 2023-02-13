@@ -6,6 +6,8 @@ public class csBullet : MonoBehaviour
 {
     #region Variables
     private csTransformations2D Transformation;
+
+    private ParticleSystem psTrailEffect;
     #endregion
 
     #region Setup
@@ -19,6 +21,15 @@ public class csBullet : MonoBehaviour
             StartCoroutine(WaitTillTargetHit(tsTarget));
         } else {
             Debug.LogError("Your bullet is etup incorrectly. Its missing a csTransformation2D script - called by " + this.gameObject);
+        }
+        if(this.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>()!=null)
+        {
+            psTrailEffect = this.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
+            psTrailEffect.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Your bullet migth be setup incorrectly. Its missing a Trail Particle System - called by " + this.gameObject);
         }
     }
     #endregion
