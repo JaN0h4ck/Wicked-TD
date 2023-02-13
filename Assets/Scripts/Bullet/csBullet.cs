@@ -12,32 +12,25 @@ public class csBullet : MonoBehaviour
     /// <summary>
     /// Define the object at which the bullet is shot
     /// </summary>
-    public void ShootAt(Transform tsTarget, float fBulletSpeed)
-    {
+    public void ShootAt(Transform tsTarget, float fBulletSpeed) {
         Transformation = gameObject.GetComponent<csTransformations2D>();
-        if (Transformation != null)
-        {
+        if (Transformation != null) {
             Transformation.MoveTowardsLoop(this.transform, tsTarget, fBulletSpeed);
             StartCoroutine(WaitTillTargetHit(tsTarget));
-        }
-        else
-        {
+        } else {
             Debug.LogError("Your bullet is etup incorrectly. Its missing a csTransformation2D script - called by " + this.gameObject);
         }
     }
     #endregion
 
     #region FlyBehaviour
-    private IEnumerator WaitTillTargetHit(Transform tsTarget)
-    {
+    private IEnumerator WaitTillTargetHit(Transform tsTarget) {
         bool bRunning = true;
-        while(bRunning)
-        {
+        while(bRunning) {
             Transformation.LookAt2D(this.transform, tsTarget);
             yield return new WaitForSecondsRealtime(0.05f);
             
-            if(WasTargetHit(tsTarget))
-            {
+            if(WasTargetHit(tsTarget)) {
                 bRunning = false;
             }
         }
@@ -46,14 +39,10 @@ public class csBullet : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private bool WasTargetHit(Transform tsTarget)
-    {
-        if(tsTarget.position==this.transform.position)
-        {
+    private bool WasTargetHit(Transform tsTarget) {
+        if(tsTarget.position==this.transform.position) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
