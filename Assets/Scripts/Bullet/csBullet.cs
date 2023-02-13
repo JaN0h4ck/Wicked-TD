@@ -25,13 +25,13 @@ public class csBullet : MonoBehaviour
 
     #region FlyBehaviour
     private IEnumerator WaitTillTargetHit(Transform tsTarget) {
-        bool bRunning = true;
-        while(bRunning) {
+        bool isRunning = true;
+        while(isRunning) {
             Transformation.LookAt2D(this.transform, tsTarget);
             yield return new WaitForSecondsRealtime(0.05f);
             
             if(WasTargetHit(tsTarget)) {
-                bRunning = false;
+                isRunning = false;
             }
         }
         Debug.Log("+(Bullet): Hit target: " + tsTarget.name);
