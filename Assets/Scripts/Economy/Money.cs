@@ -4,23 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
-public interface Currency {
-    int GetBalance();
-    /// <summary>
-    /// Addiert einen Betrag zum Kontostand
-    /// </summary>
-    /// <param name="amount"></param>
-    /// <returns> "true", wenn der Kontostand danach > 0, ansonsten "false" </returns>
-    bool AddBalance(int amount);
-    /// <summary>
-    /// Subtrahiert einen Betrag vom Kontostand
-    /// </summary>
-    /// <param name="amount"></param>
-    /// <returns> "true", wenn der Kontostand danach > 0, ansonsten "false" </returns>
-    bool SubstractBalance(int amount);
-}
-
 public class Money : MonoBehaviour, Currency {
 
     [SerializeField]
@@ -29,6 +12,15 @@ public class Money : MonoBehaviour, Currency {
 
     [SerializeField]
     private string currencyName;
+
+    [SerializeField]
+    private TextMeshProUGUI balanceText;
+
+    private void Start() {
+        if(!string.IsNullOrEmpty(currencyName))
+            balanceText.text = currencyName + ": " + balance;
+    }
+
     int Currency.GetBalance() {
         return balance;
     }
@@ -38,6 +30,7 @@ public class Money : MonoBehaviour, Currency {
             return false;
         else {
             balance += amount;
+            balanceText.text = currencyName + ": " + balance;
             return true;
         }
     }
@@ -47,11 +40,12 @@ public class Money : MonoBehaviour, Currency {
             return false;
         else {
             balance -= amount;
+            balanceText.text = currencyName + ": " + balance;
             return true;
         }
     }
 
-    string GetName() {
+    public string GetName() {
         return currencyName;
     }
 }
