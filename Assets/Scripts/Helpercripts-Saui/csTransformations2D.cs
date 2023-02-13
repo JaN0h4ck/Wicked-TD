@@ -31,6 +31,7 @@ public class csTransformations2D : MonoBehaviour
         Vector3 dir = tsTarget.position - tsObject.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         tsObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        tsObject.transform.Rotate(0,0,90);
     }
 
     /// <summary>

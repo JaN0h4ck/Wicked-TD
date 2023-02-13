@@ -33,8 +33,9 @@ public class csBullet : MonoBehaviour
         bool bRunning = true;
         while(bRunning)
         {
+            Transformation.LookAt2D(this.transform, tsTarget);
             yield return new WaitForSecondsRealtime(0.05f);
-            Transformation.LookAt2D(this.transform,tsTarget);
+            
             if(WasTargetHit(tsTarget))
             {
                 bRunning = false;
