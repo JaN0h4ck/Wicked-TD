@@ -11,14 +11,19 @@ public class csTowerBaseScript : MonoBehaviour
 
     private csWeapon WeaponManager;
 
-
+    private csTowerManager TowerManager;
 
     #endregion
     #region Setup
-    void Start()
+    private void Start()
+    {
+        Setup();
+    }
+    protected void Setup()
     {
         Debug.Log("(Tower): Running setup on " + gameObject.name);
-        WeaponSetup();
+        TowerManager = csTowerManager.current;
+        Invoke("WeaponSetup", 0.01f);
     }
 
     private void WeaponSetup()
@@ -31,6 +36,10 @@ public class csTowerBaseScript : MonoBehaviour
         else
         {
             Debug.LogError("(Setup-Error): The tower " + gameObject.name + " is missing a csWWeaponScript!");
+        }
+        if (TowerManager.bShowTowerRange)
+        {
+            WeaponManager.DisplayTowerRangeToUser();
         }
     }
 

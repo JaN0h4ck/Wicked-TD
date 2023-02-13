@@ -73,7 +73,6 @@ public class csTransformations2D : MonoBehaviour
 
     private IEnumerator MoveObjectTowards(Transform tsObject, Transform tsTarget, float fSpeed, float fTime)
     {
-        Debug.LogError("Starting");
         fTime *= 100;
         if(fTime==0)
         {

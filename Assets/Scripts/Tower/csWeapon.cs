@@ -25,6 +25,11 @@ public class csWeapon : MonoBehaviour
     [Tooltip("Set this Layermask to enemy so the toer can detect the enemies by using a overlapp box")]
     private LayerMask lmEnemy;
 
+    [SerializeField]
+    private GameObject gRangeIndicatorPrefab;
+
+    
+
     private Transform tsTarget;
     #endregion
 
@@ -88,6 +93,15 @@ public class csWeapon : MonoBehaviour
     {
         Debug.Log("(Tower): Shoot " + gameObject.name);
         SetupBullet();
+    }
+
+    /// <summary>
+    /// Shows the Tower range to the user, you can change this in the Toermanager by unchecking bDisplayTowerRange
+    /// </summary>
+    public void DisplayTowerRangeToUser()
+    {
+        GameObject gTemp = Instantiate(gRangeIndicatorPrefab, this.transform.position, Quaternion.identity);
+        gTemp.transform.localScale = new Vector2(0.115f*fShootRange,0.115f*fShootRange);
     }
 
     #region Bullet
