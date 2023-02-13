@@ -7,7 +7,7 @@ public class csTowerBaseScript : MonoBehaviour
     #region Variables
     
     [Tooltip("ThisContains the 3 Stored currencies and how much a tower stored of each currency")]
-    private int[] iStoredCurrencies = new int[3];
+    private int[] iaStoredCurrencies = new int[3];
 
     private csWeapon WeaponManager;
 
@@ -15,6 +15,10 @@ public class csTowerBaseScript : MonoBehaviour
 
     [SerializeField]
     private float fBuildCost;
+
+    [SerializeField]
+    [Tooltip("This sets which currency will be used to shooot, therefore the damagetype will be changed")]
+    protected int iFireMode;
 
     #endregion
     #region Setup
@@ -47,12 +51,40 @@ public class csTowerBaseScript : MonoBehaviour
     }
 
     #endregion
-    void Update()
-    {
 
-    }
 
     #region Shoot
+    public void SetFireMode(int iFireModeIndex)
+    {
+        PullCurrency();
+        WeaponManager.ResetStoredCurrency();
+        iFireMode = iFireModeIndex;
+       
+    }
+    #endregion
 
+    #region Currency
+    private void AddCurrency(int iIndex,int iAmount)
+    {
+        iaStoredCurrencies[iIndex]+= iAmount;
+    }
+
+    private void PullCurrency()
+    {
+        AddCurrency(iFireMode,WeaponManager.GetStoredCurrency());
+    }
+
+    private void OnDestroy()
+    {
+        DropMoneyOnDeath();
+    }
+    protected void DropMoneyOnDeath()
+    {
+        for(int i = 2;i>=0;i--)
+        {
+            csTowerManager.current.AddCurrencyToBalance(i,iaStoredCurrencies[i]);
+        }
+    }
+    
     #endregion
 }

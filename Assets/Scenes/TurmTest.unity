@@ -989,7 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4df0396b7cba8498d8da6d4ce7c095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balance: 10
+  balance: 100
   currencyName: Gold
   balanceText: {fileID: 1443337011}
 --- !u!4 &564522128
@@ -1221,7 +1221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635914715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.16, y: 3.69, z: 0}
+  m_LocalPosition: {x: 2.83, y: 0.69, z: 0}
   m_LocalScale: {x: 0.63929, y: 0.63929, z: 0.63929}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1701,6 +1701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fBuildCost: 0
+  iFireMode: 0
 --- !u!212 &975837794
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1788,6 +1789,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
+  iCurrencyGainOnShot: 1
 --- !u!1 &1050811598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,7 +2253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308078847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.19, y: 1.16, z: 0}
+  m_LocalPosition: {x: -4.3, y: -1.23, z: 0}
   m_LocalScale: {x: 0.63929, y: 0.63929, z: 0.63929}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2644,14 +2646,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fDamage: 10
-  fFireSpeed: 1
-  fShootRange: 10
+  fFireSpeed: 0.3
+  fShootRange: 15
   fBulletSpeed: 40
   gPrefabBullet: {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
   lmEnemy:
     serializedVersion: 2
     m_Bits: 4294967295
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
+  iCurrencyGainOnShot: 1
 --- !u!114 &1548536530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2665,6 +2668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fBuildCost: 0
+  iFireMode: 0
 --- !u!212 &1548536531
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2706,7 +2710,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.7259523, g: 0.9811321, b: 0.67013174, a: 1}
+  m_Color: {r: 0.97385055, g: 0.67058825, b: 0.98039216, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2762,8 +2766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764e47148dcfdbf4c93af50a5f876aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fDamage: 10
-  fFireSpeed: 1
+  fDamage: 2
+  fFireSpeed: 2.5
   fShootRange: 10
   fBulletSpeed: 40
   gPrefabBullet: {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
@@ -2771,6 +2775,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
+  iCurrencyGainOnShot: 2
 --- !u!114 &1684536028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2784,6 +2789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fBuildCost: 0
+  iFireMode: 2
   fCurrencyGenerationSpeed: 1
   fCurrencyGenerationAmount: 1
 --- !u!212 &1684536029
@@ -2827,7 +2833,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.7259523, g: 0.9811321, b: 0.67013174, a: 1}
+  m_Color: {r: 0.67058825, g: 0.98039216, b: 0.9713754, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

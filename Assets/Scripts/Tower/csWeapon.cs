@@ -28,6 +28,10 @@ public class csWeapon : MonoBehaviour
     [SerializeField]
     private GameObject gRangeIndicatorPrefab;
 
+    [SerializeField]
+    private int iCurrencyGainOnShot;
+    
+    private int iStoredCurrency;
     
 
     private Transform tsTarget;
@@ -95,6 +99,8 @@ public class csWeapon : MonoBehaviour
         if (TryBuyAmmunition())
         {
             TryDisableSiren();
+            iStoredCurrency+=iCurrencyGainOnShot;
+            Debug.Log("§ " + iStoredCurrency);
             SetupBullet();
         }
         else
@@ -151,6 +157,15 @@ public class csWeapon : MonoBehaviour
         {
             temp.SetActive(false);
         }
+    }
+
+    public int GetStoredCurrency()
+    {
+        return iStoredCurrency;
+    }
+    public void ResetStoredCurrency()
+    {
+        iStoredCurrency = 0;
     }
     #endregion
 

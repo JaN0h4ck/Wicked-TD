@@ -11,5 +11,6 @@ public class csExplosionTower : csTowerBaseScript
     private void OnDestroy()
     {
         Debug.Log("(ExplosionTower): exploding " + gameObject.name);
+        DropMoneyOnDeath();
     }
 }
