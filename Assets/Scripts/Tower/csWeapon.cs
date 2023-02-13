@@ -52,7 +52,6 @@ public class csWeapon : MonoBehaviour
 
         foreach(Collider2D cd in hitColliders)
         {
-            Debug.Log("(Weapon): Found Enemies:" + cd.gameObject.name);
 
             Transform tsCurrent = cd.transform;
             float fCompare = Vector3.Distance(this.transform.position, tsCurrent.position);
@@ -63,6 +62,11 @@ public class csWeapon : MonoBehaviour
                 tsNearetEnemy = tsCurrent;
             }
         }
+        if (tsNearetEnemy != null)
+        {
+            Debug.Log("(Weapon): Found nearest Enemy:" + tsNearetEnemy.name);
+        }
+        tsTarget = tsNearetEnemy;
     }
     
     private bool IsEnemyInRange()
@@ -86,7 +90,7 @@ public class csWeapon : MonoBehaviour
     #region Bullet
     private void SetupBullet()
     {
-        GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
+        //GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
         
     }
     #endregion
