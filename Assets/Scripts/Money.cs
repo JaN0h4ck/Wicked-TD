@@ -44,4 +44,28 @@ namespace Money {
             }
         }
     }
+
+    public class BaseCurrency : MonoBehaviour, Currency {
+
+        private int balance;
+        int Currency.GetBalance() {
+            return balance;
+        }
+        bool Currency.AddBalance(int amount) {
+            if (balance + amount < 0)
+                return false;
+            else {
+                balance += amount; 
+            return true;
+                }
+        }
+        bool Currency.SubstractBalance(int amount) {
+            if(balance - amount < 0)
+                return false;
+            else {
+                balance -= amount;
+                return true;
+            }
+        }
+    }
 }
