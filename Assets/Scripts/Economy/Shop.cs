@@ -5,38 +5,44 @@ using TMPro;
 
 public class Shop : Singleton<Shop> {
 
-    private Currency[] currencies;
+    private Currency[] m_currencies;
 
     public Dictionary<string, Currency> currencyMap;
 
-    private CanvasGroup shopUI;
+    private CanvasGroup m_shopUI;
+
+    [SerializeField]
+    private string m_currencyHandlerName = "Currency Handler";
 
     private void Start() {
-        shopUI = GetComponent<CanvasGroup>();
-        shopUI.alpha = 0;
+        m_shopUI = GetComponent<CanvasGroup>();
+        m_shopUI.alpha = 0;
 
-        #region Currency
-        currencies = GameObject.Find("Currency Handler").GetComponents<Currency>();
+        CurrencySetup();
+    }
+
+    private void CurrencySetup() {
+        m_currencies = GameObject.Find(m_currencyHandlerName).GetComponents<Currency>();
 
         currencyMap = new Dictionary<string, Currency>();
 
-        foreach (Currency currency in currencies) {
-            if (currency is Money) 
+        foreach (Currency currency in m_currencies) {
+            if (currency is Money)
                 currencyMap.Add(((Money)currency).GetName(), currency);
             else
                 currencyMap.Add("Base Coin", currency);
         }
 
-        /* Nur für Debug-Zwecke
+        // Nur für Debug-Zwecke
+        /* 
         foreach (KeyValuePair<string, Currency> entry in currencyMap) {
             Debug.Log(entry.Key + " " + entry.Value.GetBalance());
         }*/
-        #endregion
     }
 
     private void Update() {
         if(Input.GetKeyUp(KeyCode.S)) {
-            if(shopUI.alpha > 0)
+            if(m_shopUI.alpha > 0)
                 CloseShop();
             else
                 OpenShop();
@@ -54,15 +60,15 @@ public class Shop : Singleton<Shop> {
     }
 
     public void OpenShop() {
-        shopUI.alpha += 1;
+        m_shopUI.alpha += 1;
     }
 
     public void CloseShop() {
-        shopUI.alpha -= 1;
+        m_shopUI.alpha -= 1;
     }
 
     public void ShopButton() {
-        if(shopUI.alpha > 0)
+        if(m_shopUI.alpha > 0)
             CloseShop();
         else
             OpenShop();
