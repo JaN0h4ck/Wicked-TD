@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class csBullet : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class csBullet : MonoBehaviour
 
     [SerializeField]
     private bool bAttachEffectToObject;
+
+    private float fDamage;
+
+    [SerializeField]
+    private GameObject gDamageIndicatorPrefab;
     #endregion
 
     #region Setup
@@ -57,6 +63,9 @@ public class csBullet : MonoBehaviour
             }
         }
         Debug.Log("+(Bullet): Hit target: " + tsTarget.name);
+
+        DoDamageToTarget();
+
         Transformation.StopMoveTowardsLoop(this.transform);
        
         Destroy(this.gameObject);
@@ -71,6 +80,23 @@ public class csBullet : MonoBehaviour
     }
     #endregion
 
+    #region Damage
+
+    public  void SetDamage(float fBulletDamage)
+    {
+        fDamage = fBulletDamage;
+    }
+
+
+    private void DoDamageToTarget()
+    {
+        //do damage!! To do
+        GameObject gTemp = Instantiate(gDamageIndicatorPrefab, this.transform.position, Quaternion.identity);
+        gTemp.GetComponent<TextMeshPro>().text = fDamage.ToString();
+    }
+
+
+    #endregion
     #region Utility
     public int GetAmmoCosts()
     {

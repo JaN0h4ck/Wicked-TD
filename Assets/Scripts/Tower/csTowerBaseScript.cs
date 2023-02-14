@@ -217,6 +217,11 @@ public class csTowerBaseScript : MonoBehaviour
         return fBuildCost;
     }
 
+    public float GetFireSpeed()
+    {
+        return WeaponManager.GetFireSpeed();
+    }
+
     private void CheckWeaponForNull()
     {
         if(WeaponManager ==null)
@@ -224,5 +229,6 @@ public class csTowerBaseScript : MonoBehaviour
             WeaponManager = this.gameObject.GetComponent<csWeapon>();
         }
     }
+
     #endregion
 }

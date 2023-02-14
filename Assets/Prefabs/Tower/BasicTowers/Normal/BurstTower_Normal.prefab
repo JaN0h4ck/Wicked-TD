@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6755324037161732854}
   - component: {fileID: 6755324037161732855}
   - component: {fileID: 6755324037161732852}
+  - component: {fileID: -735794765409624560}
+  - component: {fileID: 2988026654715088788}
   m_Layer: 0
   m_Name: BurstTower_Normal
   m_TagString: Untagged
@@ -119,16 +121,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fDamage: 5
-  fFireSpeed: 3
+  fFireSpeed: 4
   fShootRange: 10
   fBulletSpeed: 20
   iTargetAmount: 4
+  fFireSpeedDeacrease: 0.2
   gPrefabBullet: {fileID: 988432995199586303, guid: f330187e7dcb0db4eb85feb7f38e1425, type: 3}
   lmEnemy:
     serializedVersion: 2
     m_Bits: 55
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
   iCurrencyGainOnShot: 1
+--- !u!114 &-735794765409624560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6755324037161732853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 956c90edce91e0145a1822769a9bc079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splTowerLooks: []
+--- !u!114 &2988026654715088788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6755324037161732853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 956c90edce91e0145a1822769a9bc079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splTowerLooks:
+  - {fileID: 7482667652216324306, guid: 136b04558a339da4581c7b4226fd5c6e, type: 3}
+  - {fileID: 3625043607559282579, guid: f0e928706d7f7b94ebf709e2d1be5c23, type: 3}
 --- !u!1001 &6755324037888605134
 PrefabInstance:
   m_ObjectHideFlags: 0

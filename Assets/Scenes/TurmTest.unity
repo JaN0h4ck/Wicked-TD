@@ -5408,6 +5408,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerInterface
       objectReference: {fileID: 0}
+    - target: {fileID: 3006798768981132205, guid: 384eecdbab304924684feef1d490f339, type: 3}
+      propertyPath: tdlAllTowerDataFiles.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006798768981132205, guid: 384eecdbab304924684feef1d490f339, type: 3}
+      propertyPath: tdlAllTowerDataFiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 45738a1b3f38dc848af4c93b50bb6317, type: 2}
+    - target: {fileID: 3006798768981132205, guid: 384eecdbab304924684feef1d490f339, type: 3}
+      propertyPath: tdlAllTowerDataFiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9da4ad23499a953428b96d63b5149c6a, type: 2}
+    - target: {fileID: 3006798768981132205, guid: 384eecdbab304924684feef1d490f339, type: 3}
+      propertyPath: tdlAllTowerDataFiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 39779dd1869dfd343b5a9c926d68bec9, type: 2}
+    - target: {fileID: 3006798768981132205, guid: 384eecdbab304924684feef1d490f339, type: 3}
+      propertyPath: tdlAllTowerDataFiles.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 92c27d820c6e2964985981d8536cd5cf, type: 2}
     - target: {fileID: 3006798768981132206, guid: 384eecdbab304924684feef1d490f339, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -6012,7 +6032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635914715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.83, y: 0.69, z: 0}
+  m_LocalPosition: {x: 2.76, y: 0.76, z: 0}
   m_LocalScale: {x: 0.63929, y: 0.63929, z: 0.63929}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6541,6 +6561,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6755324037161732852, guid: a27b759f3fbeec2449ff5bc8eb7626c3, type: 3}
+      propertyPath: fFireSpeedDeacrease
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6755324037161732853, guid: a27b759f3fbeec2449ff5bc8eb7626c3, type: 3}
       propertyPath: m_Name
       value: BurstTower_Normal
@@ -7016,7 +7040,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bShowTowerRange: 1
-  gTowerInterfacePrefab: {fileID: 3006798768981132204, guid: 384eecdbab304924684feef1d490f339, type: 3}
 --- !u!1 &1254922648
 GameObject:
   m_ObjectHideFlags: 0
@@ -7142,7 +7165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254922648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.68, y: -0.82, z: 0}
+  m_LocalPosition: {x: -5.45, y: 1.29, z: 0}
   m_LocalScale: {x: 0.63929, y: 0.63929, z: 0.63929}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7273,7 +7296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308078847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3, y: -1.23, z: 0}
+  m_LocalPosition: {x: -3.93, y: -1.09, z: 0}
   m_LocalScale: {x: 0.63929, y: 0.63929, z: 0.63929}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8684,6 +8707,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5353236978550112784, guid: b505336f0394b6e4098f88a859e956ca, type: 3}
+      propertyPath: fFireSpeedDeacrease
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 5353236978550112785, guid: b505336f0394b6e4098f88a859e956ca, type: 3}
       propertyPath: m_Name
       value: Normal

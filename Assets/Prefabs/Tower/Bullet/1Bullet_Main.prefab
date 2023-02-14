@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iShootCost: 1
   bAttachEffectToObject: 1
+  gDamageIndicatorPrefab: {fileID: 11900282100008816, guid: 8cfb88113f07d604c8eddcf7541b766d, type: 3}
 --- !u!1001 &1820010166036921234
 PrefabInstance:
   m_ObjectHideFlags: 0

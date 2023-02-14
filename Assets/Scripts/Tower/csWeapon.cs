@@ -23,6 +23,10 @@ public class csWeapon : MonoBehaviour
     private int iTargetAmount;
 
     [SerializeField]
+    [Tooltip("This value will be added to the wit time after each shot/earned currency. This variable is set for each tower individualy beacuse otherwise fast shooting towers would be completly busted compared to slow shoting ones")]
+    public float fFireSpeedDeacrease;
+
+    [SerializeField]
     private GameObject gPrefabBullet;
 
     [SerializeField]
@@ -39,6 +43,8 @@ public class csWeapon : MonoBehaviour
     
 
     private List<Transform> tslTargets;
+
+   
     #endregion
 
     #region Setup
@@ -57,6 +63,7 @@ public class csWeapon : MonoBehaviour
             if (IsEnemyInRange())
             {
                 Shoot();
+                fFireSpeed += fFireSpeedDeacrease;
             }
             yield return new WaitForSecondsRealtime(fFireSpeed);
         }
@@ -118,8 +125,7 @@ public class csWeapon : MonoBehaviour
         if (TryBuyAmmunition())
         {
             TryDisableSiren();
-            iStoredCurrency+=iCurrencyGainOnShot;
-            Debug.Log("§ " + iStoredCurrency);
+
             SetupBullet();
         }
         else
@@ -158,6 +164,10 @@ public class csWeapon : MonoBehaviour
         return false;
     }
 
+    private void AddMoney()
+    {
+        iStoredCurrency += iCurrencyGainOnShot;
+    }
     /// <summary>
     /// Displays a siren under the tower
     /// This shows the player that the tower cant buy ammo anymore
@@ -194,9 +204,13 @@ public class csWeapon : MonoBehaviour
     {
         foreach (Transform tsTarget in tslTargets)
         {
+            AddMoney();
             GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
 
             csBullet Bullet = gTemp.GetComponent<csBullet>();
+
+            Bullet.SetDamage(fDamage);
+
             if (Bullet != null)
             {
                 Bullet.ShootAt(tsTarget, fBulletSpeed);
@@ -226,6 +240,11 @@ public class csWeapon : MonoBehaviour
     public float GetRange()
     {
         return fShootRange;
+    }
+
+    public float GetFireSpeed()
+    {
+        return fFireSpeed;
     }
     #endregion
 }
