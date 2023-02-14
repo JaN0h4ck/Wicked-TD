@@ -20,6 +20,12 @@ public class csTowerBaseScript : MonoBehaviour
     [Tooltip("This sets which currency will be used to shooot, therefore the damagetype will be changed")]
     protected int iFireMode;
 
+    [SerializeField]
+    [Tooltip("The script spawnes currency on death, as an animation-indicator that the player gained money. How much currency will be spawned is randomed between the two given values")]
+    private Vector2Int v2RandomSpawnvaluesMinMaxOnDeath;
+
+    [SerializeField]
+    private GameObject gCurrencyAnimationPrefab;
     #endregion
     #region Setup
     private void Start()
@@ -77,6 +83,7 @@ public class csTowerBaseScript : MonoBehaviour
     private void OnDestroy()
     {
         DropMoneyOnDeath();
+        CurrencyDropAnimation();
     }
     protected void DropMoneyOnDeath()
     {
@@ -86,5 +93,24 @@ public class csTowerBaseScript : MonoBehaviour
         }
     }
     
+    protected void CurrencyDropAnimation()
+    {
+        for(int i = GetRandomNumber(); i>0;i--)
+        {
+            Instantiate(gCurrencyAnimationPrefab, this.transform.position, Quaternion.identity);
+        }
+    }
+    #endregion
+
+    #region utility
+    /// <summary>
+    /// Gets a random currency spawn amount
+    /// This is only used for an animation
+    /// </summary>
+    /// <returns></returns>
+    private int GetRandomNumber()
+    {
+        return Random.Range(v2RandomSpawnvaluesMinMaxOnDeath.x, v2RandomSpawnvaluesMinMaxOnDeath.y);
+    }
     #endregion
 }
