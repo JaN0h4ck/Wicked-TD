@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class Shop : Singleton<Shop> {
-
+    
     private Currency[] m_currencies;
 
     public Dictionary<string, Currency> currencyMap;
@@ -38,15 +39,6 @@ public class Shop : Singleton<Shop> {
         foreach (KeyValuePair<string, Currency> entry in currencyMap) {
             Debug.Log(entry.Key + " " + entry.Value.GetBalance());
         }*/
-    }
-
-    private void Update() {
-        if(Input.GetKeyUp(KeyCode.S)) {
-            if(m_shopUI.alpha > 0)
-                CloseShop();
-            else
-                OpenShop();
-        }
     }
 
     public void BuyTower(string CoinType) {

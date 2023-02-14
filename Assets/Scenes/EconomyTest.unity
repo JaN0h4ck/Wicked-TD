@@ -277,6 +277,94 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1415184461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4351075099410191426, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
+  m_PrefabInstance: {fileID: 4351075099475023622}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0ef4e1b157d8540b8b43429798e83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1666264424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1666264426}
+  - component: {fileID: 1666264425}
+  m_Layer: 0
+  m_Name: InputSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1666264425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666264424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: f7f35ab27327974498bd85bc9bc13dab, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1415184461}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: ShopButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 47c099b2-c2ce-4bb2-8ce6-223db00a5735
+    m_ActionName: Standard/Open/Close Shop[/Keyboard/b]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Standard
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!4 &1666264426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666264424}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4351075099475023622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -331,6 +419,30 @@ PrefabInstance:
     - target: {fileID: 4351075098550778403, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
       propertyPath: m_Name
       value: EconomyUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351075099410191426, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
+      propertyPath: shopAction.m_Id
+      value: 8bd871a9-3d4e-4219-968d-ad6f97dfa9ed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351075099410191426, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
+      propertyPath: shopAction.m_Name
+      value: Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351075099410191426, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
+      propertyPath: shopAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351075099410191426, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
+      propertyPath: shopAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: a2de7a95-9850-4980-b012-d3c79fcd9786
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351075099410191426, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
+      propertyPath: shopAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351075099410191426, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
+      propertyPath: shopAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Shop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974a4771384e8274a94914d0d8f157be, type: 3}

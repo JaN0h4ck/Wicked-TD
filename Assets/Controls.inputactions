@@ -1,0 +1,34 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "Standard",
+            "id": "ce82baea-8382-4ed4-9991-2a14e8fe9bd2",
+            "actions": [
+                {
+                    "name": "Open/Close Shop",
+                    "type": "Button",
+                    "id": "47c099b2-c2ce-4bb2-8ce6-223db00a5735",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9ae35996-4ec7-44cb-8564-43586ccc2dc7",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open/Close Shop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
