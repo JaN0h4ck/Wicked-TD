@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2843726507343425928}
   - component: {fileID: 579002742252665580}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: 1Bullet_Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iShootCost: 1
+  bAttachEffectToObject: 1
 --- !u!1001 &1820010166036921234
 PrefabInstance:
   m_ObjectHideFlags: 0

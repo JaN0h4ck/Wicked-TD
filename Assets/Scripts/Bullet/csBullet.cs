@@ -10,7 +10,11 @@ public class csBullet : MonoBehaviour
 
     private csTransformations2D Transformation;
 
+  
     private ParticleSystem psTrailEffect;
+
+    [SerializeField]
+    private bool bAttachEffectToObject;
     #endregion
 
     #region Setup
@@ -28,6 +32,10 @@ public class csBullet : MonoBehaviour
         if(this.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>()!=null)
         {
             psTrailEffect = this.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
+            if(bAttachEffectToObject==false)
+            {
+                this.transform.GetChild(0).SetParent(null);
+            }
             psTrailEffect.Play();
         }
         else
@@ -50,6 +58,7 @@ public class csBullet : MonoBehaviour
         }
         Debug.Log("+(Bullet): Hit target: " + tsTarget.name);
         Transformation.StopMoveTowardsLoop(this.transform);
+       
         Destroy(this.gameObject);
     }
 

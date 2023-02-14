@@ -79,25 +79,30 @@ public class csWeapon : MonoBehaviour
             {
 
                 Transform tsCurrent = cd.transform;
-                float fCompare = Vector3.Distance(this.transform.position, tsCurrent.position);
-
-                if (fLowestDitance > fCompare)
+                if (tslTargets.Contains(tsCurrent) == false)
                 {
-                    fLowestDitance = fCompare;
-                    tsNearetEnemy = tsCurrent;
+                    float fCompare = Vector3.Distance(this.transform.position, tsCurrent.position);
+
+                    if (fLowestDitance > fCompare)
+                    {
+                        fLowestDitance = fCompare;
+                        tsNearetEnemy = tsCurrent;
+                    }
                 }
             }
-            if (tsNearetEnemy != null)
+            if (tsNearetEnemy != null&&tslTargets.Contains(tsNearetEnemy)==false)
             {
                 Debug.Log("(Weapon): Found nearest Enemy:" + tsNearetEnemy.name);
+                tslTargets.Add(tsNearetEnemy);
             }
-            tslTargets.Add(tsNearetEnemy);
+            
+            
         }
     }
     
     private bool IsEnemyInRange()
     {
-        if(tslTargets.Count!=0)
+        if(tslTargets.Count==0)
         {
             return false;
         }
@@ -198,7 +203,7 @@ public class csWeapon : MonoBehaviour
             }
             else
             {
-                Debug.LogError("(csWepon): your bullet" + gTemp.name + " isnt setup correctly, the csBullet Script i missing");
+                Debug.LogError("(csWepon): your bullet" + gTemp.name + " isnt setup correctly, the csBullet Script is missing");
             }
         }
     }

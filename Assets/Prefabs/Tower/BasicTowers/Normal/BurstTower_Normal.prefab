@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 428794255
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.4045857, g: 0, b: 0.41509432, a: 1}
@@ -118,11 +118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764e47148dcfdbf4c93af50a5f876aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fDamage: 10
-  fFireSpeed: 0.3
-  fShootRange: 15
-  fBulletSpeed: 40
-  gPrefabBullet: {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
+  fDamage: 5
+  fFireSpeed: 3
+  fShootRange: 10
+  fBulletSpeed: 20
+  iTargetAmount: 4
+  gPrefabBullet: {fileID: 988432995199586303, guid: f330187e7dcb0db4eb85feb7f38e1425, type: 3}
   lmEnemy:
     serializedVersion: 2
     m_Bits: 55
