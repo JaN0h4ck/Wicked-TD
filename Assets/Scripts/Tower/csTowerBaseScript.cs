@@ -15,6 +15,21 @@ public class csTowerBaseScript : MonoBehaviour
 
     [SerializeField]
     private float fBuildCost;
+   
+    private enum CurrencyEnum
+    {
+        Gold,
+        C6,
+        Neoplasma
+    }
+    [SerializeField]
+    [Tooltip("This sets the currency with which the tower will be payed")]
+    private CurrencyEnum eBuildCurrency;
+
+    [SerializeField]
+    [Tooltip("The Money that will be refunded form the buildcosts on destruction")]
+    [Range(0,100)]
+    private float fRefundPercentage;
 
     [SerializeField]
     [Tooltip("This sets which currency will be used to shooot, therefore the damagetype will be changed")]
@@ -27,6 +42,8 @@ public class csTowerBaseScript : MonoBehaviour
     [SerializeField]
     [Tooltip("This is ued to drop multiple different Currencies, for the currency drop animtion. 0=Gold, 1= C6, 2=NeoPlasma")]
     private GameObject[] gCurrencyAnimationPrefabs;
+
+    
     #endregion
     #region Setup
     private void Start()
@@ -93,6 +110,7 @@ public class csTowerBaseScript : MonoBehaviour
         {
             csTowerManager.current.AddCurrencyToBalance(i,iaStoredCurrencies[i]);
         }
+        RefundBuildCosts();
     }
     
     protected void CurrencyDropAnimation()
@@ -111,6 +129,27 @@ public class csTowerBaseScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void RefundBuildCosts()
+    {
+        switch(eBuildCurrency)
+        {
+            case(CurrencyEnum.Gold):
+                TowerManager.AddCurrencyToBalance(0, CalculateRefund(0));
+                break;
+            case (CurrencyEnum.C6):
+                TowerManager.AddCurrencyToBalance(1, CalculateRefund(1));
+                break;
+            case (CurrencyEnum.Neoplasma):
+                TowerManager.AddCurrencyToBalance(2, CalculateRefund(2));
+                break;
+        }
+    }
+
+    private int CalculateRefund(int iCurrencyIndex)
+    {
+        return (int)((fBuildCost/ 100) * fRefundPercentage);
     }
     #endregion
 

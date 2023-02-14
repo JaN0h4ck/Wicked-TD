@@ -19,6 +19,10 @@ public class csWeapon : MonoBehaviour
     private float fBulletSpeed;
 
     [SerializeField]
+    [Tooltip("Sets how many enemies a toer can target ith one shot")]
+    private int iTargetAmount;
+
+    [SerializeField]
     private GameObject gPrefabBullet;
 
     [SerializeField]
@@ -34,9 +38,15 @@ public class csWeapon : MonoBehaviour
     private int iStoredCurrency;
     
 
-    private Transform tsTarget;
+    private List<Transform> tslTargets;
     #endregion
 
+    #region Setup
+    private void Start()
+    {
+        tslTargets = new List<Transform>();
+    }
+    #endregion
 
     #region Functions
     public IEnumerator ShootCooldown()
@@ -57,33 +67,37 @@ public class csWeapon : MonoBehaviour
     /// </summary>
     private void GetNearestEnemy()
     {
-        //transform.localScale / 3 draws the box exactly around the object
-        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, (transform.localScale / 2) * fShootRange, 0.0f, lmEnemy);
-        Transform tsNearetEnemy=null;
-        float fLowestDitance =1000f;
-
-        foreach(Collider2D cd in hitColliders)
+        tslTargets.Clear();
+        for (int i = iTargetAmount; i > 0; i--)
         {
 
-            Transform tsCurrent = cd.transform;
-            float fCompare = Vector3.Distance(this.transform.position, tsCurrent.position);
+            Collider2D[] hitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, (transform.localScale / 2) * fShootRange, 0.0f, lmEnemy);
+            Transform tsNearetEnemy = null;
+            float fLowestDitance = 1000f;
 
-            if (fLowestDitance> fCompare)
+            foreach (Collider2D cd in hitColliders)
             {
-                fLowestDitance = fCompare;
-                tsNearetEnemy = tsCurrent;
+
+                Transform tsCurrent = cd.transform;
+                float fCompare = Vector3.Distance(this.transform.position, tsCurrent.position);
+
+                if (fLowestDitance > fCompare)
+                {
+                    fLowestDitance = fCompare;
+                    tsNearetEnemy = tsCurrent;
+                }
             }
+            if (tsNearetEnemy != null)
+            {
+                Debug.Log("(Weapon): Found nearest Enemy:" + tsNearetEnemy.name);
+            }
+            tslTargets.Add(tsNearetEnemy);
         }
-        if (tsNearetEnemy != null)
-        {
-            Debug.Log("(Weapon): Found nearest Enemy:" + tsNearetEnemy.name);
-        }
-        tsTarget = tsNearetEnemy;
     }
     
     private bool IsEnemyInRange()
     {
-        if(tsTarget==null)
+        if(tslTargets.Count!=0)
         {
             return false;
         }
@@ -173,18 +187,20 @@ public class csWeapon : MonoBehaviour
     #region Bullet
     private void SetupBullet()
     {
-        GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
+        foreach (Transform tsTarget in tslTargets)
+        {
+            GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
 
-        csBullet Bullet = gTemp.GetComponent<csBullet>();
-        if (Bullet != null)
-        {
-            Bullet.ShootAt(tsTarget, fBulletSpeed);
+            csBullet Bullet = gTemp.GetComponent<csBullet>();
+            if (Bullet != null)
+            {
+                Bullet.ShootAt(tsTarget, fBulletSpeed);
+            }
+            else
+            {
+                Debug.LogError("(csWepon): your bullet" + gTemp.name + " isnt setup correctly, the csBullet Script i missing");
+            }
         }
-        else
-        {
-            Debug.LogError("(csWepon): your bullet" + gTemp.name + " isnt setup correctly, the csBullet Script i missing");
-        }
-        
     }
     #endregion
 
