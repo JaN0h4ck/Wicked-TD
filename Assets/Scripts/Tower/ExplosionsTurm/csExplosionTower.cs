@@ -13,5 +13,6 @@ public class csExplosionTower : csTowerBaseScript
         Debug.Log("(ExplosionTower): exploding " + gameObject.name);
         DropMoneyOnDeath();
         CurrencyDropAnimation();
+        Debug.LogWarning(csTowerInterface.current.GetSpecificTowerData(csTowerInterface.current.NormalTower).Damage);
     }
 }

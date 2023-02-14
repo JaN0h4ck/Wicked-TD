@@ -9,7 +9,7 @@ public class csTowerManager : MonoBehaviour
 
     private void Awake()
     {
-        if(current==null)
+        if (current==null)
         {
             current = this;
         }
@@ -19,6 +19,7 @@ public class csTowerManager : MonoBehaviour
     #region Variables
     [SerializeField]
     public bool bShowTowerRange;
+
     #endregion
 
     #region Money

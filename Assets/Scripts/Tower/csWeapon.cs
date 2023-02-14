@@ -210,4 +210,22 @@ public class csWeapon : MonoBehaviour
     #endregion
 
     #endregion
+
+    #region Getter
+
+    public float GetDamage()
+    {
+        return fDamage;
+    }
+
+    public GameObject  GetBullet()
+    {
+        return gPrefabBullet;
+    }
+
+    public float GetRange()
+    {
+        return fShootRange;
+    }
+    #endregion
 }

@@ -59,6 +59,7 @@ public class csTowerBaseScript : MonoBehaviour
 
     private void WeaponSetup()
     {
+
         if (gameObject.GetComponent<csWeapon>() != null)
         {
             WeaponManager = gameObject.GetComponent<csWeapon>();
@@ -72,6 +73,7 @@ public class csTowerBaseScript : MonoBehaviour
         {
             WeaponManager.DisplayTowerRangeToUser();
         }
+        
     }
 
     #endregion
@@ -102,6 +104,7 @@ public class csTowerBaseScript : MonoBehaviour
     {
         DropMoneyOnDeath();
         CurrencyDropAnimation();
+        
     }
     protected void DropMoneyOnDeath()
     {
@@ -162,6 +165,64 @@ public class csTowerBaseScript : MonoBehaviour
     private int GetRandomNumber()
     {
         return Random.Range(v2RandomSpawnvaluesMinMaxOnDeath.x, v2RandomSpawnvaluesMinMaxOnDeath.y);
+    }
+    #endregion
+
+    #region Getter
+
+    public string GetTowerName()
+    {
+        return this.gameObject.name;
+    }
+
+    public float GetDamage()
+    {
+        CheckWeaponForNull();
+        return WeaponManager.GetDamage();
+    }
+
+    public float GetRange()
+    {
+        CheckWeaponForNull();
+        return WeaponManager.GetRange();
+    }
+
+
+    /// <summary>
+    /// Returns the sprite of the current ammunition
+    /// </summary>
+    /// <returns></returns>
+    public Sprite GetCurrentAmmunitionVisuals()
+    {
+
+        return WeaponManager.GetBullet().GetComponent<SpriteRenderer>().sprite;
+    }
+
+    /// <summary>
+    /// Returns all stored currencies
+    /// This will always be a 3 entries long array
+    /// Index:
+    /// 0 = Gold
+    /// 1 = C6
+    /// 2 = Neoplasma
+    /// </summary>
+    /// <returns></returns>
+    public int[] GetPoints()
+    {
+        return iaStoredCurrencies;
+    }
+
+    public float GetBuildCosts()
+    {
+        return fBuildCost;
+    }
+
+    private void CheckWeaponForNull()
+    {
+        if(WeaponManager ==null)
+        {
+            WeaponManager = this.gameObject.GetComponent<csWeapon>();
+        }
     }
     #endregion
 }
