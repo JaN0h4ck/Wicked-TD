@@ -1823,9 +1823,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fBuildCost: 0
-  iFireMode: 0
-  v2RandomSpawnvaluesMinMaxOnDeath: {x: 1, y: 5}
-  gCurrencyAnimationPrefab: {fileID: 623368271568796179, guid: b7201f6c9c36bf34a9e0e1983c9c32d5, type: 3}
+  iFireMode: 1
+  v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
+  gCurrencyAnimationPrefabs:
+  - {fileID: 623368271568796179, guid: b7201f6c9c36bf34a9e0e1983c9c32d5, type: 3}
+  - {fileID: 623368271568796179, guid: c4be5376989c78e489665b9682ae0b55, type: 3}
+  - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
 --- !u!212 &975837794
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2793,8 +2796,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fBuildCost: 0
   iFireMode: 0
-  v2RandomSpawnvaluesMinMaxOnDeath: {x: 1, y: 5}
-  gCurrencyAnimationPrefab: {fileID: 623368271568796179, guid: b7201f6c9c36bf34a9e0e1983c9c32d5, type: 3}
+  v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
+  gCurrencyAnimationPrefabs:
+  - {fileID: 623368271568796179, guid: b7201f6c9c36bf34a9e0e1983c9c32d5, type: 3}
+  - {fileID: 623368271568796179, guid: c4be5376989c78e489665b9682ae0b55, type: 3}
+  - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
 --- !u!212 &1548536531
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2977,8 +2983,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fBuildCost: 0
   iFireMode: 2
-  v2RandomSpawnvaluesMinMaxOnDeath: {x: 1, y: 5}
-  gCurrencyAnimationPrefab: {fileID: 623368271568796179, guid: b7201f6c9c36bf34a9e0e1983c9c32d5, type: 3}
+  v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
+  gCurrencyAnimationPrefabs:
+  - {fileID: 623368271568796179, guid: b7201f6c9c36bf34a9e0e1983c9c32d5, type: 3}
+  - {fileID: 623368271568796179, guid: c4be5376989c78e489665b9682ae0b55, type: 3}
+  - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
   fCurrencyGenerationSpeed: 1
   fCurrencyGenerationAmount: 1
 --- !u!212 &1684536029

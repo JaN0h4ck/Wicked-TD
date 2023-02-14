@@ -17,7 +17,14 @@ public class csCurrencyAnimation : MonoBehaviour
 
     [SerializeField]
     private float fLifetime;
+
+    [SerializeField]
+    Color[] claCurrencyColor;
+
+    private int iCurrencyMode;
     #endregion
+
+    #region Setup
     private void Start()
     {
         Transformation = this.gameObject.GetComponent<csTransformations2D>();
@@ -33,6 +40,7 @@ public class csCurrencyAnimation : MonoBehaviour
         Transformation.Push(this.gameObject,GetRandomDirection(),GetRandomForce());
         Transformation.PushAngular(this.gameObject,GetRandomForce()*100);
     }
+    #endregion
 
     #region Random
     private Vector3 GetRandomDirection()
@@ -72,5 +80,7 @@ public class csCurrencyAnimation : MonoBehaviour
 
 
     #endregion
+
+   
 }
 

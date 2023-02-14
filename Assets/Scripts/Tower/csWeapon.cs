@@ -116,6 +116,7 @@ public class csWeapon : MonoBehaviour
     {
         GameObject gTemp = Instantiate(gRangeIndicatorPrefab, this.transform.position, Quaternion.identity);
         gTemp.transform.localScale = new Vector2(0.115f*fShootRange,0.115f*fShootRange);
+        gTemp.transform.SetParent(this.transform);
     }
 
     #region Money

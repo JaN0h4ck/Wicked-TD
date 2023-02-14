@@ -25,7 +25,8 @@ public class csTowerBaseScript : MonoBehaviour
     private Vector2Int v2RandomSpawnvaluesMinMaxOnDeath;
 
     [SerializeField]
-    private GameObject gCurrencyAnimationPrefab;
+    [Tooltip("This is ued to drop multiple different Currencies, for the currency drop animtion. 0=Gold, 1= C6, 2=NeoPlasma")]
+    private GameObject[] gCurrencyAnimationPrefabs;
     #endregion
     #region Setup
     private void Start()
@@ -87,6 +88,7 @@ public class csTowerBaseScript : MonoBehaviour
     }
     protected void DropMoneyOnDeath()
     {
+        PullCurrency();
         for(int i = 2;i>=0;i--)
         {
             csTowerManager.current.AddCurrencyToBalance(i,iaStoredCurrencies[i]);
@@ -95,9 +97,19 @@ public class csTowerBaseScript : MonoBehaviour
     
     protected void CurrencyDropAnimation()
     {
-        for(int i = GetRandomNumber(); i>0;i--)
+        for (int u = 2; u >= 0; u--)
         {
-            Instantiate(gCurrencyAnimationPrefab, this.transform.position, Quaternion.identity);
+            for (int i = GetRandomNumber(); i > 0; i--)
+            {
+                if (iaStoredCurrencies[u] > 0)
+                {
+                    Instantiate(gCurrencyAnimationPrefabs[u], this.transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Debug.Log("%No currencies in store");
+                }
+            }
         }
     }
     #endregion
