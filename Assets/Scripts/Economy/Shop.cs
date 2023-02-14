@@ -9,7 +9,13 @@ public class Shop : Singleton<Shop> {
 
     public Dictionary<string, Currency> currencyMap;
 
+    private CanvasGroup shopUI;
+
     private void Start() {
+        shopUI = GetComponent<CanvasGroup>();
+        shopUI.alpha = 0;
+
+        #region Currency
         currencies = GameObject.Find("Currency Handler").GetComponents<Currency>();
 
         currencyMap = new Dictionary<string, Currency>();
@@ -25,6 +31,16 @@ public class Shop : Singleton<Shop> {
         foreach (KeyValuePair<string, Currency> entry in currencyMap) {
             Debug.Log(entry.Key + " " + entry.Value.GetBalance());
         }*/
+        #endregion
+    }
+
+    private void Update() {
+        if(Input.GetKeyUp(KeyCode.S)) {
+            if(shopUI.alpha > 0)
+                CloseShop();
+            else
+                OpenShop();
+        }
     }
 
     public void BuyTower(string CoinType) {
@@ -35,5 +51,20 @@ public class Shop : Singleton<Shop> {
             else
                 Debug.Log("Not enough money");
         }
+    }
+
+    public void OpenShop() {
+        shopUI.alpha += 1;
+    }
+
+    public void CloseShop() {
+        shopUI.alpha -= 1;
+    }
+
+    public void ShopButton() {
+        if(shopUI.alpha > 0)
+            CloseShop();
+        else
+            OpenShop();
     }
 }
