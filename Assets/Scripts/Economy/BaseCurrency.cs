@@ -7,52 +7,52 @@ public class BaseCurrency : MonoBehaviour, Currency {
 
     [SerializeField]
     [Tooltip("Der Startbetrag für die Basiswährung")]
-    private int balance;
+    private int m_balance;
 
     [SerializeField]
     [Tooltip("Die Anzahl der Sekunden, die vergehen, bevor der Spieler eine Basiswährung erhält")]
-    private float scorePerSecond = 1.0f;
+    private float m_scorePerSecond = 1.0f;
 
     [SerializeField]
-    private TextMeshProUGUI balanceText;
+    private TextMeshProUGUI m_balanceText;
 
-    private float increaseTreshold = 0;
+    private float m_increaseTreshold = 0;
 
     void Start() {
         StartCoroutine(IncrementBaseCurrencyOverTime());
-        balanceText.text = "Base Coin: " + balance;
+        m_balanceText.text = "Base Coin: " + m_balance;
     }
 
     private IEnumerator IncrementBaseCurrencyOverTime() {
         while (true) {
-            increaseTreshold += scorePerSecond * Time.deltaTime;
-            if (increaseTreshold >= 1) {
-                balance += (int)increaseTreshold;
-                balanceText.text = "Base Coin: " + balance;
-                increaseTreshold = 0;
+            m_increaseTreshold += m_scorePerSecond * Time.deltaTime;
+            if (m_increaseTreshold >= 1) {
+                m_balance += (int)m_increaseTreshold;
+                m_balanceText.text = "Base Coin: " + m_balance;
+                m_increaseTreshold -= m_increaseTreshold;
             }
             yield return new WaitForEndOfFrame();
         }
     }
 
     int Currency.GetBalance() {
-        return balance;
+        return m_balance;
     }
 
     bool Currency.AddBalance(int amount) {
-        if (balance + amount < 0)
+        if (m_balance + amount < 0)
             return false;
         else {
-            balance += amount;
+            m_balance += amount;
             return true;
         }
     }
 
     bool Currency.SubstractBalance(int amount) {
-        if (balance - amount < 0)
+        if (m_balance - amount < 0)
             return false;
         else {
-            balance -= amount;
+            m_balance -= amount;
             return true;
         }
     }
