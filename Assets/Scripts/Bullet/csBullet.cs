@@ -21,6 +21,8 @@ public class csBullet : MonoBehaviour
 
     [SerializeField]
     private GameObject gDamageIndicatorPrefab;
+
+    private GameObject gIndicatorEmpty;
     #endregion
 
     #region Setup
@@ -88,11 +90,13 @@ public class csBullet : MonoBehaviour
     }
 
 
+
     private void DoDamageToTarget()
     {
         //do damage!! To do
         GameObject gTemp = Instantiate(gDamageIndicatorPrefab, this.transform.position, Quaternion.identity);
         gTemp.GetComponent<TextMeshPro>().text = fDamage.ToString();
+        gTemp.transform.SetParent(gIndicatorEmpty.transform);
     }
 
 
@@ -101,6 +105,11 @@ public class csBullet : MonoBehaviour
     public int GetAmmoCosts()
     {
         return iShootCost;
+    }
+
+    public void SetIndicatorEmpty(GameObject gDamageIndicatorEmpty)
+    {
+        gIndicatorEmpty = gDamageIndicatorEmpty;
     }
     #endregion
 }

@@ -44,13 +44,14 @@ public class csWeapon : MonoBehaviour
 
     private List<Transform> tslTargets;
 
-   
+    private GameObject gIndicatorEmpty;
     #endregion
 
     #region Setup
     private void Start()
     {
         tslTargets = new List<Transform>();
+        gIndicatorEmpty = GameObject.Find("IndicatorEmpty");
     }
     #endregion
 
@@ -210,6 +211,7 @@ public class csWeapon : MonoBehaviour
             csBullet Bullet = gTemp.GetComponent<csBullet>();
 
             Bullet.SetDamage(fDamage);
+            Bullet.SetIndicatorEmpty(gIndicatorEmpty);
 
             if (Bullet != null)
             {
@@ -245,6 +247,11 @@ public class csWeapon : MonoBehaviour
     public float GetFireSpeed()
     {
         return fFireSpeed;
+    }
+
+    public LayerMask GetEnemieLayer()
+    {
+        return lmEnemy;
     }
     #endregion
 }

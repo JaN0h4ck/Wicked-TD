@@ -9,7 +9,7 @@ public class csTowerBaseScript : MonoBehaviour
     [Tooltip("ThisContains the 3 Stored currencies and how much a tower stored of each currency")]
     private int[] iaStoredCurrencies = new int[3];
 
-    private csWeapon WeaponManager;
+    protected csWeapon WeaponManager;
 
     private csTowerManager TowerManager;
 
