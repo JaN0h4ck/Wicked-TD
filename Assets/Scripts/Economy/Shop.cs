@@ -22,6 +22,7 @@ public class Shop : Singleton<Shop> {
     private void Start() {
         m_shopUI = GetComponent<CanvasGroup>();
         m_shopUI.alpha = 0;
+        m_shopUI.blocksRaycasts = false;
 
         m_playerinput = GameObject.Find("InputSystem").GetComponent<PlayerInput>();
 
@@ -64,11 +65,13 @@ public class Shop : Singleton<Shop> {
 
     public void OpenShop() {
         m_shopUI.alpha += 1;
+        m_shopUI.blocksRaycasts = true;
         m_closeShopInputAction.Enable();
     }
 
     public void CloseShop() {
         m_shopUI.alpha -= 1;
+        m_shopUI.blocksRaycasts = false;
         m_closeShopInputAction.Disable();
     }
 
