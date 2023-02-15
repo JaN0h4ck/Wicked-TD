@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: f7f35ab27327974498bd85bc9bc13dab, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -348,7 +348,7 @@ MonoBehaviour:
     m_ActionName: Standard/Open/Close Shop[/Keyboard/b]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Standard
+  m_DefaultActionMap: Shop
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!4 &1666264426
@@ -419,6 +419,10 @@ PrefabInstance:
     - target: {fileID: 4351075098550778403, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
       propertyPath: m_Name
       value: EconomyUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351075098943414578, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleShop
       objectReference: {fileID: 0}
     - target: {fileID: 4351075099410191426, guid: 974a4771384e8274a94914d0d8f157be, type: 3}
       propertyPath: shopAction.m_Id
