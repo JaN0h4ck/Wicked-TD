@@ -126,7 +126,7 @@ public class csWeapon : MonoBehaviour
         if (TryBuyAmmunition())
         {
             TryDisableSiren();
-
+            SetupTargetsIfNecessary();
             SetupBullet();
         }
         else
@@ -220,6 +220,17 @@ public class csWeapon : MonoBehaviour
             else
             {
                 Debug.LogError("(csWepon): your bullet" + gTemp.name + " isnt setup correctly, the csBullet Script is missing");
+            }
+        }
+    }
+
+    private void SetupTargetsIfNecessary()
+    {
+        foreach (Transform tsTarget in tslTargets)
+        {
+            if (tsTarget.gameObject.GetComponent<csEnemyHealth>() == null)
+            {
+                tsTarget.gameObject.AddComponent<csEnemyHealth>();
             }
         }
     }

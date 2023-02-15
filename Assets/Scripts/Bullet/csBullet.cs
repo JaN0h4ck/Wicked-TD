@@ -23,6 +23,8 @@ public class csBullet : MonoBehaviour
     private GameObject gDamageIndicatorPrefab;
 
     private GameObject gIndicatorEmpty;
+
+    private Transform tsEnemy;
     #endregion
 
     #region Setup
@@ -55,8 +57,9 @@ public class csBullet : MonoBehaviour
 
     #region FlyBehaviour
     private IEnumerator WaitTillTargetHit(Transform tsTarget) {
+        tsEnemy = tsTarget;
         bool isRunning = true;
-        while(isRunning) {
+        while(isRunning&&tsTarget!=null) {
             Transformation.LookAt2D(this.transform, tsTarget);
             yield return new WaitForSecondsRealtime(0.05f);
             
@@ -64,19 +67,31 @@ public class csBullet : MonoBehaviour
                 isRunning = false;
             }
         }
-        Debug.Log("+(Bullet): Hit target: " + tsTarget.name);
 
-        DoDamageToTarget();
-
+        if (tsTarget != null)
+        {
+            DoDamageToTarget();
+        }
         Transformation.StopMoveTowardsLoop(this.transform);
-       
+        
         Destroy(this.gameObject);
     }
 
     private bool WasTargetHit(Transform tsTarget) {
-        if(tsTarget.position==this.transform.position) {
-            return true;
-        } else {
+        if (tsTarget != null)
+        {
+            if (tsTarget.position == this.transform.position)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            Destroy(this.gameObject);
             return false;
         }
     }
@@ -93,7 +108,10 @@ public class csBullet : MonoBehaviour
 
     private void DoDamageToTarget()
     {
-        //do damage!! To do
+        if (tsEnemy.gameObject.GetComponent<csEnemyHealth>() != null)
+        {
+            tsEnemy.gameObject.GetComponent<csEnemyHealth>().LooseHealth(fDamage);
+        }
         GameObject gTemp = Instantiate(gDamageIndicatorPrefab, this.transform.position, Quaternion.identity);
         gTemp.GetComponent<TextMeshPro>().text = fDamage.ToString();
         gTemp.transform.SetParent(gIndicatorEmpty.transform);

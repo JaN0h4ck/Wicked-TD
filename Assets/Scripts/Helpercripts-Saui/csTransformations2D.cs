@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class csTransformations2D : MonoBehaviour
 {
@@ -80,10 +81,17 @@ public class csTransformations2D : MonoBehaviour
         }
         while(tslMoveTowardObjects.Contains(tsObject)&&fTime!=0&&tsObject!=null)
         {
-            tsObject.position = Vector3.MoveTowards(tsObject.position, tsTarget.position, fSpeed * Time.deltaTime);
-            if(fTime>0)
+            if (tsObject != null)
             {
-                fTime--;
+                try
+                {
+                    tsObject.position = Vector3.MoveTowards(tsObject.position, tsTarget.position, fSpeed * Time.deltaTime);
+                    if (fTime > 0)
+                    {
+                        fTime--;
+                    }
+                }
+                catch (Exception e) { }
             }
             yield return new WaitForSecondsRealtime(0.01f);
         }
