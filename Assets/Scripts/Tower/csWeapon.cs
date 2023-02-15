@@ -19,6 +19,14 @@ public class csWeapon : MonoBehaviour
     private float fBulletSpeed;
 
     [SerializeField]
+    [Tooltip("Sets how many enemies a toer can target ith one shot")]
+    private int iTargetAmount;
+
+    [SerializeField]
+    [Tooltip("This value will be added to the wit time after each shot/earned currency. This variable is set for each tower individualy beacuse otherwise fast shooting towers would be completly busted compared to slow shoting ones")]
+    public float fFireSpeedDeacrease;
+
+    [SerializeField]
     private GameObject gPrefabBullet;
 
     [SerializeField]
@@ -28,11 +36,24 @@ public class csWeapon : MonoBehaviour
     [SerializeField]
     private GameObject gRangeIndicatorPrefab;
 
+    [SerializeField]
+    private int iCurrencyGainOnShot;
+    
+    private int iStoredCurrency;
     
 
-    private Transform tsTarget;
+    private List<Transform> tslTargets;
+
+    private GameObject gIndicatorEmpty;
     #endregion
 
+    #region Setup
+    private void Start()
+    {
+        tslTargets = new List<Transform>();
+        gIndicatorEmpty = GameObject.Find("IndicatorEmpty");
+    }
+    #endregion
 
     #region Functions
     public IEnumerator ShootCooldown()
@@ -43,6 +64,7 @@ public class csWeapon : MonoBehaviour
             if (IsEnemyInRange())
             {
                 Shoot();
+                fFireSpeed += fFireSpeedDeacrease;
             }
             yield return new WaitForSecondsRealtime(fFireSpeed);
         }
@@ -53,33 +75,42 @@ public class csWeapon : MonoBehaviour
     /// </summary>
     private void GetNearestEnemy()
     {
-        //transform.localScale / 3 draws the box exactly around the object
-        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, (transform.localScale / 2) * fShootRange, 0.0f, lmEnemy);
-        Transform tsNearetEnemy=null;
-        float fLowestDitance =1000f;
-
-        foreach(Collider2D cd in hitColliders)
+        tslTargets.Clear();
+        for (int i = iTargetAmount; i > 0; i--)
         {
 
-            Transform tsCurrent = cd.transform;
-            float fCompare = Vector3.Distance(this.transform.position, tsCurrent.position);
+            Collider2D[] hitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, (transform.localScale / 2) * fShootRange, 0.0f, lmEnemy);
+            Transform tsNearetEnemy = null;
+            float fLowestDitance = 1000f;
 
-            if (fLowestDitance> fCompare)
+            foreach (Collider2D cd in hitColliders)
             {
-                fLowestDitance = fCompare;
-                tsNearetEnemy = tsCurrent;
+
+                Transform tsCurrent = cd.transform;
+                if (tslTargets.Contains(tsCurrent) == false)
+                {
+                    float fCompare = Vector3.Distance(this.transform.position, tsCurrent.position);
+
+                    if (fLowestDitance > fCompare)
+                    {
+                        fLowestDitance = fCompare;
+                        tsNearetEnemy = tsCurrent;
+                    }
+                }
             }
+            if (tsNearetEnemy != null&&tslTargets.Contains(tsNearetEnemy)==false)
+            {
+                Debug.Log("(Weapon): Found nearest Enemy:" + tsNearetEnemy.name);
+                tslTargets.Add(tsNearetEnemy);
+            }
+            
+            
         }
-        if (tsNearetEnemy != null)
-        {
-            Debug.Log("(Weapon): Found nearest Enemy:" + tsNearetEnemy.name);
-        }
-        tsTarget = tsNearetEnemy;
     }
     
     private bool IsEnemyInRange()
     {
-        if(tsTarget==null)
+        if(tslTargets.Count==0)
         {
             return false;
         }
@@ -92,7 +123,16 @@ public class csWeapon : MonoBehaviour
     private void Shoot()
     {
         Debug.Log("(Tower): Shoot " + gameObject.name);
-        SetupBullet();
+        if (TryBuyAmmunition())
+        {
+            TryDisableSiren();
+            SetupTargetsIfNecessary();
+            SetupBullet();
+        }
+        else
+        {
+            EnableSiren();
+        }
     }
 
     /// <summary>
@@ -102,25 +142,127 @@ public class csWeapon : MonoBehaviour
     {
         GameObject gTemp = Instantiate(gRangeIndicatorPrefab, this.transform.position, Quaternion.identity);
         gTemp.transform.localScale = new Vector2(0.115f*fShootRange,0.115f*fShootRange);
+        gTemp.transform.SetParent(this.transform);
     }
+
+    #region Money
+
+    private bool TryBuyAmmunition()
+    {
+        Currency temp;
+        if (Shop.Instance.currencyMap.TryGetValue("Gold",out temp))
+        {
+            if(temp.SubstractBalance(gPrefabBullet.GetComponent<csBullet>().GetAmmoCosts()))
+            {
+                return true;
+            }
+        }
+        else
+        {
+            Debug.LogError("Currency not found");
+            
+        }
+        return false;
+    }
+
+    private void AddMoney()
+    {
+        iStoredCurrency += iCurrencyGainOnShot;
+    }
+    /// <summary>
+    /// Displays a siren under the tower
+    /// This shows the player that the tower cant buy ammo anymore
+    /// </summary>
+    private void EnableSiren()
+    {
+        this.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// Deactivates the out of money siren, this check wether the siren is activ or not before disabling it
+    /// </summary>
+    private void TryDisableSiren()
+    {
+        GameObject temp = this.transform.GetChild(0).gameObject;
+        if(temp.activeSelf==true)
+        {
+            temp.SetActive(false);
+        }
+    }
+
+    public int GetStoredCurrency()
+    {
+        return iStoredCurrency;
+    }
+    public void ResetStoredCurrency()
+    {
+        iStoredCurrency = 0;
+    }
+    #endregion
 
     #region Bullet
     private void SetupBullet()
     {
-        GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
+        foreach (Transform tsTarget in tslTargets)
+        {
+            AddMoney();
+            GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
 
-        csBullet Bullet = gTemp.GetComponent<csBullet>();
-        if (Bullet != null)
-        {
-            Bullet.ShootAt(tsTarget, fBulletSpeed);
+            csBullet Bullet = gTemp.GetComponent<csBullet>();
+
+            Bullet.SetDamage(fDamage);
+            Bullet.SetIndicatorEmpty(gIndicatorEmpty);
+
+            if (Bullet != null)
+            {
+                Bullet.ShootAt(tsTarget, fBulletSpeed);
+            }
+            else
+            {
+                Debug.LogError("(csWepon): your bullet" + gTemp.name + " isnt setup correctly, the csBullet Script is missing");
+            }
         }
-        else
+    }
+
+    private void SetupTargetsIfNecessary()
+    {
+        foreach (Transform tsTarget in tslTargets)
         {
-            Debug.LogError("(csWepon): your bullet" + gTemp.name + " isnt setup correctly, the csBullet Script i missing");
+            if (tsTarget.gameObject.GetComponent<csEnemyHealth>() == null)
+            {
+                tsTarget.gameObject.AddComponent<csEnemyHealth>();
+            }
         }
-        
     }
     #endregion
 
+    #endregion
+
+    #region Getter
+
+    public float GetDamage()
+    {
+        return fDamage;
+    }
+
+    public GameObject  GetBullet()
+    {
+        return gPrefabBullet;
+    }
+
+    public float GetRange()
+    {
+        return fShootRange;
+    }
+
+    public float GetFireSpeed()
+    {
+        return fFireSpeed;
+    }
+
+    public LayerMask GetEnemieLayer()
+    {
+        return lmEnemy;
+    }
     #endregion
 }

@@ -1,11 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class csBullet : MonoBehaviour
 {
     #region Variables
+    [SerializeField]
+    private int iShootCost;
+
     private csTransformations2D Transformation;
+
+  
+    private ParticleSystem psTrailEffect;
+
+    [SerializeField]
+    private bool bAttachEffectToObject;
+
+    private float fDamage;
+
+    [SerializeField]
+    private GameObject gDamageIndicatorPrefab;
+
+    private GameObject gIndicatorEmpty;
+
+    private Transform tsEnemy;
     #endregion
 
     #region Setup
@@ -20,13 +39,27 @@ public class csBullet : MonoBehaviour
         } else {
             Debug.LogError("Your bullet is etup incorrectly. Its missing a csTransformation2D script - called by " + this.gameObject);
         }
+        if(this.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>()!=null)
+        {
+            psTrailEffect = this.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
+            if(bAttachEffectToObject==false)
+            {
+                this.transform.GetChild(0).SetParent(null);
+            }
+            psTrailEffect.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Your bullet migth be setup incorrectly. Its missing a Trail Particle System - called by " + this.gameObject);
+        }
     }
     #endregion
 
     #region FlyBehaviour
     private IEnumerator WaitTillTargetHit(Transform tsTarget) {
+        tsEnemy = tsTarget;
         bool isRunning = true;
-        while(isRunning) {
+        while(isRunning&&tsTarget!=null) {
             Transformation.LookAt2D(this.transform, tsTarget);
             yield return new WaitForSecondsRealtime(0.05f);
             
@@ -34,17 +67,67 @@ public class csBullet : MonoBehaviour
                 isRunning = false;
             }
         }
-        Debug.Log("+(Bullet): Hit target: " + tsTarget.name);
+
+        if (tsTarget != null)
+        {
+            DoDamageToTarget();
+        }
         Transformation.StopMoveTowardsLoop(this.transform);
+        
         Destroy(this.gameObject);
     }
 
     private bool WasTargetHit(Transform tsTarget) {
-        if(tsTarget.position==this.transform.position) {
-            return true;
-        } else {
+        if (tsTarget != null)
+        {
+            if (tsTarget.position == this.transform.position)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            Destroy(this.gameObject);
             return false;
         }
+    }
+    #endregion
+
+    #region Damage
+
+    public  void SetDamage(float fBulletDamage)
+    {
+        fDamage = fBulletDamage;
+    }
+
+
+
+    private void DoDamageToTarget()
+    {
+        if (tsEnemy.gameObject.GetComponent<csEnemyHealth>() != null)
+        {
+            tsEnemy.gameObject.GetComponent<csEnemyHealth>().LooseHealth(fDamage);
+        }
+        GameObject gTemp = Instantiate(gDamageIndicatorPrefab, this.transform.position, Quaternion.identity);
+        gTemp.GetComponent<TextMeshPro>().text = fDamage.ToString();
+        gTemp.transform.SetParent(gIndicatorEmpty.transform);
+    }
+
+
+    #endregion
+    #region Utility
+    public int GetAmmoCosts()
+    {
+        return iShootCost;
+    }
+
+    public void SetIndicatorEmpty(GameObject gDamageIndicatorEmpty)
+    {
+        gIndicatorEmpty = gDamageIndicatorEmpty;
     }
     #endregion
 }
