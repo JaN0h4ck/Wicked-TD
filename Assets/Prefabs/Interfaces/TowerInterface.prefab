@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3006798768981132204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3006798768981132206}
+  - component: {fileID: 3006798768981132205}
+  m_Layer: 0
+  m_Name: TowerInterface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3006798768981132206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3006798768981132204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3006798768981132205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3006798768981132204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c66eeb868222b8545be56755b40003b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glAllExistingTowerTypes:
+  - {fileID: 5353236978550112785, guid: b505336f0394b6e4098f88a859e956ca, type: 3}
+  - {fileID: 2754552779564310404, guid: a8d7583c800e19c4e8eb0ca3abe9b82c, type: 3}
+  - {fileID: 680766478064956721, guid: d673774119085bd439d6b5cb1e5e917b, type: 3}
+  - {fileID: 6755324037161732853, guid: a27b759f3fbeec2449ff5bc8eb7626c3, type: 3}
+  tdlAllTowerDataFiles:
+  - {fileID: 11400000, guid: 92c27d820c6e2964985981d8536cd5cf, type: 2}
+  - {fileID: 11400000, guid: 45738a1b3f38dc848af4c93b50bb6317, type: 2}
+  - {fileID: 11400000, guid: 9da4ad23499a953428b96d63b5149c6a, type: 2}
+  - {fileID: 11400000, guid: 39779dd1869dfd343b5a9c926d68bec9, type: 2}
+  NormalTower: 0

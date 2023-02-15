@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class csTransformations2D : MonoBehaviour
 {
@@ -80,10 +81,17 @@ public class csTransformations2D : MonoBehaviour
         }
         while(tslMoveTowardObjects.Contains(tsObject)&&fTime!=0&&tsObject!=null)
         {
-            tsObject.position = Vector3.MoveTowards(tsObject.position, tsTarget.position, fSpeed * Time.deltaTime);
-            if(fTime>0)
+            if (tsObject != null)
             {
-                fTime--;
+                try
+                {
+                    tsObject.position = Vector3.MoveTowards(tsObject.position, tsTarget.position, fSpeed * Time.deltaTime);
+                    if (fTime > 0)
+                    {
+                        fTime--;
+                    }
+                }
+                catch (Exception e) { }
             }
             yield return new WaitForSecondsRealtime(0.01f);
         }
@@ -113,12 +121,29 @@ public class csTransformations2D : MonoBehaviour
         }
         if (gObject.GetComponent<BoxCollider2D>() == null&& gObject.GetComponent<CircleCollider2D>() == null && gObject.GetComponent<CapsuleCollider2D>() == null)
         {
-            gObject.AddComponent<BoxCollider2D>();
+           // gObject.AddComponent<BoxCollider2D>();
         }
 
         v3Direction *= fForce;
         gObject.GetComponent<Rigidbody2D>().AddForce(v3Direction, ForceMode2D.Impulse);
     }
+
+    /// <summary>
+    /// Pushes the given object with force angular
+    /// If the object doent hve a rigidbody one will be added
+    /// </summary>
+    public void PushAngular(GameObject gObject,float fForce)
+    {
+        if (gObject.GetComponent<Rigidbody2D>() == null)
+        {
+            Rigidbody2D rb = gObject.AddComponent<Rigidbody2D>();
+            rb.gravityScale = 0;
+            rb.drag = fDrag;
+        }
+
+        gObject.GetComponent<Rigidbody2D>().AddTorque(fForce);
+    }
+
     /// <summary>
     /// Pushes the given object continuasly with force
     /// If the object doent hve a rigidbody one will be added
