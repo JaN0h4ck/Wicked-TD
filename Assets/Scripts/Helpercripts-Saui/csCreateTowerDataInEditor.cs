@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
-
+#if (UNITY_EDITOR)
 public class csCreateTowerDataInEditor
 {
 
-    
+
     [MenuItem("TowerData/CreateDatafile %g")]
     static void UpdatePaths()
     {
@@ -86,6 +86,6 @@ public class csCreateTowerDataInEditor
         }
         return -1;
     }
- 
+#endif
 }
    

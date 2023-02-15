@@ -27,7 +27,8 @@ public class csWeapon : MonoBehaviour
     public float fFireSpeedDeacrease;
 
     [SerializeField]
-    private GameObject gPrefabBullet;
+    [Tooltip("Put in here the bullets the tower can use. The tower will start shooting with the build at index =0")]
+    private GameObject[] gaPrefabBullets;
 
     [SerializeField]
     [Tooltip("Set this Layermask to enemy so the toer can detect the enemies by using a overlapp box")]
@@ -45,6 +46,8 @@ public class csWeapon : MonoBehaviour
     private List<Transform> tslTargets;
 
     private GameObject gIndicatorEmpty;
+
+    private int iBulletMode =0;
     #endregion
 
     #region Setup
@@ -126,7 +129,7 @@ public class csWeapon : MonoBehaviour
         if (TryBuyAmmunition())
         {
             TryDisableSiren();
-            SetupTargetsIfNecessary();
+            SetupTargetsIfNecessary(tslTargets);
             SetupBullet();
         }
         else
@@ -152,7 +155,7 @@ public class csWeapon : MonoBehaviour
         Currency temp;
         if (Shop.Instance.currencyMap.TryGetValue("Gold",out temp))
         {
-            if(temp.SubstractBalance(gPrefabBullet.GetComponent<csBullet>().GetAmmoCosts()))
+            if(temp.SubstractBalance(gaPrefabBullets[iBulletMode].GetComponent<csBullet>().GetAmmoCosts()))
             {
                 return true;
             }
@@ -206,7 +209,7 @@ public class csWeapon : MonoBehaviour
         foreach (Transform tsTarget in tslTargets)
         {
             AddMoney();
-            GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
+            GameObject gTemp = Instantiate(gaPrefabBullets[iBulletMode], this.transform.position, Quaternion.identity);
 
             csBullet Bullet = gTemp.GetComponent<csBullet>();
 
@@ -224,14 +227,25 @@ public class csWeapon : MonoBehaviour
         }
     }
 
-    private void SetupTargetsIfNecessary()
+    public void SetupTargetsIfNecessary(List<Transform> tslTarget)
     {
-        foreach (Transform tsTarget in tslTargets)
+        foreach (Transform tsTarget in tslTarget)
         {
             if (tsTarget.gameObject.GetComponent<csEnemyHealth>() == null)
             {
                 tsTarget.gameObject.AddComponent<csEnemyHealth>();
             }
+        }
+    }
+
+    public void ChangeBullet(int iBulletIndex)
+    {
+        if(iBulletIndex<gaPrefabBullets.Length)
+        {
+            iBulletMode = iBulletIndex;
+        }
+        else{
+            iBulletMode = 0;
         }
     }
     #endregion
@@ -245,9 +259,9 @@ public class csWeapon : MonoBehaviour
         return fDamage;
     }
 
-    public GameObject  GetBullet()
+    public GameObject[]  GetBullets()
     {
-        return gPrefabBullet;
+        return gaPrefabBullets;
     }
 
     public float GetRange()

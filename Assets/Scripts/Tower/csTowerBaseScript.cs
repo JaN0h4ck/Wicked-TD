@@ -195,7 +195,7 @@ public class csTowerBaseScript : MonoBehaviour
     public Sprite GetCurrentAmmunitionVisuals()
     {
 
-        return WeaponManager.GetBullet().GetComponent<SpriteRenderer>().sprite;
+        return WeaponManager.GetBullets()[0].GetComponent<SpriteRenderer>().sprite;
     }
 
     /// <summary>
