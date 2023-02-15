@@ -15,21 +15,12 @@ public class Shop : Singleton<Shop> {
     [SerializeField]
     private string m_currencyHandlerName = "Currency Handler";
 
-    private PlayerInput m_playerinput;
-
-    private InputAction m_closeShopInputAction;
-
     private void Start() {
         m_shopUI = GetComponent<CanvasGroup>();
         m_shopUI.alpha = 0;
         m_shopUI.blocksRaycasts = false;
 
-        m_playerinput = GameObject.Find("InputSystem").GetComponent<PlayerInput>();
-
-        m_playerinput.actions["ToggleShop"].performed += _ => ToggleShop();
-        m_closeShopInputAction = m_playerinput.actions["CloseShop"];
-        m_closeShopInputAction.performed += _ => CloseShop();
-        m_closeShopInputAction.Disable();
+        GameObject.Find("InputSystem").GetComponent<PlayerInput>().actions["ToggleShop"].performed += _ => ToggleShop();
 
         CurrencySetup();
     }
@@ -66,13 +57,11 @@ public class Shop : Singleton<Shop> {
     public void OpenShop() {
         m_shopUI.alpha += 1;
         m_shopUI.blocksRaycasts = true;
-        m_closeShopInputAction.Enable();
     }
 
     public void CloseShop() {
         m_shopUI.alpha -= 1;
         m_shopUI.blocksRaycasts = false;
-        m_closeShopInputAction.Disable();
     }
 
     public void ToggleShop() {
