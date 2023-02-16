@@ -353,7 +353,7 @@ MonoBehaviour:
   - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
   gaSkillPrefabs:
   - {fileID: 967700559658790185, guid: 161cb301b2bbbcd46bb7f441228a6d30, type: 3}
-  - {fileID: 0}
+  - {fileID: 7459808221633123206, guid: 9a96c49f210bc59429526f7fc96003c5, type: 3}
   - {fileID: 0}
 --- !u!114 &5353236978550112784
 MonoBehaviour:
