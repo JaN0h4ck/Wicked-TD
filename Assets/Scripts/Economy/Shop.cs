@@ -15,6 +15,8 @@ public class Shop : Singleton<Shop> {
     [SerializeField]
     private string m_currencyHandlerName = "Currency Handler";
 
+    private bool m_isUnlimitedMoneyEnabled = false;
+
     private void Start() {
         m_shopUI = GetComponent<CanvasGroup>();
         m_shopUI.alpha = 0;
@@ -69,5 +71,19 @@ public class Shop : Singleton<Shop> {
             CloseShop();
         else
             OpenShop();
+    }
+
+    public void toggleUnlimitedMoney() {
+        if (m_isUnlimitedMoneyEnabled) {
+            m_isUnlimitedMoneyEnabled = false;
+            foreach (Currency currency in m_currencies) {
+                currency.disableUnlimitedMoney();
+            }
+        } else { 
+            m_isUnlimitedMoneyEnabled = true;
+            foreach (Currency currency in m_currencies) {
+                currency.enableUnlimitedMoney();
+            }
+        }
     }
 }

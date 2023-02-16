@@ -16,17 +16,24 @@ public class Money : MonoBehaviour, Currency {
     [SerializeField]
     private TextMeshProUGUI m_balanceText;
 
+    private bool m_unlimitedMoney = false;
+
     private void Start() {
         if(!string.IsNullOrEmpty(m_currencyName))
             m_balanceText.text = m_currencyName + ": " + m_balance;
     }
 
     int Currency.GetBalance() {
-        return m_balance;
+        if (m_unlimitedMoney)
+            return int.MaxValue;
+        else
+            return m_balance;
     }
 
     bool Currency.AddBalance(int amount) {
-        if (m_balance + amount < 0)
+        if (m_unlimitedMoney)
+            return true;
+        else if (m_balance + amount < 0)
             return false;
         else {
             m_balance += amount;
@@ -36,7 +43,9 @@ public class Money : MonoBehaviour, Currency {
     }
 
     bool Currency.SubstractBalance(int amount) {
-        if (m_balance - amount < 0)
+        if (m_unlimitedMoney)
+            return true;
+        else if (m_balance - amount < 0)
             return false;
         else {
             m_balance -= amount;
@@ -47,5 +56,15 @@ public class Money : MonoBehaviour, Currency {
 
     public string GetName() {
         return m_currencyName;
+    }
+
+    void Currency.enableUnlimitedMoney() {
+        m_unlimitedMoney = true;
+        m_balanceText.text = m_currencyName + ": " + "Unlimited";
+    }
+
+    void Currency.disableUnlimitedMoney() {
+        m_unlimitedMoney = false;
+        m_balanceText.text = m_currencyName + ": " + m_balance;
     }
 }
