@@ -20,7 +20,6 @@ public class csFreezeSkill : csSkillBaseScript
         ShootScript = gMainObject.GetComponent<csWeapon>();
         FreezeEnemiesInRange();
         Invoke("UnfreezeAnimation", fDuration);
-        DestroyTimer();
     }
 
 
@@ -29,10 +28,13 @@ public class csFreezeSkill : csSkillBaseScript
         Collider2D[] hitColliders = Physics2D.OverlapBoxAll(this.transform.position, v2Size,  0.0f, ShootScript.GetEnemieLayer());
         foreach (Collider2D cd in hitColliders)
         {
-            csMovementHardLock temp =  cd.gameObject.AddComponent<csMovementHardLock>();
-            Debug.LogWarning(cd.GetComponent<csMovementHardLock>());
-            temp.AddTimer(fDuration);
-            SetupFreezeAnimation(cd.gameObject);
+            if (cd != null)
+            {
+                csMovementHardLock temp = cd.gameObject.AddComponent<csMovementHardLock>();
+                Debug.LogWarning(cd.GetComponent<csMovementHardLock>());
+                temp.AddTimer(fDuration);
+                SetupFreezeAnimation(cd.gameObject);
+            }
         }
         FreezeAnimation();
     }
@@ -60,6 +62,7 @@ public class csFreezeSkill : csSkillBaseScript
             spTemp.color = crlSavepriteColors[i];
             i++;
         }
+        Destroy(this.gameObject);
     }
     #endregion
 

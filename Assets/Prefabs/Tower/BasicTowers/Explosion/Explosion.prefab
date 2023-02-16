@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 428794255
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1187715476678314565, guid: 2769f19a4be43b5468552a66be941643, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5cf9572d2be32f4484a7b8d2f3c25d2, type: 3}
   m_Color: {r: 0.7259523, g: 0.9811321, b: 0.67013174, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   - {fileID: 623368271568796179, guid: b7201f6c9c36bf34a9e0e1983c9c32d5, type: 3}
   - {fileID: 623368271568796179, guid: c4be5376989c78e489665b9682ae0b55, type: 3}
   - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
+  gaSkillPrefabs: []
   gExplosionEffectPrefab: {fileID: 7723929907739548047, guid: 9b195b4dd1017ae40ab53475067b7386, type: 3}
   gDamageIndicatorPrefab: {fileID: 11900282100008816, guid: 8cfb88113f07d604c8eddcf7541b766d, type: 3}
   fExplosionDamage: 100
@@ -150,8 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splTowerLooks:
-  - {fileID: 7482667652216324306, guid: 136b04558a339da4581c7b4226fd5c6e, type: 3}
-  - {fileID: 3625043607559282579, guid: f0e928706d7f7b94ebf709e2d1be5c23, type: 3}
+  - {fileID: 21300000, guid: bb8af6bb0cb58f3408397a0ca56ab81f, type: 3}
+  - {fileID: 21300000, guid: e461f5faa6bfc3749892839dd22c89e0, type: 3}
 --- !u!1001 &2965860992984614431
 PrefabInstance:
   m_ObjectHideFlags: 0

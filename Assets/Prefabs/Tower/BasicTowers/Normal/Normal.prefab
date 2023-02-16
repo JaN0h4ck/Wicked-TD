@@ -273,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 5353236978550112785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.34, y: 2.88, z: 0}
-  m_LocalScale: {x: 1.21068, y: 1.21068, z: 1.21068}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5353236977072101946}
   m_Father: {fileID: 0}
@@ -319,12 +319,12 @@ SpriteRenderer:
   m_SortingLayerID: 428794255
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8162042947993326546, guid: 2769f19a4be43b5468552a66be941643, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a5ab6ffed9b3c3f41afef4380b391960, type: 3}
   m_Color: {r: 0.97385055, g: 0.67058825, b: 0.98039216, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -354,7 +354,7 @@ MonoBehaviour:
   gaSkillPrefabs:
   - {fileID: 967700559658790185, guid: 161cb301b2bbbcd46bb7f441228a6d30, type: 3}
   - {fileID: 7459808221633123206, guid: 9a96c49f210bc59429526f7fc96003c5, type: 3}
-  - {fileID: 0}
+  - {fileID: 204747137393549878, guid: dd4cc5ad83e4f934f9315805c103938b, type: 3}
 --- !u!114 &5353236978550112784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,5 +395,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splTowerLooks:
-  - {fileID: 7482667652216324306, guid: 136b04558a339da4581c7b4226fd5c6e, type: 3}
-  - {fileID: 3625043607559282579, guid: f0e928706d7f7b94ebf709e2d1be5c23, type: 3}
+  - {fileID: 21300000, guid: bc8a5d505dfb5a74a813aee86e16e46a, type: 3}
+  - {fileID: 21300000, guid: 20518d753d91f1f4c8b4aea6290490db, type: 3}

@@ -11,9 +11,10 @@ public class csSkillTriggerTest : MonoBehaviour
 
     void Update()
     {
-        if(bActivate != bCompare)
+        if(bActivate != bCompare|| Input.GetMouseButtonDown(0))
         {
             bCompare = bActivate;
+            Debug.LogWarning("(Reminder): This testscript is still active!");
             TriggerSkill();
         }
     }

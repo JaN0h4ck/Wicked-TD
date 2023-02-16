@@ -56,14 +56,20 @@ public class csBubbleBeam : csSkillBaseScript
         List<Transform> tslEnemies = new List<Transform>();
         foreach(Collider2D cd in hitColliders)
         {
-            Debug.LogWarning("Hit" + cd.name);
-            tslEnemies.Add(cd.transform);
+            if (cd != null)
+            {
+                Debug.LogWarning("Hit" + cd.name);
+                tslEnemies.Add(cd.transform);
+            }
         }
         ShootScript.SetupTargetsIfNecessary(tslEnemies);
         foreach(Transform tsEnemy in tslEnemies)
         {
-            tsEnemy.gameObject.GetComponent<csEnemyHealth>().LooseHealth(fDamage);
-            DamageIndicator.ShowDamageAt(tsEnemy.transform,fDamage);
+            if (tsEnemy != null)
+            {
+                tsEnemy.gameObject.GetComponent<csEnemyHealth>().LooseHealth(fDamage);
+                DamageIndicator.ShowDamageAt(tsEnemy.transform, fDamage);
+            }
         }
     }
 
