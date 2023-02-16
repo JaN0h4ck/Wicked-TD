@@ -1,6 +1,0 @@
-1) Layermask für enemy erstellen sonst erkennt mein tower alles als gegner
-
-
-Fragen:
-1) wwie kann ich auf die health der enemie zugreifen
--->werden die enemies direkt zerstört
