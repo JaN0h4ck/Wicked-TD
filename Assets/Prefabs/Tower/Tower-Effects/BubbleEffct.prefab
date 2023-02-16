@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 967700559658790182}
-  - component: {fileID: 1238812917238720677}
   - component: {fileID: 2015426264460380199}
+  - component: {fileID: 3404493756260031972}
   m_Layer: 0
   m_Name: BubbleEffct
   m_TagString: Untagged
@@ -33,21 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1238812917238720677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967700559658790185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3775d0577fca84aac02c2b489f1b11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fDamage: 1
-  fDuration: 10
-  v2HitColliderSize: {x: 4, y: 2}
 --- !u!114 &2015426264460380199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +46,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fDrag: 0
+--- !u!114 &3404493756260031972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967700559658790185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3775d0577fca84aac02c2b489f1b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fDuration: 10
+  v2Size: {x: 4, y: 2}
+  fDamage: 1
 --- !u!1 &967700560663584274
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,6 +51,8 @@ public class csWeapon : MonoBehaviour
 
     private Vector3 v3LastEnemyPos;
 
+    private csTowerManager TowerManager;
+
     #endregion
 
     #region Setup
@@ -58,6 +60,7 @@ public class csWeapon : MonoBehaviour
     {
         tslTargets = new List<Transform>();
         gIndicatorEmpty = GameObject.Find("IndicatorEmpty");
+        TowerManager = csTowerManager.current;
     }
     #endregion
 
@@ -139,7 +142,10 @@ public class csWeapon : MonoBehaviour
         }
         else
         {
-            EnableSiren();
+            if (TowerManager.bShowSiren == true)
+            {
+                EnableSiren();
+            }
         }
     }
 

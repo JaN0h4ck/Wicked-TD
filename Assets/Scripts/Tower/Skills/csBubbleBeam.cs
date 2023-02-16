@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class csBubbleBeam : MonoBehaviour
+public class csBubbleBeam : csSkillBaseScript
 {
     #region Variables
   
@@ -10,12 +10,6 @@ public class csBubbleBeam : MonoBehaviour
 
     [SerializeField]
     private float fDamage;
-
-    [SerializeField]
-    private float fDuration;
-
-    [SerializeField]
-    private Vector2 v2HitColliderSize;
 
     private csTransformations2D EffectTransformation;
     private csWeapon ShootScript;
@@ -44,7 +38,7 @@ public class csBubbleBeam : MonoBehaviour
     }
 
     #endregion
-
+    
     private IEnumerator DoDamageOverTime()
     {
         while(fDuration>0)
@@ -58,7 +52,7 @@ public class csBubbleBeam : MonoBehaviour
 
     private void DamageEnemies()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(Vector3.MoveTowards(this.transform.position, v3SaveTargetPosition, 0.5f), v2HitColliderSize, 0.0f, ShootScript.GetEnemieLayer());
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(Vector3.MoveTowards(this.transform.position, v3SaveTargetPosition, 0.5f), v2Size, 0.0f, ShootScript.GetEnemieLayer());
         List<Transform> tslEnemies = new List<Transform>();
         foreach(Collider2D cd in hitColliders)
         {
@@ -100,6 +94,5 @@ public class csBubbleBeam : MonoBehaviour
         }
     }
     #endregion
-
 
 }

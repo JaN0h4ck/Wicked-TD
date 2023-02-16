@@ -2,15 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class csFreezeSkill : MonoBehaviour
+public class csFreezeSkill : csSkillBaseScript
 {
     #region Variables
-
-    [SerializeField]
-    private float fDuration;
-
-    [SerializeField]
-    private Vector2 v2Size;
 
     private csWeapon ShootScript;
     private GameObject gMainObject;
@@ -26,16 +20,17 @@ public class csFreezeSkill : MonoBehaviour
         ShootScript = gMainObject.GetComponent<csWeapon>();
         FreezeEnemiesInRange();
         Invoke("UnfreezeAnimation", fDuration);
+        DestroyTimer();
     }
 
 
     private void FreezeEnemiesInRange()
     {
         Collider2D[] hitColliders = Physics2D.OverlapBoxAll(this.transform.position, v2Size,  0.0f, ShootScript.GetEnemieLayer());
-        List<Transform> tslEnemies = new List<Transform>();
         foreach (Collider2D cd in hitColliders)
         {
-            csMovementHardLock temp =  cd.gameObject.AddComponent <csMovementHardLock> ();
+            csMovementHardLock temp =  cd.gameObject.AddComponent<csMovementHardLock>();
+            Debug.LogWarning(cd.GetComponent<csMovementHardLock>());
             temp.AddTimer(fDuration);
             SetupFreezeAnimation(cd.gameObject);
         }
@@ -67,5 +62,7 @@ public class csFreezeSkill : MonoBehaviour
         }
     }
     #endregion
+
+   
 
 }
