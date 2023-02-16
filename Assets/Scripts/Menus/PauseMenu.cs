@@ -7,25 +7,38 @@ public class PauseMenu : MonoBehaviour {
 
     public static bool GameIsPaused = false;
 
-    private GameObject pauseMenuUI;
+    private GameObject m_pauseMenuUI;
+    private CanvasGroup m_pauseMenuCanvasGroup;
+    private Animator m_pauseMenuAnimator;
 
-    private InputAction m_pauseMenuToggleAction;
+    private GameObject m_settingsMenuUI;
 
     private void Awake() {
-        pauseMenuUI = GetComponentInChildren<CanvasGroup>(true).gameObject;
+        CanvasGroup[] tempCanvasGroup = GetComponentsInChildren<CanvasGroup>(true);
+        GameObject[] tempGameObjects = new GameObject[tempCanvasGroup.Length];
 
-        m_pauseMenuToggleAction = GameObject.Find("InputSystem").GetComponent<PlayerInput>().actions["TogglePauseMenu"];
-        m_pauseMenuToggleAction.performed += _ => TogglePauseMenu();
+        for (int i = 0; i < tempCanvasGroup.Length; i++) {
+            tempGameObjects[i] = tempCanvasGroup[i].gameObject;
+            if (tempGameObjects[i].name.Contains("Pause"))
+                m_pauseMenuUI = tempGameObjects[i];
+            else if (tempGameObjects[i].name.Contains("Settings"))
+                m_settingsMenuUI = tempGameObjects[i];
+        }
+        m_pauseMenuCanvasGroup = m_pauseMenuUI.GetComponent<CanvasGroup>();
+        m_pauseMenuAnimator = m_pauseMenuUI.GetComponent<Animator>();
+
+        GameObject.Find("InputSystem").GetComponent<PlayerInput>().actions["TogglePauseMenu"].performed += _ => TogglePauseMenu();
     }
 
     public void Resume() {
-        pauseMenuUI.SetActive(false);
+        m_pauseMenuAnimator.enabled = true;
+        m_pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
     void Pause() {
-        pauseMenuUI.SetActive(true);
+        m_pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
@@ -34,13 +47,20 @@ public class PauseMenu : MonoBehaviour {
         if (GameIsPaused) {
             Resume();
         }
-        else {
+        else
             Pause();
-        }
     }
 
     public void gotoSettingsMenu() {
-        Debug.Log("Settings Menu");
+        m_pauseMenuCanvasGroup.alpha = 0;
+        m_pauseMenuCanvasGroup.interactable = false;
+        m_settingsMenuUI.SetActive(true);
+    }
+
+    public void returnToPauseMenu() {
+        m_settingsMenuUI.SetActive(false);
+        m_pauseMenuCanvasGroup.alpha = 1;
+        m_pauseMenuCanvasGroup.interactable = true;
     }
 
     public void LoadMenu() {
