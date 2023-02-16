@@ -112,11 +112,10 @@ public class csBullet : MonoBehaviour
         {
             tsEnemy.gameObject.GetComponent<csEnemyHealth>().LooseHealth(fDamage);
         }
-        GameObject gTemp = Instantiate(gDamageIndicatorPrefab, this.transform.position, Quaternion.identity);
-        gTemp.GetComponent<TextMeshPro>().text = fDamage.ToString();
-        gTemp.transform.SetParent(gIndicatorEmpty.transform);
+        csDamageManager.current.ShowDamageAt(this.transform, fDamage);
     }
 
+  
 
     #endregion
     #region Utility

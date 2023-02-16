@@ -351,6 +351,10 @@ MonoBehaviour:
   - {fileID: 623368271568796179, guid: b7201f6c9c36bf34a9e0e1983c9c32d5, type: 3}
   - {fileID: 623368271568796179, guid: c4be5376989c78e489665b9682ae0b55, type: 3}
   - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
+  gaSkillPrefabs:
+  - {fileID: 967700559658790185, guid: 161cb301b2bbbcd46bb7f441228a6d30, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &5353236978550112784
 MonoBehaviour:
   m_ObjectHideFlags: 0
