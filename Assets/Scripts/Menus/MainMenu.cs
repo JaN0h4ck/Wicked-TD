@@ -11,20 +11,7 @@ public class MainMenu : MonoBehaviour {
     private CanvasGroup m_settingsMenuCanvasGroup;
 
     private void Start() {
-        CanvasGroup[] tempCanvasGroups = GetComponentsInChildren<CanvasGroup>(true);
-        GameObject[] tempGameObjects = new GameObject[tempCanvasGroups.Length];
-
-        for (int i = 0; i < tempCanvasGroups.Length; i++) {
-            tempGameObjects[i] = tempCanvasGroups[i].gameObject;
-
-            if (tempGameObjects[i].name.Contains("Main")) {
-                m_mainMenuCanvasGroup = tempCanvasGroups[i];
-                m_mainMenu = tempGameObjects[i];
-            } else if (tempGameObjects[i].name.Contains("Settings")) {
-                m_settingsMenuCanvasGroup = tempCanvasGroups[i];
-                m_settingsMenu = tempGameObjects[i];
-            }
-        }
+        h_CanvasGroupAndGameObjectSetupForStartMethod();
     }
 
     public void StartGame() {
@@ -44,5 +31,22 @@ public class MainMenu : MonoBehaviour {
     public void ExitGame() {
         Debug.Log("Exiting Game...");
         Application.Quit();
+    }
+
+    private void h_CanvasGroupAndGameObjectSetupForStartMethod() {
+        CanvasGroup[] tempCanvasGroups = GetComponentsInChildren<CanvasGroup>(true);
+        GameObject[] tempGameObjects = new GameObject[tempCanvasGroups.Length];
+
+        for (int i = 0; i < tempCanvasGroups.Length; i++) {
+            tempGameObjects[i] = tempCanvasGroups[i].gameObject;
+
+            if (tempGameObjects[i].name.Contains("Main")) {
+                m_mainMenuCanvasGroup = tempCanvasGroups[i];
+                m_mainMenu = tempGameObjects[i];
+            } else if (tempGameObjects[i].name.Contains("Settings")) {
+                m_settingsMenuCanvasGroup = tempCanvasGroups[i];
+                m_settingsMenu = tempGameObjects[i];
+            }
+        }
     }
 }
