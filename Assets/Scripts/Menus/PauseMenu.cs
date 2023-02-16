@@ -18,8 +18,6 @@ public class PauseMenu : MonoBehaviour {
         m_pauseMenuToggleAction.performed += _ => TogglePauseMenu();
     }
 
-    // Update is called once per frame
-
     public void Resume() {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
