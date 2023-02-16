@@ -48,6 +48,9 @@ public class csWeapon : MonoBehaviour
     private GameObject gIndicatorEmpty;
 
     private int iBulletMode =0;
+
+    private Vector3 v3LastEnemyPos;
+
     #endregion
 
     #region Setup
@@ -63,12 +66,14 @@ public class csWeapon : MonoBehaviour
     {
         while (true)
         {
-            GetNearestEnemy();
-            if (IsEnemyInRange())
+            tslTargets.Clear();
+            while (IsEnemyInRange()==false)
             {
-                Shoot();
-                fFireSpeed += fFireSpeedDeacrease;
+                GetNearestEnemy();
+                yield return new WaitForSecondsRealtime(0.1f);
             }
+            Shoot();
+            fFireSpeed += fFireSpeedDeacrease;
             yield return new WaitForSecondsRealtime(fFireSpeed);
         }
     }
@@ -208,6 +213,8 @@ public class csWeapon : MonoBehaviour
     {
         foreach (Transform tsTarget in tslTargets)
         {
+            SetLastEnemyPosition(tsTarget.position);
+
             AddMoney();
             GameObject gTemp = Instantiate(gaPrefabBullets[iBulletMode], this.transform.position, Quaternion.identity);
 
@@ -277,6 +284,19 @@ public class csWeapon : MonoBehaviour
     public LayerMask GetEnemieLayer()
     {
         return lmEnemy;
+    }
+
+    public Vector3 GetLastEnemyPos()
+    {
+        return v3LastEnemyPos;
+    }
+    #endregion
+
+    #region Setter
+
+    public void SetLastEnemyPosition(Vector3 v3Pos)
+    {
+        v3LastEnemyPos = v3Pos;
     }
     #endregion
 }
