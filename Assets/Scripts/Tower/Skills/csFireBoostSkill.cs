@@ -7,7 +7,7 @@ public class csFireBoostSkill
     #region Variables
 
     [SerializeField]
-    private float fBosstFactor;
+    private float fBoostFactor;
     #endregion
    
 }
