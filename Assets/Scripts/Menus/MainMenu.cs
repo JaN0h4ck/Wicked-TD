@@ -15,14 +15,12 @@ public class MainMenu : MonoBehaviour {
         h_CanvasGroupAndGameObjectSetupForStartMethod();
     }
 
+    #region MainMenu
+
     public void StartGame() {
         Debug.Log("Starting Game...");
         //Auskommentieren oder Ändern, wenn Szenenhierarchie im Build Index drin ist
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    private void Update() {
-
     }
 
     public void gotoSettingsMenu() {
@@ -30,16 +28,30 @@ public class MainMenu : MonoBehaviour {
         m_settingsMenu.SetActive(true);
     }
 
-    public void returntoMainMenu() {
-        m_mainMenu.SetActive(true);
-        m_settingsMenu.SetActive(false);
-    }
-
     public void ExitGame() {
         Debug.Log("Exiting Game...");
         Application.Quit();
     }
 
+    #endregion
+
+    #region SettingsMenu
+    public void returntoMainMenu() {
+        m_mainMenu.SetActive(true);
+        m_settingsMenu.SetActive(false);
+    }
+
+    public void SetQuality(int qualityIndex) {
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
+
+    public void SetFullscreen(bool isFullscreen) {
+        Screen.fullScreen = isFullscreen;
+    }
+
+    #endregion
+
+    #region helper
     private void h_CanvasGroupAndGameObjectSetupForStartMethod() {
         CanvasGroup[] tempCanvasGroups = GetComponentsInChildren<CanvasGroup>(true);
         GameObject[] tempGameObjects = new GameObject[tempCanvasGroups.Length];
@@ -56,4 +68,5 @@ public class MainMenu : MonoBehaviour {
             }
         }
     }
+    #endregion
 }
