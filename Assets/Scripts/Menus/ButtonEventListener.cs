@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class ButtonEventListener : MonoBehaviour {
     private MyButton m_button;
@@ -16,9 +16,15 @@ public class ButtonEventListener : MonoBehaviour {
 
     private void OnButtonDown() {
         if (m_text) {
-            Vector3 temp = m_text.transform.position;
-            temp.y -= 12.5f;
-            m_text.transform.position = temp;
+            Vector3 tempVector = m_text.transform.position;
+            tempVector.y -= 12.5f;
+            m_text.transform.position = tempVector;
+
+            float h, s, v;
+            Color tempColor = m_text.GetComponent<TextMeshProUGUI>().color;
+            Color.RGBToHSV(tempColor, out h, out s, out v);
+            v -= 10.0f;
+            m_text.GetComponent<TextMeshProUGUI>().color = Color.HSVToRGB(h, s, v);
         }
     }
 
@@ -27,6 +33,12 @@ public class ButtonEventListener : MonoBehaviour {
             Vector3 temp = m_text.transform.position;
             temp.y += 12.5f;
             m_text.transform.position = temp;
+
+            float h, s, v;
+            Color tempColor = m_text.GetComponent<TextMeshProUGUI>().color;
+            Color.RGBToHSV(tempColor, out h, out s, out v);
+            v += 10.0f;
+            m_text.GetComponent<TextMeshProUGUI>().color = Color.HSVToRGB(h, s, v);
         }
     }
 }
