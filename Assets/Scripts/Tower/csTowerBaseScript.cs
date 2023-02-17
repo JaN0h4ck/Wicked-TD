@@ -46,6 +46,7 @@ public class csTowerBaseScript : MonoBehaviour
     [SerializeField]
     [Tooltip("Put in here all Skillprefabs. The tower ill be able to use them by calling TriggerSKill(index)")]
     private GameObject[] gaSkillPrefabs;
+
     #endregion
     #region Setup
     private void Start()
@@ -244,4 +245,5 @@ public class csTowerBaseScript : MonoBehaviour
     }
 
     #endregion
+
 }

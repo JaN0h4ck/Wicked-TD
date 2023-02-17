@@ -63,7 +63,7 @@ public class csTowerVisuals : MonoBehaviour
     {
         sprTowerRenderer.sprite = splTowerLooks[iSpriteIndex];
         iSpriteIndex++;
-        
+        gameObject.GetComponent<csWeapon>().UpdateAnimationTimeProgressionToNextStage();
     }
     #endregion
 
