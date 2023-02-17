@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
-
+#if (UNITY_EDITOR)
 public class csCreateTowerDataInEditor
 {
 
-    
+
     [MenuItem("TowerData/CreateDatafile %g")]
     static void UpdatePaths()
     {
@@ -33,6 +33,8 @@ public class csCreateTowerDataInEditor
                 tdTowerData.TowerRange = tempo.GetRange();
                 tdTowerData.Currencies = tempo.GetPoints();
                 tdTowerData.fBuildCost = tempo.GetBuildCosts();
+                tdTowerData.Ammunition = tempo.GetCurrentAmmunition();
+                tdTowerData.Skills = tempo.GetCurrentSkills();
                 //skills u ammo fehlt
                 break;
             case (1):
@@ -86,6 +88,6 @@ public class csCreateTowerDataInEditor
         }
         return -1;
     }
- 
+#endif
 }
    

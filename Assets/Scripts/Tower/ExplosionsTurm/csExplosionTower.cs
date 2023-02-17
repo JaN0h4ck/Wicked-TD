@@ -15,7 +15,7 @@ public class csExplosionTower : csTowerBaseScript
     [SerializeField]
     private float fExplosionDamage;
 
-    public static float fExploionRange =5;
+    public static float fExploionRange =10;
 
     #endregion
     /// <summary>
@@ -44,23 +44,29 @@ public class csExplosionTower : csTowerBaseScript
     }
 
 
-    private List<GameObject> GetHitEnemies()
+    private List<Transform> GetHitEnemies()
     {
         Collider2D[] hitColliders = Physics2D.OverlapBoxAll(gameObject.transform.position, (transform.localScale / 2) * fExploionRange, 0.0f, WeaponManager.GetEnemieLayer());
-        List<GameObject> glHitEnemies = new List<GameObject>();
+        List<Transform> tslHitEnemies = new List<Transform>();
         foreach(Collider2D cd in hitColliders)
         {
-            glHitEnemies.Add(cd.gameObject);
+            tslHitEnemies.Add(cd.gameObject.transform);
             Debug.LogWarning("/HitEnemy: " + cd.gameObject.name);
         }
-        return glHitEnemies;
+        return tslHitEnemies;
     }
-    private void DoDamageToTarget(List<GameObject> glHitEnemies)
+    private void DoDamageToTarget(List<Transform> tslHitEnemies)
     {
         //do damage!! To do
-        foreach (GameObject gEnemy in glHitEnemies)
+        WeaponManager.SetupTargetsIfNecessary(tslHitEnemies);
+
+        foreach (Transform tsEnemy in tslHitEnemies)
         {
-            GameObject gTemp = Instantiate(gDamageIndicatorPrefab, gEnemy.transform.position, Quaternion.identity);
+            if (tsEnemy.gameObject.GetComponent<csEnemyHealth>() != null)
+            {
+                tsEnemy.gameObject.GetComponent<csEnemyHealth>().LooseHealth(fExplosionDamage);
+            }
+            GameObject gTemp = Instantiate(gDamageIndicatorPrefab, tsEnemy.transform.position, Quaternion.identity);
             gTemp.GetComponent<TextMeshPro>().text = fExplosionDamage.ToString();
         }
     }
