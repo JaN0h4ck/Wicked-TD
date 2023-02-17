@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splTowerLooks:
-  - {fileID: 21300000, guid: c5cf9572d2be32f4484a7b8d2f3c25d2, type: 3}
+  - {fileID: 21300000, guid: 9361502bfe58b7b4289c16b11c0fb4f9, type: 3}
   - {fileID: 21300000, guid: c5cf9572d2be32f4484a7b8d2f3c25d2, type: 3}
 --- !u!114 &7108770386502666496
 MonoBehaviour:

@@ -114,6 +114,7 @@ MonoBehaviour:
   bAttachEffectToObject: 1
   gDamageIndicatorPrefab: {fileID: 11900282100008816, guid: 8cfb88113f07d604c8eddcf7541b766d, type: 3}
   fDamageModifier: 20
+  fBulletspeedModifier: -10
   fFireSpeedModifier: 1
 --- !u!1001 &1820010166036921234
 PrefabInstance:
