@@ -2060,7 +2060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880080406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.56, y: -2.14, z: 0}
+  m_LocalPosition: {x: 22.27, y: -3.94, z: 0}
   m_LocalScale: {x: 71.1723, y: 27.167173, z: 21.732}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3216,7 +3216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bActivate: 0
   gTowerToActivate: {fileID: 1500341498}
-  iSkillIndex: 0
+  iSkillIndex: 2
 --- !u!4 &1294948407
 Transform:
   m_ObjectHideFlags: 0
