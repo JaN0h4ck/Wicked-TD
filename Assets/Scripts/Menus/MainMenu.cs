@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
@@ -18,6 +19,10 @@ public class MainMenu : MonoBehaviour {
         Debug.Log("Starting Game...");
         //Auskommentieren oder Ändern, wenn Szenenhierarchie im Build Index drin ist
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    private void Update() {
+
     }
 
     public void gotoSettingsMenu() {
