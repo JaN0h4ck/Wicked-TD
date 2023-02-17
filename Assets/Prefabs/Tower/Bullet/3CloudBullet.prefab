@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2843726507343425928}
   - component: {fileID: 579002742252665580}
   m_Layer: 0
-  m_Name: 1Bullet_Main
+  m_Name: 3CloudBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a359cc98c4f58c24f99e97486b571af7, type: 3}
-  m_Color: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e08adc666db4d754abfa983dcefeb6d1, type: 3}
+  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 0.62352943}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

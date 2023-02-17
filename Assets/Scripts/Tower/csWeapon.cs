@@ -12,6 +12,8 @@ public class csWeapon : MonoBehaviour
     [Tooltip("This sets the cooldown a tower has to wait after a hot before a ne shot (in seconds)")]
     private float fFireSpeed;
 
+    private float fModifiedFireSpeed=0;
+
     [SerializeField]
     private float fShootRange;
 
@@ -73,7 +75,6 @@ public class csWeapon : MonoBehaviour
         tslTargets = new List<Transform>();
         gIndicatorEmpty = GameObject.Find("IndicatorEmpty");
         TowerManager = csTowerManager.current;
-
         aclAnimations = new List<AnimationClip>();
         if (gameObject.GetComponent<Animator>() != null)
         {
@@ -102,7 +103,8 @@ public class csWeapon : MonoBehaviour
             Shoot();
             
             fFireSpeed += fFireSpeedDeacrease;
-            yield return new WaitForSecondsRealtime(fFireSpeed);
+            Debug.LogWarning("%Waiting for " + fFireSpeed + fModifiedFireSpeed);
+            yield return new WaitForSecondsRealtime(fFireSpeed+fModifiedFireSpeed);
         }
     }
 
@@ -253,6 +255,7 @@ public class csWeapon : MonoBehaviour
 
             Bullet.SetDamage(fDamage);
             Bullet.SetIndicatorEmpty(gIndicatorEmpty);
+            Bullet.SetStartWeapon(this);
 
             if (Bullet != null)
             {
@@ -285,6 +288,19 @@ public class csWeapon : MonoBehaviour
         else{
             iBulletMode = 0;
         }
+    }
+
+    public void ModifyDamage(float fFireSpeedModifier)
+    {
+        if(fFireSpeedModifier != fModifiedFireSpeed)
+        {
+            fModifiedFireSpeed = fFireSpeedModifier;
+        }
+    }
+
+    public void ResetFireSpeedModifier()
+    {
+        fModifiedFireSpeed = 0;
     }
     #endregion
 

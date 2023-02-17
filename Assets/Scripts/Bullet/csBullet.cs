@@ -22,9 +22,20 @@ public class csBullet : MonoBehaviour
     [SerializeField]
     private GameObject gDamageIndicatorPrefab;
 
+    [SerializeField]
+    private float fDamageModifier;
+
+    [SerializeField]
+    [Tooltip("This ill be multiplied ith the orginal firespeed value")]
+    private float fFireSpeedModifier;
+
+    private csWeapon WeaponManager;
+
     private GameObject gIndicatorEmpty;
 
     private Transform tsEnemy;
+
+
     #endregion
 
     #region Setup
@@ -52,6 +63,12 @@ public class csBullet : MonoBehaviour
         {
             Debug.LogWarning("Your bullet migth be setup incorrectly. Its missing a Trail Particle System - called by " + this.gameObject);
         }
+        WeaponManager.ModifyDamage(fFireSpeedModifier);
+    }
+
+    public void SetStartWeapon(csWeapon Weapon)
+    {
+        WeaponManager = Weapon;
     }
     #endregion
 
@@ -110,9 +127,9 @@ public class csBullet : MonoBehaviour
     {
         if (tsEnemy.gameObject.GetComponent<csEnemyHealth>() != null)
         {
-            tsEnemy.gameObject.GetComponent<csEnemyHealth>().LooseHealth(fDamage);
+            tsEnemy.gameObject.GetComponent<csEnemyHealth>().LooseHealth(fDamage+fDamageModifier);
         }
-        csDamageManager.current.ShowDamageAt(this.transform, fDamage);
+        csDamageManager.current.ShowDamageAt(this.transform, fDamage + fDamageModifier);
     }
 
   
@@ -127,6 +144,10 @@ public class csBullet : MonoBehaviour
     public void SetIndicatorEmpty(GameObject gDamageIndicatorEmpty)
     {
         gIndicatorEmpty = gDamageIndicatorEmpty;
+    }
+    private void OnDestroy()
+    {
+        WeaponManager.ResetFireSpeedModifier();
     }
     #endregion
 }

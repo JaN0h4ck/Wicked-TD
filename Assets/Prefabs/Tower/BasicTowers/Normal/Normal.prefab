@@ -278,7 +278,7 @@ MonoBehaviour:
   iTargetAmount: 1
   fFireSpeedDeacrease: 0.025
   gaPrefabBullets:
-  - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
+  - {fileID: 988432995199586303, guid: 36b961e40dffb534ba92d35927a5539f, type: 3}
   - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
   - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
   lmEnemy:
