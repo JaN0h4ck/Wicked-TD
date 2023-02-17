@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 988432995199586303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.9709547, y: -1.2913021, z: 0}
-  m_LocalScale: {x: 0.26019403, y: 0.26019403, z: 0.26019403}
+  m_LocalScale: {x: 0.26019403, y: -0.3350258, z: 0.26019403}
   m_Children:
   - {fileID: 3377874267292200121}
   m_Father: {fileID: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a359cc98c4f58c24f99e97486b571af7, type: 3}
+  m_Color: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -113,6 +113,8 @@ MonoBehaviour:
   iShootCost: 1
   bAttachEffectToObject: 1
   gDamageIndicatorPrefab: {fileID: 11900282100008816, guid: 8cfb88113f07d604c8eddcf7541b766d, type: 3}
+  fDamageModifier: 0
+  fFireSpeedModifier: -0.1
 --- !u!1001 &1820010166036921234
 PrefabInstance:
   m_ObjectHideFlags: 0

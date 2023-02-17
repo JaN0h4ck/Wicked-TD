@@ -12,6 +12,8 @@ public class csWeapon : MonoBehaviour
     [Tooltip("This sets the cooldown a tower has to wait after a hot before a ne shot (in seconds)")]
     private float fFireSpeed;
 
+    private float fModifiedFireSpeed=0;
+
     [SerializeField]
     private float fShootRange;
 
@@ -27,7 +29,8 @@ public class csWeapon : MonoBehaviour
     public float fFireSpeedDeacrease;
 
     [SerializeField]
-    private GameObject gPrefabBullet;
+    [Tooltip("Put in here the bullets the tower can use. The tower will start shooting with the build at index =0")]
+    private GameObject[] gaPrefabBullets;
 
     [SerializeField]
     [Tooltip("Set this Layermask to enemy so the toer can detect the enemies by using a overlapp box")]
@@ -38,6 +41,9 @@ public class csWeapon : MonoBehaviour
 
     [SerializeField]
     private int iCurrencyGainOnShot;
+
+    [SerializeField]
+    private Transform tsFirePoint;
     
     private int iStoredCurrency;
     
@@ -45,6 +51,22 @@ public class csWeapon : MonoBehaviour
     private List<Transform> tslTargets;
 
     private GameObject gIndicatorEmpty;
+
+    private int iBulletMode =0;
+
+    private Vector3 v3LastEnemyPos;
+
+    private csTowerManager TowerManager;
+
+    protected Animator amAnimator;
+    //index: 0 = idle, 1 = attack
+    protected List<AnimationClip> aclAnimations;
+    private int iAnimationTimeProgresion =0;
+
+    private bool bLookDirectiom = false;
+    private bool bCompareLookDirection = false;
+
+
     #endregion
 
     #region Setup
@@ -52,6 +74,17 @@ public class csWeapon : MonoBehaviour
     {
         tslTargets = new List<Transform>();
         gIndicatorEmpty = GameObject.Find("IndicatorEmpty");
+        TowerManager = csTowerManager.current;
+        aclAnimations = new List<AnimationClip>();
+        if (gameObject.GetComponent<Animator>() != null)
+        {
+            amAnimator = gameObject.GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogWarning("(csTowerBaseScript): Warning: Animator is not setup is this intentionall?");
+        }
+        GetAnimationClips();
     }
     #endregion
 
@@ -60,13 +93,18 @@ public class csWeapon : MonoBehaviour
     {
         while (true)
         {
-            GetNearestEnemy();
-            if (IsEnemyInRange())
+            tslTargets.Clear();
+            while (IsEnemyInRange()==false)
             {
-                Shoot();
-                fFireSpeed += fFireSpeedDeacrease;
+                GetNearestEnemy();
+                yield return new WaitForSecondsRealtime(0.1f);
             }
-            yield return new WaitForSecondsRealtime(fFireSpeed);
+            PlayAttackAnimation();
+            Shoot();
+            
+            fFireSpeed += fFireSpeedDeacrease;
+            Debug.LogWarning("%Waiting for " + fFireSpeed + fModifiedFireSpeed);
+            yield return new WaitForSecondsRealtime(fFireSpeed+fModifiedFireSpeed);
         }
     }
 
@@ -126,12 +164,15 @@ public class csWeapon : MonoBehaviour
         if (TryBuyAmmunition())
         {
             TryDisableSiren();
-            SetupTargetsIfNecessary();
+            SetupTargetsIfNecessary(tslTargets);
             SetupBullet();
         }
         else
         {
-            EnableSiren();
+            if (TowerManager.bShowSiren == true)
+            {
+                EnableSiren();
+            }
         }
     }
 
@@ -152,7 +193,7 @@ public class csWeapon : MonoBehaviour
         Currency temp;
         if (Shop.Instance.currencyMap.TryGetValue("Gold",out temp))
         {
-            if(temp.SubstractBalance(gPrefabBullet.GetComponent<csBullet>().GetAmmoCosts()))
+            if(temp.SubstractBalance(gaPrefabBullets[iBulletMode].GetComponent<csBullet>().GetAmmoCosts()))
             {
                 return true;
             }
@@ -205,13 +246,16 @@ public class csWeapon : MonoBehaviour
     {
         foreach (Transform tsTarget in tslTargets)
         {
+            SetLastEnemyPosition(tsTarget.position);
+            LookAtEnemy(tsTarget);
             AddMoney();
-            GameObject gTemp = Instantiate(gPrefabBullet, this.transform.position, Quaternion.identity);
+            GameObject gTemp = Instantiate(gaPrefabBullets[iBulletMode], tsFirePoint.position, Quaternion.identity);
 
             csBullet Bullet = gTemp.GetComponent<csBullet>();
 
             Bullet.SetDamage(fDamage);
             Bullet.SetIndicatorEmpty(gIndicatorEmpty);
+            Bullet.SetStartWeapon(this);
 
             if (Bullet != null)
             {
@@ -224,15 +268,39 @@ public class csWeapon : MonoBehaviour
         }
     }
 
-    private void SetupTargetsIfNecessary()
+    public void SetupTargetsIfNecessary(List<Transform> tslTarget)
     {
-        foreach (Transform tsTarget in tslTargets)
+        foreach (Transform tsTarget in tslTarget)
         {
             if (tsTarget.gameObject.GetComponent<csEnemyHealth>() == null)
             {
                 tsTarget.gameObject.AddComponent<csEnemyHealth>();
             }
         }
+    }
+
+    public void ChangeBullet(int iBulletIndex)
+    {
+        if(iBulletIndex<gaPrefabBullets.Length)
+        {
+            iBulletMode = iBulletIndex;
+        }
+        else{
+            iBulletMode = 0;
+        }
+    }
+
+    public void ModifyDamage(float fFireSpeedModifier)
+    {
+        if(fFireSpeedModifier != fModifiedFireSpeed)
+        {
+            fModifiedFireSpeed = fFireSpeedModifier;
+        }
+    }
+
+    public void ResetFireSpeedModifier()
+    {
+        fModifiedFireSpeed = 0;
     }
     #endregion
 
@@ -245,9 +313,9 @@ public class csWeapon : MonoBehaviour
         return fDamage;
     }
 
-    public GameObject  GetBullet()
+    public GameObject[]  GetBullets()
     {
-        return gPrefabBullet;
+        return gaPrefabBullets;
     }
 
     public float GetRange()
@@ -263,6 +331,78 @@ public class csWeapon : MonoBehaviour
     public LayerMask GetEnemieLayer()
     {
         return lmEnemy;
+    }
+
+    public Vector3 GetLastEnemyPos()
+    {
+        return v3LastEnemyPos;
+    }
+    #endregion
+
+    #region Setter
+
+    public void SetLastEnemyPosition(Vector3 v3Pos)
+    {
+        v3LastEnemyPos = v3Pos;
+    }
+    #endregion
+
+    #region Animation
+
+    protected void GetAnimationClips()
+    {
+        if (amAnimator != null)
+        {
+            foreach (AnimationClip ac in amAnimator.runtimeAnimatorController.animationClips)
+            {
+                aclAnimations.Add(ac);
+            }
+        }
+    }
+
+    protected void PlayAttackAnimation()
+    {
+        if (aclAnimations.Count >= 2)
+        {
+            amAnimator.Play(aclAnimations[1+iAnimationTimeProgresion].name);
+        }
+    }
+
+    protected void PlayIdleAnimation()
+    {
+        if (aclAnimations.Count != 0)
+        {
+            amAnimator.Play(aclAnimations[0 + iAnimationTimeProgresion].name);
+        }
+    }
+
+    public void UpdateAnimationTimeProgressionToNextStage()
+    {
+        iAnimationTimeProgresion += 2;
+    }
+
+    private void LookAtEnemy(Transform tsTarget)
+    {
+        Debug.LogWarning("§Switching");
+        if(tsTarget.position.x>=transform.position.x)
+        {
+            bLookDirectiom = false;
+        }
+        else
+        {
+            bLookDirectiom = true;
+        }
+        if(bLookDirectiom!=bCompareLookDirection)
+        {
+            bCompareLookDirection = bLookDirectiom;
+            FlipObjectAlongX();
+        }
+    }
+
+
+    private void FlipObjectAlongX()
+    {
+        transform.Rotate(0, 180, 0);
     }
     #endregion
 }

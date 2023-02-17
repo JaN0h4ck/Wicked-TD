@@ -43,7 +43,10 @@ public class csTowerBaseScript : MonoBehaviour
     [Tooltip("This is ued to drop multiple different Currencies, for the currency drop animtion. 0=Gold, 1= C6, 2=NeoPlasma")]
     private GameObject[] gCurrencyAnimationPrefabs;
 
-    
+    [SerializeField]
+    [Tooltip("Put in here all Skillprefabs. The tower ill be able to use them by calling TriggerSKill(index)")]
+    private GameObject[] gaSkillPrefabs;
+
     #endregion
     #region Setup
     private void Start()
@@ -156,6 +159,17 @@ public class csTowerBaseScript : MonoBehaviour
     }
     #endregion
 
+    #region Skills
+
+    public void ActivateSkill(int iSkillIndex)
+    {
+        GameObject gTemp =Instantiate(gaSkillPrefabs[iSkillIndex], this.transform.position, Quaternion.identity);
+        gTemp.transform.SetParent(this.transform);
+    }
+
+
+    #endregion
+
     #region utility
     /// <summary>
     /// Gets a random currency spawn amount
@@ -189,13 +203,18 @@ public class csTowerBaseScript : MonoBehaviour
 
 
     /// <summary>
-    /// Returns the sprite of the current ammunition
+    /// Returns the GameObjectsof the current ammunitions
     /// </summary>
     /// <returns></returns>
-    public Sprite GetCurrentAmmunitionVisuals()
+    public GameObject[] GetCurrentAmmunition()
     {
 
-        return WeaponManager.GetBullet().GetComponent<SpriteRenderer>().sprite;
+        return WeaponManager.GetBullets();
+    }
+
+    public GameObject[] GetCurrentSkills()
+    {
+        return gaSkillPrefabs;
     }
 
     /// <summary>
@@ -231,4 +250,5 @@ public class csTowerBaseScript : MonoBehaviour
     }
 
     #endregion
+
 }

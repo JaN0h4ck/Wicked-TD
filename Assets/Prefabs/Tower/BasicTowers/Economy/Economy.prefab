@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 428794255
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 8162042947993326546, guid: 2769f19a4be43b5468552a66be941643, type: 3}
   m_Color: {r: 0.67058825, g: 0.98039216, b: 0.9713754, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   - {fileID: 623368271568796179, guid: b7201f6c9c36bf34a9e0e1983c9c32d5, type: 3}
   - {fileID: 623368271568796179, guid: c4be5376989c78e489665b9682ae0b55, type: 3}
   - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
+  gaSkillPrefabs: []
   fCurrencyGenerationSpeed: 1
   fCurrencyGenerationAmount: 1
 --- !u!114 &680766478064956720
@@ -127,7 +128,10 @@ MonoBehaviour:
   fBulletSpeed: 40
   iTargetAmount: 1
   fFireSpeedDeacrease: 0.025
-  gPrefabBullet: {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
+  gaPrefabBullets:
+  - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
+  - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
+  - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
   lmEnemy:
     serializedVersion: 2
     m_Bits: 55
