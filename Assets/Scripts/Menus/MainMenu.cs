@@ -16,6 +16,8 @@ public class MainMenu : MonoBehaviour {
 
     public void StartGame() {
         Debug.Log("Starting Game...");
+        //Auskommentieren oder Ändern, wenn Szenenhierarchie im Build Index drin ist
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void gotoSettingsMenu() {

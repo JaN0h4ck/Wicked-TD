@@ -24,10 +24,10 @@ public class Shop : Singleton<Shop> {
 
         GameObject.Find("InputSystem").GetComponent<PlayerInput>().actions["ToggleShop"].performed += _ => ToggleShop();
 
-        CurrencySetup();
+        h_CurrencySetup();
     }
 
-    private void CurrencySetup() {
+    private void h_CurrencySetup() {
         m_currencies = GameObject.Find(m_currencyHandlerName).GetComponents<Currency>();
 
         currencyMap = new Dictionary<string, Currency>();

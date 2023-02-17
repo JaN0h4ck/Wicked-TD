@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.Android;
 using UnityEngine.UI;
 
 public class PauseMenuAnimationController : MonoBehaviour {
-    // An array of buttons in the pause menu
+    
     private Button[] buttons;
     private Animator m_pauseMenuAnimator;
 
@@ -14,14 +14,14 @@ public class PauseMenuAnimationController : MonoBehaviour {
         m_pauseMenuAnimator = GetComponent<Animator>();
     }
 
-    // A function to disable all buttons
+    //Buttons sollen während der Animation disabled sein, damit die Animation besser aussieht.
     public void DisableButtons() {
         for (int i = 0; i < buttons.Length; i++) {
             buttons[i].interactable = false;
         }
     }
 
-    // A function to enable all buttons
+    
     public void EnableButtons() {
         for (int i = 0; i < buttons.Length; i++) {
             buttons[i].interactable = true;

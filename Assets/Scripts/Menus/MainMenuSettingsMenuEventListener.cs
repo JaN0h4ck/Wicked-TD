@@ -14,6 +14,7 @@ public class MainMenuSettingsMenuEventListener : MonoBehaviour {
         m_canvasGroup.interactable = true;
     }
 
+    //Buttons sollen während der Animation disabled sein, damit die Animation besser aussieht.
     public void DisableButtonsForSettingsMenu() {
         m_canvasGroup.interactable = false;
     }
