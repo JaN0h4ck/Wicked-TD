@@ -203,13 +203,18 @@ public class csTowerBaseScript : MonoBehaviour
 
 
     /// <summary>
-    /// Returns the sprite of the current ammunition
+    /// Returns the GameObjectsof the current ammunitions
     /// </summary>
     /// <returns></returns>
-    public Sprite GetCurrentAmmunitionVisuals()
+    public GameObject[] GetCurrentAmmunition()
     {
 
-        return WeaponManager.GetBullets()[0].GetComponent<SpriteRenderer>().sprite;
+        return WeaponManager.GetBullets();
+    }
+
+    public GameObject[] GetCurrentSkills()
+    {
+        return gaSkillPrefabs;
     }
 
     /// <summary>

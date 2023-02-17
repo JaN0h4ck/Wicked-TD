@@ -33,6 +33,8 @@ public class csCreateTowerDataInEditor
                 tdTowerData.TowerRange = tempo.GetRange();
                 tdTowerData.Currencies = tempo.GetPoints();
                 tdTowerData.fBuildCost = tempo.GetBuildCosts();
+                tdTowerData.Ammunition = tempo.GetCurrentAmmunition();
+                tdTowerData.Skills = tempo.GetCurrentSkills();
                 //skills u ammo fehlt
                 break;
             case (1):
