@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
         uint easy = 1;
         uint medium = 5;
         uint hard = 9;
-
+        
     }
 
     private bool h_SpawnDelay() {
