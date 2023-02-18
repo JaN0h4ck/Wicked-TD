@@ -1,10 +1,10 @@
 using TMPro;
 using UnityEngine;
+using Utils.Menue;
 
-public class TowerMenueController : MonoBehaviour
+public class TowerMenueController : MenueNavigation
 {
-    [SerializeField] private GameObject m_TowerMenue;
-
+    [Header("Infos")]
     [SerializeField] private TextMeshProUGUI m_towerName;
     [SerializeField] private TextMeshProUGUI m_damage;
     [SerializeField] private TextMeshProUGUI m_attackSpeed;
@@ -13,26 +13,18 @@ public class TowerMenueController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_c6;
     [SerializeField] private TextMeshProUGUI m_neoplasma;
 
-    private void Awake()
-    {
-        CloseTowerMenue();
+    private void Awake() {
+        CloseMenue();
     }
 
-    public void CloseTowerMenue() {
-        m_TowerMenue.SetActive(false);
-    }
-
-    public void OpenTowerMenue() {
+    public override void OpenMenue() {
         InitializeTowerMenue();
-        m_TowerMenue.SetActive(true);
+        base.OpenMenue();
     }
 
-    /// <summary>
-    /// Sets the tower menue text fields for the current selected tower
-    /// </summary>
     private void InitializeTowerMenue() {
         //TODO!!!!!!!!!!!!!!
-        m_towerName.text = Random.Range(0, 10).ToString();             
+        m_towerName.text = Random.Range(0, 10).ToString();
         //m_damage.text;
         //m_attackSpeed.text;
         //m_range.text;

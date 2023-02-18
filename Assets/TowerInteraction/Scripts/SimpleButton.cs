@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class SimpleButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Sprite hover;
-
+    [Space]
     public UnityEvent onClick;
 
     public void OnPointerClick(PointerEventData eventData)

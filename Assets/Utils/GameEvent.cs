@@ -9,7 +9,7 @@ namespace Utils.Events
     {
         public List<GameEventListener> m_listeners = new List<GameEventListener>();
 
-        public void Invoke() { 
+        public void Invoke() {
             for(int i = 0; i < m_listeners.Count; i++) {
                 m_listeners[i].OnEventInvoked();
             }
