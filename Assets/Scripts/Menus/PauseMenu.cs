@@ -16,6 +16,9 @@ public class PauseMenu : MenueNavigation {
 
     private GameObject m_settingsMenuUI;
 
+    public static event Action onPauseMenuWasOpened;
+    public static event Action onPauseMenuWasClosed;
+
     private void Awake() {
         CanvasGroup[] tempCanvasGroup = GetComponentsInChildren<CanvasGroup>(true);
         GameObject[] tempGameObjects = new GameObject[tempCanvasGroup.Length];
@@ -39,12 +42,14 @@ public class PauseMenu : MenueNavigation {
         m_pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        onPauseMenuWasClosed?.Invoke();
     }
 
     public override void OpenMenue() {
         m_pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        onPauseMenuWasOpened?.Invoke();
     }
 
     void TogglePauseMenu() {

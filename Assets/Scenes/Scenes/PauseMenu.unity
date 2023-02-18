@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &275025799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5181040931277733336, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
+  m_PrefabInstance: {fileID: 1996328216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &955271558
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +249,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5181040931277733335, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
+      propertyPath: _menue
+      value: 
+      objectReference: {fileID: 275025799}
     - target: {fileID: 5181040931277733336, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
       propertyPath: m_Name
       value: Pause Menu
