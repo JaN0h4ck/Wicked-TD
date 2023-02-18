@@ -26,6 +26,9 @@ public class MapController : Utils.Singleton<MapController> {
 
         PauseMenu.onPauseMenuWasOpened += DisableController;
         PauseMenu.onPauseMenuWasClosed += EneableController;
+
+        PauseButtonEventListener._onPauseMenuWasOpened += DisableController;
+        PauseButtonEventListener._onPauseMenuWasClosed += EneableController;
     }
 
     private void OnDestroy()
