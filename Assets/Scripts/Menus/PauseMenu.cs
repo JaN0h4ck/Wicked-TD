@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using Utils.Menue;
 
-public class PauseMenu : MonoBehaviour {
+public class PauseMenu : MenueNavigation {
 
     public static bool GameIsPaused = false;
     private bool m_isSettingsMenuActive = false;
@@ -13,6 +17,9 @@ public class PauseMenu : MonoBehaviour {
     private Animator m_pauseMenuAnimator;
 
     private GameObject m_settingsMenuUI;
+
+    public static event Action onPauseMenuWasOpened;
+    public static event Action onPauseMenuWasClosed;
 
     private void Awake() {
         CanvasGroup[] tempCanvasGroup = GetComponentsInChildren<CanvasGroup>(true);
@@ -28,41 +35,45 @@ public class PauseMenu : MonoBehaviour {
         m_pauseMenuCanvasGroup = m_pauseMenuUI.GetComponent<CanvasGroup>();
         m_pauseMenuAnimator = m_pauseMenuUI.GetComponent<Animator>();
 
-        GameObject.Find("InputSystem").GetComponent<PlayerInput>().actions["TogglePauseMenu"].performed += _ => TogglePauseMenu();
+        GameObject.Find("Input Controller").GetComponent<PlayerInput>().actions["TogglePauseMenu"].performed += _ => TogglePauseMenu();
+    }
+
+    private void Start() {
+        SceneManager.UnloadSceneAsync("MainMenu");
     }
 
     #region PauseMenu
-    public void Resume() {
+    public override void CloseMenue() {
         m_pauseMenuAnimator.enabled = true;
         m_pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        onPauseMenuWasClosed?.Invoke();
     }
 
-    void Pause() {
+    public override void OpenMenue() {
+        m_pauseMenuAnimator.enabled = true;
         m_pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        onPauseMenuWasOpened?.Invoke();
     }
 
-    void TogglePauseMenu() {
+    public void TogglePauseMenu() {
         if(m_isSettingsMenuActive)
             returnToPauseMenu();
         if (GameIsPaused)
-            Resume();
+            CloseMenue();
         else
-            Pause();
+            OpenMenue();
     }
 
     public void gotoSettingsMenu() {
+        m_pauseMenuAnimator.enabled = false;
         m_isSettingsMenuActive = true;
         m_pauseMenuCanvasGroup.alpha = 0;
         m_pauseMenuCanvasGroup.interactable = false;
         m_settingsMenuUI.SetActive(true);
-    }
-
-    public void LoadMenu() {
-        Debug.Log("Loading Menu...");
     }
 
     public void QuitGame() {
@@ -85,6 +96,35 @@ public class PauseMenu : MonoBehaviour {
 
     public void SetFullscreen(bool isFullscreen) {
         Screen.fullScreen = isFullscreen;
+    }
+    #endregion
+
+    #region Deprecated
+    [Obsolete("\"Resume\" is deprecated, please use \"CloseMenue()\"")]
+    public void Resume() {
+        m_pauseMenuAnimator.enabled = true;
+        m_pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
+
+    [Obsolete("\"Pause\" is deprecated, please use \"OpenMenue()\"")]
+    void Pause() {
+        m_pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+
+    [Obsolete("The Corresponding Buttons has been removed, please don't use this method")]
+    public void LoadMenu() {
+        CloseMenue();
+        StartCoroutine("LoadAsync");
+    }
+
+    [Obsolete]
+    private IEnumerator LoadAsync() {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
     }
     #endregion
 }

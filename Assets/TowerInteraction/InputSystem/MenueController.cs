@@ -15,6 +15,9 @@ public class MenueController : ScriptableObject {
     [SerializeField] private GameEvent _onOpenTowerInfo;
     [SerializeField] private GameEvent _onCloseTowerInfo;
 
+    [SerializeField] private GameEvent _onOpenPauseMenue;
+    [SerializeField] private GameEvent _onClosePauseMenue;
+
     public void onOpenMenue(MenueType menueType) { 
         switch(menueType) {
             case MenueType.ShopMenue:
@@ -25,6 +28,9 @@ public class MenueController : ScriptableObject {
             break;
             case MenueType.TowerInfo:
                 _onOpenTowerInfo.Invoke();
+            break;
+            case MenueType.PauseMenue:
+                _onOpenPauseMenue.Invoke();
             break;
         }
     }
@@ -41,6 +47,9 @@ public class MenueController : ScriptableObject {
             case MenueType.TowerInfo:
                 _onCloseTowerInfo.Invoke();
                 break;
+            case MenueType.PauseMenue:
+                _onClosePauseMenue.Invoke();
+                break;
         }
     }
 
@@ -48,5 +57,6 @@ public class MenueController : ScriptableObject {
         ShopMenue = 0,
         TowerMenue = 1,
         TowerInfo = 2,
+        PauseMenue = 3,
     }
 }
