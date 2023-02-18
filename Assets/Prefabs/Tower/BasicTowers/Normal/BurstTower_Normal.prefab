@@ -78,8 +78,22 @@ SpriteRenderer:
   m_SortingLayerID: 428794255
   m_SortingLayer: 2
   m_SortingOrder: 0
+<<<<<<< HEAD
+<<<<<<< Updated upstream
   m_Sprite: {fileID: 21300000, guid: 5e476bf4204933f48b2a7118c5de8ff3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+=======
+  m_Sprite: {fileID: -1072019392603869768, guid: 2769f19a4be43b5468552a66be941643, type: 3}
+  m_Color: {r: 0.4045857, g: 0, b: 0.41509432, a: 1}
+>>>>>>> main
+=======
+  m_Sprite: {fileID: -1072019392603869768, guid: 2769f19a4be43b5468552a66be941643, type: 3}
+  m_Color: {r: 0.4045857, g: 0, b: 0.41509432, a: 1}
+=======
+  m_Sprite: {fileID: 21300000, guid: 5e476bf4204933f48b2a7118c5de8ff3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+>>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
+>>>>>>> Stashed changes
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -128,7 +142,18 @@ MonoBehaviour:
   fShootRange: 10
   fBulletSpeed: 20
   iTargetAmount: 4
+<<<<<<< HEAD
+<<<<<<< Updated upstream
   fFireSpeedDeacrease: 0.8
+=======
+  fFireSpeedDeacrease: 0.2
+>>>>>>> main
+=======
+  fFireSpeedDeacrease: 0.2
+=======
+  fFireSpeedDeacrease: 0.8
+>>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
+>>>>>>> Stashed changes
   gaPrefabBullets:
   - {fileID: 988432995199586303, guid: f330187e7dcb0db4eb85feb7f38e1425, type: 3}
   - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}

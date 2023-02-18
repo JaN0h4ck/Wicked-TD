@@ -1,8 +1,26 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:Assets/Animation/Towers/Explosion/Explosion.controller.meta
 guid: 40784e1373b25b34285070310d720a58
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000
+========
+guid: d7ebe88e65a085f4a99f26300902f0fb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+>>>>>>>> Stashed changes:Assets/Animation/Towers/Explosion/Tower2_2_Attack.anim.meta
+=======
+<<<<<<<< HEAD:Assets/Animation/Towers/Explosion/Explosion.controller.meta
+guid: 40784e1373b25b34285070310d720a58
+========
+guid: 1ebb4860d8af90d48979edd3d066f539
+>>>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e:Assets/Prefabs/Tower/BasicTowers/TowerData/Economy.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+>>>>>>> Stashed changes
   userData: 
   assetBundleName: 
   assetBundleVariant: 

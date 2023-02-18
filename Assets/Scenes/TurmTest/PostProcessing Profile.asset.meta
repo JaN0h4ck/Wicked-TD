@@ -1,8 +1,23 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:Assets/Scenes/TurmTest/PostProcessing Profile.asset.meta
 guid: 03e3295eebce98f429304c1e16710977
+========
+guid: 9755dab26d6bb2843a899cdc9e2c15b9
+>>>>>>>> Stashed changes:Assets/Animation/Towers/Explosion/Tower2_1_idle.anim.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+=======
+<<<<<<<< HEAD:Assets/Scenes/TurmTest/PostProcessing Profile.asset.meta
+guid: 03e3295eebce98f429304c1e16710977
+========
+guid: 1a4935fad5173044da2014c782fc9bcb
+>>>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e:Assets/Prefabs/Tower/BasicTowers/TowerData/BurstTower_Normal.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
+>>>>>>> Stashed changes
   userData: 
   assetBundleName: 
   assetBundleVariant: 

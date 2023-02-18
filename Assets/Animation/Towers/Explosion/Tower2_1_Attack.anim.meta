@@ -1,5 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:Assets/Animation/Towers/Explosion/Tower2_1_Attack.anim.meta
 guid: ab0f43df37183ba4c98fe264d5ddaeeb
+========
+guid: 86e2910123f54584387dd165ed41f17d
+>>>>>>>> Stashed changes:Assets/Animation/Towers/Explosion/Tower2_2_Idle.anim.meta
+=======
+<<<<<<<< HEAD:Assets/Animation/Towers/Explosion/Tower2_1_Attack.anim.meta
+guid: ab0f43df37183ba4c98fe264d5ddaeeb
+========
+guid: f0a29c06415e7824cbf58fa57e3d16de
+>>>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e:Assets/Prefabs/Tower/BasicTowers/TowerData/Explosion.asset.meta
+>>>>>>> Stashed changes
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000
