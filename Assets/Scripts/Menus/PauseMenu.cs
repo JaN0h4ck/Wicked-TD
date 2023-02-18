@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Utils.Menue;
 
 public class PauseMenu : MenueNavigation {
@@ -34,6 +35,10 @@ public class PauseMenu : MenueNavigation {
         m_pauseMenuAnimator = m_pauseMenuUI.GetComponent<Animator>();
 
         GameObject.Find("Input Controller").GetComponent<PlayerInput>().actions["TogglePauseMenu"].performed += _ => TogglePauseMenu();
+    }
+
+    private void Start() {
+        SceneManager.UnloadSceneAsync("MainMenu");
     }
 
     #region PauseMenu
@@ -71,7 +76,7 @@ public class PauseMenu : MenueNavigation {
     }
 
     public void LoadMenu() {
-        Debug.Log("Loading Menu...");
+        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
     }
 
     public void QuitGame() {
