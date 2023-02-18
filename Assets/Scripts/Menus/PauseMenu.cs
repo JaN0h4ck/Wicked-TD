@@ -38,7 +38,7 @@ public class PauseMenu : MenueNavigation {
 
     #region PauseMenu
     public override void CloseMenue() {
-        m_pauseMenuAnimator.enabled = false;
+        m_pauseMenuAnimator.enabled = true;
         m_pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -46,13 +46,14 @@ public class PauseMenu : MenueNavigation {
     }
 
     public override void OpenMenue() {
+        m_pauseMenuAnimator.enabled = true;
         m_pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         onPauseMenuWasOpened?.Invoke();
     }
 
-    void TogglePauseMenu() {
+    public void TogglePauseMenu() {
         if(m_isSettingsMenuActive)
             returnToPauseMenu();
         if (GameIsPaused)
@@ -62,6 +63,7 @@ public class PauseMenu : MenueNavigation {
     }
 
     public void gotoSettingsMenu() {
+        m_pauseMenuAnimator.enabled = false;
         m_isSettingsMenuActive = true;
         m_pauseMenuCanvasGroup.alpha = 0;
         m_pauseMenuCanvasGroup.interactable = false;
