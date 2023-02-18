@@ -13,6 +13,8 @@ public interface Currency {
     /// <returns> "true", wenn der Kontostand danach >= 0, ansonsten "false" </returns>
     bool SubstractBalance(int amount);
 
+    string GetName();
+
     void enableUnlimitedMoney();
 
     void disableUnlimitedMoney();
