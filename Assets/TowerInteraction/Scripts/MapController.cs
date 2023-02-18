@@ -23,7 +23,14 @@ public class MapController : Utils.Singleton<MapController> {
 
         _leftMouseClick_Tower.action.performed += OpenTowerMenue;
         _leftMouseClick_Map.action.performed += OpenShopMenue;
+
+        PauseMenu.onPauseMenuWasOpened += DisableController;
+        PauseMenu.onPauseMenuWasClosed += EneableController;
+
+        PauseButtonEventListener._onPauseMenuWasOpened += DisableController;
+        PauseButtonEventListener._onPauseMenuWasClosed += EneableController;
     }
+
     private void OnDestroy()
     {
         TowerController.Instance._onTowerWasBought -= EneableController;

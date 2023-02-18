@@ -740,7 +740,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7415535082442509535, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000031108568
+      value: 0.0000006512175
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415535082765797839, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415535082765797839, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415535082765797839, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7415535083340302528, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
       propertyPath: m_Pivot.x
@@ -829,6 +841,18 @@ PrefabInstance:
     - target: {fileID: 7415535083340302540, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
       propertyPath: m_Name
       value: Shop (Canvas)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415535083340302542, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415535083340302542, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415535083340302542, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 7601324255851047442, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
       propertyPath: m_AnchorMax.y

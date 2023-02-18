@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TowerInteraction/Scenes/Shop.unity
     guid: e421d7193a4430e438167cb3fe29f8a8
+  - enabled: 1
+    path: Assets/Scenes/Scenes/PauseMenu.unity
+    guid: db695ac9c6a817b4190d518261469ddf
   m_configObjects: {}

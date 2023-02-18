@@ -16,13 +16,16 @@ public class BaseCurrency : MonoBehaviour, Currency {
     [SerializeField]
     private TextMeshProUGUI m_balanceText;
 
+    [SerializeField]
+    private string m_name;
+
     private float m_increaseTreshold = 0;
 
     private bool m_unlimitedMoney = false;
 
     void Start() {
         StartCoroutine(IncrementBaseCurrencyOverTime());
-        m_balanceText.text = "Base Coin: " + m_balance;
+        m_balanceText.text = m_name + ": \n" + m_balance;
     }
 
     private IEnumerator IncrementBaseCurrencyOverTime() {
@@ -30,11 +33,15 @@ public class BaseCurrency : MonoBehaviour, Currency {
             m_increaseTreshold += m_scorePerSecond * Time.deltaTime;
             if (m_increaseTreshold >= 1) {
                 m_balance += (int)m_increaseTreshold;
-                m_balanceText.text = "Base Coin: " + m_balance;
+                m_balanceText.text = m_name + ": \n" + m_balance;
                 m_increaseTreshold -= m_increaseTreshold;
             }
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    public string GetName() {
+        return m_name;
     }
 
     int Currency.GetBalance() {
@@ -69,7 +76,7 @@ public class BaseCurrency : MonoBehaviour, Currency {
     void Currency.enableUnlimitedMoney() {
         StopAllCoroutines();
         m_unlimitedMoney = true;
-        m_balanceText.text = "Base Coin: " + "Unlimited";
+        m_balanceText.text = m_name + ": \n" + "Unlimited";
     }
 
     void Currency.disableUnlimitedMoney() {

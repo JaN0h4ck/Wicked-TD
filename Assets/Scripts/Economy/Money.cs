@@ -20,7 +20,7 @@ public class Money : MonoBehaviour, Currency {
 
     private void Start() {
         if(!string.IsNullOrEmpty(m_currencyName))
-            m_balanceText.text = m_currencyName + ": " + m_balance;
+            m_balanceText.text = m_currencyName + ": \n" + m_balance;
     }
 
     int Currency.GetBalance() {
@@ -37,7 +37,7 @@ public class Money : MonoBehaviour, Currency {
             return false;
         else {
             m_balance += amount;
-            m_balanceText.text = m_currencyName + ": " + m_balance;
+            m_balanceText.text = m_currencyName + ": \n" + m_balance;
             return true;
         }
     }
@@ -49,7 +49,7 @@ public class Money : MonoBehaviour, Currency {
             return false;
         else {
             m_balance -= amount;
-            m_balanceText.text = m_currencyName + ": " + m_balance;
+            m_balanceText.text = m_currencyName + ": \n" + m_balance;
             return true;
         }
     }
@@ -60,11 +60,11 @@ public class Money : MonoBehaviour, Currency {
 
     void Currency.enableUnlimitedMoney() {
         m_unlimitedMoney = true;
-        m_balanceText.text = m_currencyName + ": " + "Unlimited";
+        m_balanceText.text = m_currencyName + ": \n" + "Unlimited";
     }
 
     void Currency.disableUnlimitedMoney() {
         m_unlimitedMoney = false;
-        m_balanceText.text = m_currencyName + ": " + m_balance;
+        m_balanceText.text = m_currencyName + ": \n" + m_balance;
     }
 }
