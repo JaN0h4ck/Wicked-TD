@@ -418,6 +418,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerMenue (Canvas)
       objectReference: {fileID: 0}
+    - target: {fileID: 192192843692390293, guid: e8ba32a6e50721b49b29b7817b5eb493, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 192192843692390293, guid: e8ba32a6e50721b49b29b7817b5eb493, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 192192843692390293, guid: e8ba32a6e50721b49b29b7817b5eb493, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 192192843692390295, guid: e8ba32a6e50721b49b29b7817b5eb493, type: 3}
       propertyPath: m_Pivot.x
       value: 0
