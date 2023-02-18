@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PauseMenu : MonoBehaviour {
 
     public static bool GameIsPaused = false;
+    private bool m_isSettingsMenuActive = false;
 
     private GameObject m_pauseMenuUI;
     private CanvasGroup m_pauseMenuCanvasGroup;
@@ -45,14 +46,16 @@ public class PauseMenu : MonoBehaviour {
     }
 
     void TogglePauseMenu() {
-        if (GameIsPaused) {
+        if(m_isSettingsMenuActive)
+            returnToPauseMenu();
+        if (GameIsPaused)
             Resume();
-        }
         else
             Pause();
     }
 
     public void gotoSettingsMenu() {
+        m_isSettingsMenuActive = true;
         m_pauseMenuCanvasGroup.alpha = 0;
         m_pauseMenuCanvasGroup.interactable = false;
         m_settingsMenuUI.SetActive(true);
@@ -70,6 +73,7 @@ public class PauseMenu : MonoBehaviour {
 
     #region SettingsMenu
     public void returnToPauseMenu() {
+        m_isSettingsMenuActive = false;
         m_settingsMenuUI.SetActive(false);
         m_pauseMenuCanvasGroup.alpha = 1;
         m_pauseMenuCanvasGroup.interactable = true;
