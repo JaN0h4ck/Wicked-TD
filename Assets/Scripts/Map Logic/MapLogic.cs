@@ -8,7 +8,7 @@ public class MapLogic : MonoBehaviour
     public GameObject[] spawnerNodes;
 
     private bool WaveSpawnSignal = false;
-    public float timer;
+    private float timer;
 
     public bool gameRunning = true;
     
