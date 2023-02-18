@@ -5,19 +5,19 @@ using UnityEngine;
 public class csEnemyHealth : MonoBehaviour
 {
     #region Variables
-    private float fHealth = 100;
+    protected float fHealth = 100;
     #endregion
 
 
     #region HealthUpdate
 
-    public void LooseHealth(float fDamage)
+    public virtual void LooseHealth(float fDamage)
     {
         fHealth -= fDamage;
         CheckForDeath();
     }
 
-    private void CheckForDeath()
+    protected virtual void CheckForDeath()
     {
         if(fHealth<=0)
         {
