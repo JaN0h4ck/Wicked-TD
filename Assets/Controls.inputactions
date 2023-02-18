@@ -2,7 +2,7 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "Shop",
+            "name": "DefaultMap",
             "id": "ce82baea-8382-4ed4-9991-2a14e8fe9bd2",
             "actions": [
                 {
@@ -15,9 +15,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CloseShop",
+                    "name": "TogglePauseMenu",
                     "type": "Button",
-                    "id": "90c5d0b2-bd89-426f-bf9a-e0d527746e43",
+                    "id": "c2fedf38-872e-4895-8e03-b4c2d81cc01a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -38,12 +38,12 @@
                 },
                 {
                     "name": "",
-                    "id": "d67a5721-898a-4615-8379-bba489469304",
+                    "id": "e33ef13e-39c3-40d4-9027-4fc52e47446d",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CloseShop",
+                    "action": "TogglePauseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

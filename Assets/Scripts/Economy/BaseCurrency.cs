@@ -18,6 +18,8 @@ public class BaseCurrency : MonoBehaviour, Currency {
 
     private float m_increaseTreshold = 0;
 
+    private bool m_unlimitedMoney = false;
+
     void Start() {
         StartCoroutine(IncrementBaseCurrencyOverTime());
         m_balanceText.text = "Base Coin: " + m_balance;
@@ -36,11 +38,16 @@ public class BaseCurrency : MonoBehaviour, Currency {
     }
 
     int Currency.GetBalance() {
-        return m_balance;
+        if (m_unlimitedMoney)
+            return int.MaxValue;
+        else
+            return m_balance;
     }
 
     bool Currency.AddBalance(int amount) {
-        if (m_balance + amount < 0)
+        if (m_unlimitedMoney)
+            return true;
+        else if (m_balance + amount < 0)
             return false;
         else {
             m_balance += amount;
@@ -49,11 +56,24 @@ public class BaseCurrency : MonoBehaviour, Currency {
     }
 
     bool Currency.SubstractBalance(int amount) {
-        if (m_balance - amount < 0)
+        if (m_unlimitedMoney)
+            return true;
+        else if (m_balance - amount < 0)
             return false;
         else {
             m_balance -= amount;
             return true;
         }
+    }
+
+    void Currency.enableUnlimitedMoney() {
+        StopAllCoroutines();
+        m_unlimitedMoney = true;
+        m_balanceText.text = "Base Coin: " + "Unlimited";
+    }
+
+    void Currency.disableUnlimitedMoney() {
+        StartCoroutine(IncrementBaseCurrencyOverTime());
+        m_unlimitedMoney = false;
     }
 }

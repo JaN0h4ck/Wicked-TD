@@ -15,25 +15,19 @@ public class Shop : Singleton<Shop> {
     [SerializeField]
     private string m_currencyHandlerName = "Currency Handler";
 
-    private PlayerInput m_playerinput;
-
-    private InputAction m_closeShopInputAction;
+    private bool m_isUnlimitedMoneyEnabled = false;
 
     private void Start() {
         m_shopUI = GetComponent<CanvasGroup>();
         m_shopUI.alpha = 0;
+        m_shopUI.blocksRaycasts = false;
 
-        m_playerinput = GameObject.Find("InputSystem").GetComponent<PlayerInput>();
+        GameObject.Find("InputSystem").GetComponent<PlayerInput>().actions["ToggleShop"].performed += _ => ToggleShop();
 
-        m_playerinput.actions["ToggleShop"].performed += _ => ToggleShop();
-        m_closeShopInputAction = m_playerinput.actions["CloseShop"];
-        m_closeShopInputAction.performed += _ => CloseShop();
-        m_closeShopInputAction.Disable();
-
-        CurrencySetup();
+        h_CurrencySetup();
     }
 
-    private void CurrencySetup() {
+    private void h_CurrencySetup() {
         m_currencies = GameObject.Find(m_currencyHandlerName).GetComponents<Currency>();
 
         currencyMap = new Dictionary<string, Currency>();
@@ -64,12 +58,12 @@ public class Shop : Singleton<Shop> {
 
     public void OpenShop() {
         m_shopUI.alpha += 1;
-        m_closeShopInputAction.Enable();
+        m_shopUI.blocksRaycasts = true;
     }
 
     public void CloseShop() {
         m_shopUI.alpha -= 1;
-        m_closeShopInputAction.Disable();
+        m_shopUI.blocksRaycasts = false;
     }
 
     public void ToggleShop() {
@@ -77,5 +71,19 @@ public class Shop : Singleton<Shop> {
             CloseShop();
         else
             OpenShop();
+    }
+
+    public void toggleUnlimitedMoney() {
+        if (m_isUnlimitedMoneyEnabled) {
+            m_isUnlimitedMoneyEnabled = false;
+            foreach (Currency currency in m_currencies) {
+                currency.disableUnlimitedMoney();
+            }
+        } else { 
+            m_isUnlimitedMoneyEnabled = true;
+            foreach (Currency currency in m_currencies) {
+                currency.enableUnlimitedMoney();
+            }
+        }
     }
 }
