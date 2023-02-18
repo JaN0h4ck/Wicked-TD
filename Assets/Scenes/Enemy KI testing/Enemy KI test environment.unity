@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &78475049 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9048746353194219276, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+  m_PrefabInstance: {fileID: 1901168466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &156521562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 616748009007494633, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
@@ -299,6 +304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+--- !u!4 &237788412 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9048746353194219276, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+  m_PrefabInstance: {fileID: 2123215422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &246377471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -529,6 +539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3350368829577038292, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+      propertyPath: Waypoint1
+      value: 
+      objectReference: {fileID: 237788412}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
 --- !u!4 &465778566 stripped
@@ -767,8 +781,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3350368829577038292, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+      propertyPath: Waypoint1
+      value: 
+      objectReference: {fileID: 78475049}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+--- !u!4 &884360512 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9048746353194219276, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+  m_PrefabInstance: {fileID: 2431716502584419646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &928144750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1698014469567849531, guid: d0d55664d1b820f4887e45a0577253de, type: 3}
@@ -1652,6 +1675,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3350368829577038292, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+      propertyPath: Waypoint1
+      value: 
+      objectReference: {fileID: 884360512}
+    - target: {fileID: 3350368829577038292, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+      propertyPath: currentDifficulty
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
 --- !u!1001 &1976957893
@@ -1708,6 +1739,14 @@ PrefabInstance:
     - target: {fileID: 1065387615865077992, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350368829577038292, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+      propertyPath: Waypoint1
+      value: 
+      objectReference: {fileID: 2058561915}
+    - target: {fileID: 3350368829577038292, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+      propertyPath: currentDifficulty
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
@@ -1768,6 +1807,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+--- !u!4 &2058561915 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9048746353194219276, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+  m_PrefabInstance: {fileID: 1867852511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2123215422
 PrefabInstance:
   m_ObjectHideFlags: 0
