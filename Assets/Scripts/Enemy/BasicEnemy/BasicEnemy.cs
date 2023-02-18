@@ -14,6 +14,8 @@ public class BasicEnemy : csEnemyHealth {
     private float baseMovementSpeed = 1.0f;
     
     protected Nexus nexusLogic;
+    protected SpriteRenderer spriteRenderer;
+    
 
     public void Start() {
         var basicEnemy = this.gameObject;
@@ -24,6 +26,8 @@ public class BasicEnemy : csEnemyHealth {
         var nexusNode = mapNode.transform.GetChild(0).gameObject;
 
         nexusLogic = nexusNode.GetComponent<Nexus>();
+        spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        
         _path = new List<Vector3>(waypointPathNode.transform.GetComponent<WaypointPath>().GetPath());
         
         this.gameObject.transform.position = _path.First();
@@ -46,7 +50,7 @@ public class BasicEnemy : csEnemyHealth {
         } else {
             AttackNexusAndDeconstruct();
         }
-
+        
         if (!nexusLogic.alive)
         {
             Destroy(this);
@@ -62,7 +66,7 @@ public class BasicEnemy : csEnemyHealth {
         var mapNode = pathNode.transform.parent.gameObject;
         var nexusNode = mapNode.transform.GetChild(0).gameObject;
         
-        nexusNode.transform.GetComponent<Nexus>().LooseHealth(damageToNexus);
+        nexusLogic.LooseHealth(damageToNexus);
         LooseHealth(fHealth);
     }
 
@@ -86,16 +90,17 @@ public class BasicEnemy : csEnemyHealth {
         transform.position = Vector3.MoveTowards(this.gameObject.transform.position, _path.First(), baseMovementSpeed * movementSpeed * Time.deltaTime);;
         if (InRange(this.gameObject.transform.position, _path.First())) {
             _path.RemoveAt(0);
-            Debug.Log( gameObject.transform.name + " [" + this.gameObject.transform.parent.gameObject.transform.parent.gameObject.name + "] " + _path.Count);
+            spriteRenderer.flipX = !h_calculateFaceDirection(); //DO NOT TOUCH!!
         }
-        this.gameObject.GetComponent<SpriteRenderer>().flipX = h_calculateFaceDirection();
-
     }
 
     protected bool h_calculateFaceDirection()
     {
-        return !h_InRange(transform.position.x, _path.First().x, 0.03f) || h_InRange(transform.position.x, _path[1].x, 0.03f) && !(transform.position.x >= _path[1].x);
-
+        if (h_InRange(transform.position.y, _path.First().y, 0.02f))
+        {
+            return transform.position.x > _path[1].x;
+        }
+        return transform.position.x > _path.First().x;
     }
 
     private bool InRange(Vector3 a, Vector3 b)
@@ -105,7 +110,7 @@ public class BasicEnemy : csEnemyHealth {
         return false;
     }
 
-    private bool h_InRange(float a, float b, float rangeToWaypoint = 0.02f)
+    private bool h_InRange(float a, float b, float rangeToWaypoint = 0.01f)
     {
         float rangeBetween;
         if (b > a)
@@ -115,5 +120,4 @@ public class BasicEnemy : csEnemyHealth {
             return true;
         return false;
     }
-    
 }

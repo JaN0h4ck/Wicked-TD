@@ -39,15 +39,15 @@ public class Spawner : MonoBehaviour
     }
 
     private uint h_EnemyDecider(uint[] usedDifficulties) {
-        switch (usedDifficulties[Random.Range(0, usedDifficulties.Length - 1)]) {
+        switch (usedDifficulties[Random.Range(0, usedDifficulties.Length)]) {
             case 1u:
-                GameObject EasyEnemy = Instantiate(easyEnemies[Random.Range(0, easyEnemies.Length - 1)].gameObject, this.transform);
+                GameObject EasyEnemy = Instantiate(easyEnemies[Random.Range(0, easyEnemies.Length)].gameObject, this.transform);
                 return 1u;
             case 5u:
-                GameObject MediumEnemy = Instantiate(mediumEnemies[Random.Range(0, mediumEnemies.Length - 1)].gameObject, this.transform);
+                GameObject MediumEnemy = Instantiate(mediumEnemies[Random.Range(0, mediumEnemies.Length)].gameObject, this.transform);
                 return 5u;
             case 9u:
-                GameObject HardEnemy = Instantiate(hardEnemies[Random.Range(0, hardEnemies.Length - 1)].gameObject, this.transform);
+                GameObject HardEnemy = Instantiate(hardEnemies[Random.Range(0, hardEnemies.Length)].gameObject, this.transform);
                 return 9u;
             default:
                 return 0u;

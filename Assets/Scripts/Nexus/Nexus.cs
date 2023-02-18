@@ -20,6 +20,11 @@ public class Nexus : csEnemyHealth
         TransitionToGameOver();
     }
 
+    public float getHealth()
+    {
+        return fHealth;
+    }
+    
     private void TransitionToGameOver()
     {
         //TODO Dillon will game over screen implementieren
