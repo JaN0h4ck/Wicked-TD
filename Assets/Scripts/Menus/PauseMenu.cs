@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utils.Menue;
 
-public class PauseMenu : MonoBehaviour {
+public class PauseMenu : MenueNavigation {
 
     public static bool GameIsPaused = false;
     private bool m_isSettingsMenuActive = false;
@@ -28,18 +30,18 @@ public class PauseMenu : MonoBehaviour {
         m_pauseMenuCanvasGroup = m_pauseMenuUI.GetComponent<CanvasGroup>();
         m_pauseMenuAnimator = m_pauseMenuUI.GetComponent<Animator>();
 
-        GameObject.Find("InputSystem").GetComponent<PlayerInput>().actions["TogglePauseMenu"].performed += _ => TogglePauseMenu();
+        GameObject.Find("Input Controller").GetComponent<PlayerInput>().actions["TogglePauseMenu"].performed += _ => TogglePauseMenu();
     }
 
     #region PauseMenu
-    public void Resume() {
-        m_pauseMenuAnimator.enabled = true;
+    public override void CloseMenue() {
+        m_pauseMenuAnimator.enabled = false;
         m_pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
-    void Pause() {
+    public override void OpenMenue() {
         m_pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -49,9 +51,9 @@ public class PauseMenu : MonoBehaviour {
         if(m_isSettingsMenuActive)
             returnToPauseMenu();
         if (GameIsPaused)
-            Resume();
+            CloseMenue();
         else
-            Pause();
+            OpenMenue();
     }
 
     public void gotoSettingsMenu() {
@@ -85,6 +87,23 @@ public class PauseMenu : MonoBehaviour {
 
     public void SetFullscreen(bool isFullscreen) {
         Screen.fullScreen = isFullscreen;
+    }
+    #endregion
+
+    #region Deprecated
+    [Obsolete("\"Resume\" is deprecated, please use \"CloseMenue()\"")]
+    public void Resume() {
+        m_pauseMenuAnimator.enabled = true;
+        m_pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
+
+    [Obsolete("\"Pause\" is deprecated, please use \"OpenMenue()\"")]
+    void Pause() {
+        m_pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
     }
     #endregion
 }
