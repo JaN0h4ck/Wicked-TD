@@ -18,11 +18,6 @@ public class csSkillTriggerTest : MonoBehaviour
             bCompare = bActivate;
             Debug.LogWarning("(Reminder): This testscript is still active!");
             TriggerSkill();
-            iSkillIndex++;
-            if(iSkillIndex>=3)
-            {
-                iSkillIndex = 0;
-            }
         }
         if (Input.GetMouseButtonDown(1))
         {

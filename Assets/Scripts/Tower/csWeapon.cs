@@ -13,6 +13,7 @@ public class csWeapon : MonoBehaviour
     private float fFireSpeed;
 
     private float fModifiedFireSpeed=0;
+    private float fSkillFireSpeedModifier = 0;
 
     [SerializeField]
     private float fShootRange;
@@ -103,8 +104,8 @@ public class csWeapon : MonoBehaviour
             Shoot();
             
             fFireSpeed += fFireSpeedDeacrease;
-            Debug.LogWarning("%Waiting for " + fFireSpeed + fModifiedFireSpeed);
-            yield return new WaitForSecondsRealtime(fFireSpeed+fModifiedFireSpeed);
+            Debug.LogWarning("%Waiting for " + fFireSpeed+" " + fModifiedFireSpeed+" " + fSkillFireSpeedModifier);
+            yield return new WaitForSecondsRealtime(fFireSpeed+fModifiedFireSpeed+fSkillFireSpeedModifier);
         }
     }
 
@@ -246,35 +247,41 @@ public class csWeapon : MonoBehaviour
     {
         foreach (Transform tsTarget in tslTargets)
         {
-            SetLastEnemyPosition(tsTarget.position);
-            LookAtEnemy(tsTarget);
-            AddMoney();
-            GameObject gTemp = Instantiate(gaPrefabBullets[iBulletMode], tsFirePoint.position, Quaternion.identity);
-
-            csBullet Bullet = gTemp.GetComponent<csBullet>();
-
-            Bullet.SetDamage(fDamage);
-            Bullet.SetIndicatorEmpty(gIndicatorEmpty);
-            Bullet.SetStartWeapon(this);
-
-            if (Bullet != null)
+            if (tsTarget != null)
             {
-                Bullet.ShootAt(tsTarget, fBulletSpeed);
-            }
-            else
-            {
-                Debug.LogError("(csWepon): your bullet" + gTemp.name + " isnt setup correctly, the csBullet Script is missing");
+                SetLastEnemyPosition(tsTarget.position);
+                LookAtEnemy(tsTarget);
+                AddMoney();
+                GameObject gTemp = Instantiate(gaPrefabBullets[iBulletMode], tsFirePoint.position, Quaternion.identity);
+
+                csBullet Bullet = gTemp.GetComponent<csBullet>();
+
+                Bullet.SetDamage(fDamage);
+                Bullet.SetIndicatorEmpty(gIndicatorEmpty);
+                Bullet.SetStartWeapon(this);
+
+                if (Bullet != null)
+                {
+                    Bullet.ShootAt(tsTarget, fBulletSpeed);
+                }
+                else
+                {
+                    Debug.LogError("(csWepon): your bullet" + gTemp.name + " isnt setup correctly, the csBullet Script is missing");
+                }
             }
         }
     }
 
     public void SetupTargetsIfNecessary(List<Transform> tslTarget)
     {
-        foreach (Transform tsTarget in tslTarget)
+        for(int i=0; i<tslTarget.Count;i++)
         {
-            if (tsTarget.gameObject.GetComponent<csEnemyHealth>() == null)
+            if (tslTarget[i] != null)
             {
-                tsTarget.gameObject.AddComponent<csEnemyHealth>();
+                if (tslTarget[i].gameObject.GetComponent<csEnemyHealth>() == null)
+                {
+                    tslTarget[i].gameObject.AddComponent<csEnemyHealth>();
+                }
             }
         }
     }
@@ -298,9 +305,18 @@ public class csWeapon : MonoBehaviour
         }
     }
 
+    public void SkillModifyFireSpeed(float fSkillSpeedModifier)
+    {
+        Debug.LogWarning("%Iamhere");
+        fSkillFireSpeedModifier = fSkillSpeedModifier;
+    }
     public void ResetFireSpeedModifier()
     {
         fModifiedFireSpeed = 0;
+    }
+    public void ResetSkillFireSpeedModifier()
+    {
+        fSkillFireSpeedModifier = 0;
     }
     #endregion
 
@@ -383,7 +399,6 @@ public class csWeapon : MonoBehaviour
 
     private void LookAtEnemy(Transform tsTarget)
     {
-        Debug.LogWarning("§Switching");
         if(tsTarget.position.x>=transform.position.x)
         {
             bLookDirectiom = false;
