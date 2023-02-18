@@ -76,16 +76,6 @@ public class PauseMenu : MenueNavigation {
         m_settingsMenuUI.SetActive(true);
     }
 
-    public void LoadMenu() {
-        CloseMenue();
-        StartCoroutine("LoadAsync");
-    }
-
-    private IEnumerator LoadAsync() {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
-    }
-
     public void QuitGame() {
         Debug.Log("Quitting Game...");
         Application.Quit();
@@ -123,6 +113,18 @@ public class PauseMenu : MenueNavigation {
         m_pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+    }
+
+    [Obsolete("The Corresponding Buttons has been removed, please don't use this method")]
+    public void LoadMenu() {
+        CloseMenue();
+        StartCoroutine("LoadAsync");
+    }
+
+    [Obsolete]
+    private IEnumerator LoadAsync() {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
     }
     #endregion
 }
