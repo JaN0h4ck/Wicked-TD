@@ -37,19 +37,33 @@ namespace TowerShop {
         }
 
         private void SetTowerInfo() {
-            TowerData towerData = _selectedShopItem.Object.ItemData._towerData;
+            var tower = _selectedShopItem.Object.ItemData._towerPrefab.GetComponent<csTowerBaseScript>();
 
             //Infos
-            _name.text = towerData.TowerName;
-            _damage.text = towerData.Damage.ToString();
-            //_attackSpeed.text = towerData.
-            _range.text = towerData.TowerRange.ToString();
+            _name.text = tower.GetTowerName();
+            _damage.text = tower.GetDamage().ToString();
+            _attackSpeed.text = tower.GetFireSpeed().ToString();
+            _range.text = tower.GetRange().ToString();
             //Ammunition
             //Skills
             //Currency
-            //_gold.text = towerData.Currencies[0].ToString();
-            //_c6.text = towerData.Currencies[1].ToString();
-            //_neoplasma.text = towerData.Currencies[2].ToString();
+            switch(tower.GetCurrencyType()){
+                case csTowerBaseScript.CurrencyEnum.Gold:
+                    _gold.text = tower.GetBuildCosts().ToString();
+                    _c6.text = "0";
+                    _neoplasma.text = "0";
+                break;
+                case csTowerBaseScript.CurrencyEnum.C6:
+                    _gold.text = "0";
+                    _c6.text = tower.GetBuildCosts().ToString();
+                    _neoplasma.text = "0";
+                    break;
+                case csTowerBaseScript.CurrencyEnum.Neoplasma:
+                    _gold.text = "0";
+                    _c6.text = "0";
+                    _neoplasma.text = tower.GetBuildCosts().ToString();
+                    break;
+            }
         }
     }
 }

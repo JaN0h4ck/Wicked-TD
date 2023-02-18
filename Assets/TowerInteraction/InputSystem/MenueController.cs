@@ -7,7 +7,7 @@ using static MenueController;
 [CreateAssetMenu(fileName = "MenueController", menuName = "ScriptableObjects/Controller/MenueController")]
 public class MenueController : ScriptableObject {
     [SerializeField] private GameEvent _onOpenShopMenue;
-    [SerializeField] private GameEvent _onColoseShopMenue;
+    [SerializeField] private GameEvent _onCloseShopMenue;
 
     [SerializeField] private GameEvent _onOpenTowerMenue;
     [SerializeField] private GameEvent _onCloseTowerMenue;
@@ -33,7 +33,7 @@ public class MenueController : ScriptableObject {
         switch (menueType)
         {
             case MenueType.ShopMenue:
-                _onColoseShopMenue.Invoke();
+                _onCloseShopMenue.Invoke();
                 break;
             case MenueType.TowerMenue:
                 _onCloseTowerMenue.Invoke();
