@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2730065458287605065}
   - component: {fileID: 8745235076285998285}
   - component: {fileID: -6877128522033050119}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BurstTower_Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

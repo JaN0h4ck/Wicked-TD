@@ -9,7 +9,7 @@ namespace TowerShop {
     public class ShopItem : MonoBehaviour, IPointerClickHandler {
         [SerializeField] private Image _itemIcon;
         [SerializeField] private SelectedShopItem _selectedShopItem;
-        [SerializeField] private GameEvent _onOpenTowerInfo;
+        [SerializeField] private MenueController _menueController;
 
         private ShopItemData _itemData; 
         public ShopItemData ItemData {
@@ -24,7 +24,7 @@ namespace TowerShop {
 
         public void OnPointerClick(PointerEventData eventData) {
             _selectedShopItem.Object = this;
-            _onOpenTowerInfo.Invoke();
+            _menueController.onOpenMenue(MenueController.MenueType.TowerInfo);
         }
     }
 

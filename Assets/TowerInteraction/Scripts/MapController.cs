@@ -16,23 +16,15 @@ public class MapController : Utils.Singleton<MapController> {
 
     private float _offsetOfPrefabToTile = 0.5f;
     public Vector3Int _previousMousePosition { get; private set; }
-    
+    public GameObject _selectedTower { get; private set; }
 
     private void Awake() {
         TowerController.Instance._onTowerWasBought += EneableController;
 
         _leftMouseClick_Tower.action.performed += OpenTowerMenue;
         _leftMouseClick_Map.action.performed += OpenShopMenue;
-
-        PauseMenu.onPauseMenuWasOpened += DisableController;
-        PauseMenu.onPauseMenuWasClosed += EneableController;
-
-        PauseButtonEventListener._onPauseMenuWasOpened += DisableController;
-        PauseButtonEventListener._onPauseMenuWasClosed += EneableController;
     }
-
-    private void OnDestroy()
-    {
+    private void OnDestroy() {
         TowerController.Instance._onTowerWasBought -= EneableController;
     }
 
@@ -89,7 +81,13 @@ public class MapController : Utils.Singleton<MapController> {
                                         _previousMousePosition.y + _offsetOfPrefabToTile);
         Vector2 direction = new Vector2(0, 0);
 
-        return Physics2D.Raycast(start, direction, 0.5f, LayerMask.GetMask("Tower"));
+        RaycastHit2D hit = Physics2D.Raycast(start, direction, 0.5f, LayerMask.GetMask("Tower"));
+
+        if(!hit) { return false; }
+
+        _selectedTower = hit.collider.gameObject;
+
+        return true;
     }
 
     private Vector3Int GetMousePosition() {
@@ -97,7 +95,7 @@ public class MapController : Utils.Singleton<MapController> {
         return _grid.WorldToCell(mouseWorldPosition);
     }
 
-    private void EneableController(){
+    private void EneableController() {
         this.enabled = true;
     }
     private void DisableController()

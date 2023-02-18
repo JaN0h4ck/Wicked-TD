@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - _towerPrefab: {fileID: 5715238443691183861, guid: d673774119085bd439d6b5cb1e5e917b, type: 3}
-    _towerIcon: {fileID: -1072019392603869768, guid: 2769f19a4be43b5468552a66be941643, type: 3}
-    _towerData: {fileID: 11400000, guid: 4b3bc49677f9a854ca58d30fce8307e1, type: 2}
+    _towerIcon: {fileID: 21300000, guid: 742c02a34e29d9f4493dce4441b2a399, type: 3}
+    _towerData: {fileID: 0}
   - _towerPrefab: {fileID: 9012173906277577449, guid: a8d7583c800e19c4e8eb0ca3abe9b82c, type: 3}
-    _towerIcon: {fileID: -1187715476678314565, guid: 2769f19a4be43b5468552a66be941643, type: 3}
+    _towerIcon: {fileID: 21300000, guid: c5cf9572d2be32f4484a7b8d2f3c25d2, type: 3}
     _towerData: {fileID: 11400000, guid: eb0d5ab2ea333034a8b7e50a99781b1e, type: 2}
   - _towerPrefab: {fileID: 3439725845545446004, guid: b505336f0394b6e4098f88a859e956ca, type: 3}
-    _towerIcon: {fileID: 8162042947993326546, guid: 2769f19a4be43b5468552a66be941643, type: 3}
+    _towerIcon: {fileID: 21300000, guid: e28d3e2c113105c4c85e0e7e3ea0d826, type: 3}
     _towerData: {fileID: 11400000, guid: 92c27d820c6e2964985981d8536cd5cf, type: 2}
   - _towerPrefab: {fileID: 978813792635838892, guid: a27b759f3fbeec2449ff5bc8eb7626c3, type: 3}
-    _towerIcon: {fileID: 5540668031973657387, guid: 2769f19a4be43b5468552a66be941643, type: 3}
+    _towerIcon: {fileID: 21300000, guid: 5e476bf4204933f48b2a7118c5de8ff3, type: 3}
     _towerData: {fileID: 11400000, guid: 4a875aba7c7db974b9e9156d8189e973, type: 2}
