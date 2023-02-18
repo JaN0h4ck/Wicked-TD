@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Nexus : csEnemyHealth
 {
-    // Start is called before the first frame update
+    public bool alive = true;
     void Start()
     {
         fHealth = 10;
@@ -12,7 +12,11 @@ public class Nexus : csEnemyHealth
 
     protected override void CheckForDeath() 
     {
-        base.CheckForDeath();
+        if (fHealth <= 0)
+        {
+            alive = false;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
         TransitionToGameOver();
     }
 
