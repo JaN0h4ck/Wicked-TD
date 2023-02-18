@@ -8,44 +8,63 @@ public class Money : MonoBehaviour, Currency {
 
     [SerializeField]
     [Tooltip("Der Startbetrag des Spielers")]
-    private int balance;
+    private int m_balance;
 
     [SerializeField]
-    private string currencyName;
+    private string m_currencyName;
 
     [SerializeField]
-    private TextMeshProUGUI balanceText;
+    private TextMeshProUGUI m_balanceText;
+
+    private bool m_unlimitedMoney = false;
 
     private void Start() {
-        if(!string.IsNullOrEmpty(currencyName))
-            balanceText.text = currencyName + ": " + balance;
+        if(!string.IsNullOrEmpty(m_currencyName))
+            m_balanceText.text = m_currencyName + ": " + m_balance;
     }
 
     int Currency.GetBalance() {
-        return balance;
+        if (m_unlimitedMoney)
+            return int.MaxValue;
+        else
+            return m_balance;
     }
 
     bool Currency.AddBalance(int amount) {
-        if (balance + amount < 0)
+        if (m_unlimitedMoney)
+            return true;
+        else if (m_balance + amount < 0)
             return false;
         else {
-            balance += amount;
-            balanceText.text = currencyName + ": " + balance;
+            m_balance += amount;
+            m_balanceText.text = m_currencyName + ": " + m_balance;
             return true;
         }
     }
 
     bool Currency.SubstractBalance(int amount) {
-        if (balance - amount < 0)
+        if (m_unlimitedMoney)
+            return true;
+        else if (m_balance - amount < 0)
             return false;
         else {
-            balance -= amount;
-            balanceText.text = currencyName + ": " + balance;
+            m_balance -= amount;
+            m_balanceText.text = m_currencyName + ": " + m_balance;
             return true;
         }
     }
 
     public string GetName() {
-        return currencyName;
+        return m_currencyName;
+    }
+
+    void Currency.enableUnlimitedMoney() {
+        m_unlimitedMoney = true;
+        m_balanceText.text = m_currencyName + ": " + "Unlimited";
+    }
+
+    void Currency.disableUnlimitedMoney() {
+        m_unlimitedMoney = false;
+        m_balanceText.text = m_currencyName + ": " + m_balance;
     }
 }
