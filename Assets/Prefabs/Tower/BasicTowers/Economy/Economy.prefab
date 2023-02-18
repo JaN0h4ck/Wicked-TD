@@ -106,22 +106,8 @@ SpriteRenderer:
   m_SortingLayerID: 428794255
   m_SortingLayer: 2
   m_SortingOrder: 0
-<<<<<<< HEAD
-<<<<<<< Updated upstream
   m_Sprite: {fileID: 21300000, guid: 742c02a34e29d9f4493dce4441b2a399, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-=======
-  m_Sprite: {fileID: 8162042947993326546, guid: 2769f19a4be43b5468552a66be941643, type: 3}
-  m_Color: {r: 0.67058825, g: 0.98039216, b: 0.9713754, a: 1}
->>>>>>> main
-=======
-  m_Sprite: {fileID: 8162042947993326546, guid: 2769f19a4be43b5468552a66be941643, type: 3}
-  m_Color: {r: 0.67058825, g: 0.98039216, b: 0.9713754, a: 1}
-=======
-  m_Sprite: {fileID: 21300000, guid: 742c02a34e29d9f4493dce4441b2a399, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
->>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
->>>>>>> Stashed changes
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -174,18 +160,7 @@ MonoBehaviour:
   iTargetAmount: 2
   fFireSpeedDeacrease: 0.025
   gaPrefabBullets:
-<<<<<<< HEAD
-<<<<<<< Updated upstream
   - {fileID: 988432995199586303, guid: 36b961e40dffb534ba92d35927a5539f, type: 3}
-=======
-  - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
->>>>>>> main
-=======
-  - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
-=======
-  - {fileID: 988432995199586303, guid: 36b961e40dffb534ba92d35927a5539f, type: 3}
->>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
->>>>>>> Stashed changes
   - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
   - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
   lmEnemy:

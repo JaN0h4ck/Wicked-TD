@@ -13,16 +13,7 @@ public class csWeapon : MonoBehaviour
     private float fFireSpeed;
 
     private float fModifiedFireSpeed=0;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
     private float fSkillFireSpeedModifier = 0;
-=======
->>>>>>> main
-=======
-=======
-    private float fSkillFireSpeedModifier = 0;
->>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
->>>>>>> Stashed changes
 
     [SerializeField]
     private float fShootRange;
@@ -113,22 +104,8 @@ public class csWeapon : MonoBehaviour
             Shoot();
             
             fFireSpeed += fFireSpeedDeacrease;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
             Debug.LogWarning("%Waiting for " + fFireSpeed+" " + fModifiedFireSpeed+" " + fSkillFireSpeedModifier);
             yield return new WaitForSecondsRealtime(fFireSpeed+fModifiedFireSpeed+fSkillFireSpeedModifier);
-=======
-            Debug.LogWarning("%Waiting for " + fFireSpeed + fModifiedFireSpeed);
-            yield return new WaitForSecondsRealtime(fFireSpeed+fModifiedFireSpeed);
->>>>>>> main
-=======
-            Debug.LogWarning("%Waiting for " + fFireSpeed + fModifiedFireSpeed);
-            yield return new WaitForSecondsRealtime(fFireSpeed+fModifiedFireSpeed);
-=======
-            Debug.LogWarning("%Waiting for " + fFireSpeed+" " + fModifiedFireSpeed+" " + fSkillFireSpeedModifier);
-            yield return new WaitForSecondsRealtime(fFireSpeed+fModifiedFireSpeed+fSkillFireSpeedModifier);
->>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
->>>>>>> Stashed changes
         }
     }
 
@@ -270,31 +247,7 @@ public class csWeapon : MonoBehaviour
     {
         foreach (Transform tsTarget in tslTargets)
         {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
             if (tsTarget != null)
-=======
-=======
->>>>>>> Stashed changes
-            SetLastEnemyPosition(tsTarget.position);
-            LookAtEnemy(tsTarget);
-            AddMoney();
-            GameObject gTemp = Instantiate(gaPrefabBullets[iBulletMode], tsFirePoint.position, Quaternion.identity);
-
-            csBullet Bullet = gTemp.GetComponent<csBullet>();
-
-            Bullet.SetDamage(fDamage);
-            Bullet.SetIndicatorEmpty(gIndicatorEmpty);
-            Bullet.SetStartWeapon(this);
-
-            if (Bullet != null)
-<<<<<<< Updated upstream
->>>>>>> main
-=======
-=======
-            if (tsTarget != null)
->>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
->>>>>>> Stashed changes
             {
                 SetLastEnemyPosition(tsTarget.position);
                 LookAtEnemy(tsTarget);
@@ -321,18 +274,7 @@ public class csWeapon : MonoBehaviour
 
     public void SetupTargetsIfNecessary(List<Transform> tslTarget)
     {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
         for(int i=0; i<tslTarget.Count;i++)
-=======
-        foreach (Transform tsTarget in tslTarget)
->>>>>>> main
-=======
-        foreach (Transform tsTarget in tslTarget)
-=======
-        for(int i=0; i<tslTarget.Count;i++)
->>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
->>>>>>> Stashed changes
         {
             if (tslTarget[i] != null)
             {
@@ -363,41 +305,19 @@ public class csWeapon : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
     public void SkillModifyFireSpeed(float fSkillSpeedModifier)
     {
         Debug.LogWarning("%Iamhere");
         fSkillFireSpeedModifier = fSkillSpeedModifier;
     }
-<<<<<<< Updated upstream
-=======
->>>>>>> main
-=======
->>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
->>>>>>> Stashed changes
     public void ResetFireSpeedModifier()
     {
         fModifiedFireSpeed = 0;
     }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
     public void ResetSkillFireSpeedModifier()
     {
         fSkillFireSpeedModifier = 0;
     }
-<<<<<<< Updated upstream
-=======
->>>>>>> main
-=======
->>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
->>>>>>> Stashed changes
     #endregion
 
     #endregion
@@ -479,16 +399,6 @@ public class csWeapon : MonoBehaviour
 
     private void LookAtEnemy(Transform tsTarget)
     {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-        Debug.LogWarning("§Switching");
->>>>>>> main
-=======
-        Debug.LogWarning("§Switching");
-=======
->>>>>>> 86b3f9ded5ddc747cb7411bef91e653e3e7ac74e
->>>>>>> Stashed changes
         if(tsTarget.position.x>=transform.position.x)
         {
             bLookDirectiom = false;
