@@ -764,21 +764,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8146929364303514356}
   m_CullTransparentMesh: 1
---- !u!114 &8146929364546750825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8146929364546750827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b4df0396b7cba8498d8da6d4ce7c095, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_balance: 10
-  m_currencyName: Gold
-  m_balanceText: {fileID: 8146929365239646522}
 --- !u!1 &8146929364546750827
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,10 +773,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8146929364546750830}
-  - component: {fileID: 8146929364546750825}
-  - component: {fileID: 8146929364546750828}
-  - component: {fileID: 8146929364546750831}
   - component: {fileID: 8146929364546750829}
+  - component: {fileID: 8146929364546750832}
+  - component: {fileID: 8146929364546750831}
+  - component: {fileID: 8146929364546750828}
   m_Layer: 0
   m_Name: Currency Manager
   m_TagString: Untagged
@@ -808,12 +793,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8146929364546750827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b4df0396b7cba8498d8da6d4ce7c095, type: 3}
+  m_Script: {fileID: 11500000, guid: c8cdc089a3ed8744fb438a0c25b07856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_balance: 0
-  m_currencyName: C6
-  m_balanceText: {fileID: 8146929365078786791}
+  m_scorePerSecond: 1
+  m_balanceText: {fileID: 8146929364303514362}
+  m_name: Neoplasma
 --- !u!114 &8146929364546750829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,12 +835,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 8146929364546750827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b4df0396b7cba8498d8da6d4ce7c095, type: 3}
+  m_Script: {fileID: 11500000, guid: c8cdc089a3ed8744fb438a0c25b07856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_balance: 0
-  m_currencyName: Neoplasma
-  m_balanceText: {fileID: 8146929364303514362}
+  m_scorePerSecond: 1
+  m_balanceText: {fileID: 8146929365078786791}
+  m_name: C6
+--- !u!114 &8146929364546750832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8146929364546750827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8cdc089a3ed8744fb438a0c25b07856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_balance: 0
+  m_scorePerSecond: 1
+  m_balanceText: {fileID: 8146929365239646522}
+  m_name: Gold
 --- !u!1 &8146929365078786785
 GameObject:
   m_ObjectHideFlags: 0

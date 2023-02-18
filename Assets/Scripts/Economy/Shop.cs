@@ -36,10 +36,7 @@ public class Shop : Singleton<Shop> {
         currencyMap = new Dictionary<string, Currency>();
 
         foreach (Currency currency in m_currencies) {
-            if (currency is Money)
-                currencyMap.Add(((Money)currency).GetName(), currency);
-            else
-                currencyMap.Add("Base Coin", currency);
+                currencyMap.Add(currency.GetName(), currency);
         }
 
         // Nur für Debug-Zwecke
