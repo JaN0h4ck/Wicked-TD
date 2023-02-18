@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -76,6 +77,12 @@ public class PauseMenu : MenueNavigation {
     }
 
     public void LoadMenu() {
+        CloseMenue();
+        StartCoroutine("LoadAsync");
+    }
+
+    private IEnumerator LoadAsync() {
+        yield return new WaitForSeconds(1);
         SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
     }
 
