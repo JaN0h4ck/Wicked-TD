@@ -3,12 +3,16 @@ using UnityEngine;
 public class MapLogic : MonoBehaviour
 {
     private Nexus nexusNode;
-    private uint difficulty = 10;
-    private uint bufferDifficulty;
-    public Spawner[] spawnerNodes;
+    public uint difficulty = 10;
+    public uint bufferDifficulty;
+    public GameObject[] spawnerNodes;
 
     private bool WaveSpawnSignal = false;
+    public float timer;
 
+    public bool gameRunning = true;
+    
+    private float timeBetweenWaves = 10f;
     void Start()
     {
         nexusNode = this.gameObject.transform.GetChild(0).GetComponent<Nexus>();
@@ -25,13 +29,47 @@ public class MapLogic : MonoBehaviour
 
     private void Logic()
     {
-        if (WaveSpawnSignal) //TODO:wavespawnsignal muss geschrieben werden logic die überprüft ob enemies auf der karte sind muss noch implementiert werden
+        if (!h_checkIfAnySpawnerGotChildren())
+        {
+            WaveSpawnSignal = h_timerCountdown();
+        }
+
+        if (WaveSpawnSignal)
         {
             h_divideDifficultyToPaths();
         }
        
     }
 
+    bool h_checkIfAnySpawnerGotChildren()
+    {
+        ushort evaluationBuffer = 0;
+        foreach (var node in spawnerNodes)
+        {
+            evaluationBuffer += h_boolToInt(node.transform.childCount > 0);
+        }
+        return evaluationBuffer > 0;
+    }
+
+    private ushort h_boolToInt(bool i)
+    {
+        return i ? (ushort)1 : (ushort)0;
+    }
+    
+    private bool h_timerCountdown()
+    {
+        timer += Time.deltaTime;
+        bool state = (timer >= timeBetweenWaves);
+        if (state)
+            timer = 0f;
+        return state;
+    }
+
+    float getTimeUntilNextWave()
+    {
+        return timer;
+    }
+    
     private void h_divideDifficultyToPaths()
     {
         difficulty += 10;
@@ -43,11 +81,19 @@ public class MapLogic : MonoBehaviour
             int b = Random.Range(0, spawnerNodes.Length);
             (spawnerNodes[a], spawnerNodes[b]) = (spawnerNodes[b], spawnerNodes[a]);
         }
-
-        foreach (var node in spawnerNodes)
+        
+        for (int i = 0; i < spawnerNodes.Count(); i++)
         {
             uint generatedRange = (uint)Random.Range(0, bufferDifficulty);
             bufferDifficulty -= generatedRange;
+
+            if (i == spawnerNodes.Length)
+            {
+                spawnerNodes[i].gameObject.transform.GetComponent<Spawner>().currentDifficulty = bufferDifficulty;
+                bufferDifficulty = 0;
+            }
+            else
+                spawnerNodes[i].gameObject.transform.GetComponent<Spawner>().currentDifficulty = generatedRange;
         }
     }
 }

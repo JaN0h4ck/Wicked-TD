@@ -13,54 +13,53 @@ public class Spawner : MonoBehaviour
     public BasicEnemy[] hardEnemies;
 
     public uint currentDifficulty;
-
+    private MapLogic _mapLogic;
     private float _timeDelayBuffer;
 
-    private void Start() {
+    private void Start()
+    {
+        _mapLogic = gameObject.transform.parent.gameObject.transform.parent.GetComponent<MapLogic>();
         StartCoroutine(SpawnWave());
+        Debug.Log("Coroutine started!!");
     }
 
-    public IEnumerator SpawnWave() {
-        uint spawnDifficultyBuffer = currentDifficulty;
+    private IEnumerator SpawnWave() {
         const uint easy = 1;
         const uint medium = 5;
         const uint hard = 9;
 
-        while(spawnDifficultyBuffer > 0) {
-            if (spawnDifficultyBuffer >= hard) {
-                spawnDifficultyBuffer -= h_EnemyDecider(new uint[] { easy, medium, hard });
-            } else if (spawnDifficultyBuffer >= medium) {
-                spawnDifficultyBuffer -= h_EnemyDecider(new uint[] { easy, medium });
-            } else if (spawnDifficultyBuffer > 0){
-                spawnDifficultyBuffer -= h_EnemyDecider(new uint[] { easy });
+        while (_mapLogic.gameRunning)
+        {
+            if(currentDifficulty > 0) {
+                if (currentDifficulty >= hard) {
+                    currentDifficulty -= h_EnemyDecider(new uint[] { easy, medium, hard });
+                } else if (currentDifficulty >= medium) {
+                    currentDifficulty -= h_EnemyDecider(new uint[] { easy, medium });
+                } else if (currentDifficulty > 0){
+                    currentDifficulty -= h_EnemyDecider(new uint[] { easy });
+                }
             }
             yield return new WaitForSeconds(1.0f);
         }
     }
 
     private uint h_EnemyDecider(uint[] usedDifficulties) {
+        Debug.Log("executed enemydecider");
         switch (usedDifficulties[Random.Range(0, usedDifficulties.Length)]) {
-            case 1u:
+            case 1:
+                Debug.Log("EasyEnemy spawned!");
                 GameObject EasyEnemy = Instantiate(easyEnemies[Random.Range(0, easyEnemies.Length)].gameObject, this.transform);
-                return 1u;
-            case 5u:
+                return (uint)1;
+            case 5:
+                Debug.Log("MediumEnemy spawned!");
                 GameObject MediumEnemy = Instantiate(mediumEnemies[Random.Range(0, mediumEnemies.Length)].gameObject, this.transform);
-                return 5u;
-            case 9u:
+                return (uint)5;
+            case 9:
+                Debug.Log("HardEnemy spawned!");
                 GameObject HardEnemy = Instantiate(hardEnemies[Random.Range(0, hardEnemies.Length)].gameObject, this.transform);
-                return 9u;
+                return (uint)9;
             default:
                 return 0u;
         }
-    }
-
-
-    private bool h_SpawnDelay() {
-        _timeDelayBuffer += Time.deltaTime;
-        if (_timeDelayBuffer >= 1f) {
-            _timeDelayBuffer = 0f;
-            return true;
-        }
-        return false;
     }
 }

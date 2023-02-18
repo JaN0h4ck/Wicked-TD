@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &42913874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1065387615865077992, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+  m_PrefabInstance: {fileID: 828816118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &78475049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9048746353194219276, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
@@ -361,6 +366,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+--- !u!1 &257675986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1065387615865077992, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+  m_PrefabInstance: {fileID: 1976957893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &408747971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -797,6 +807,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8535707111557996719, guid: d0d55664d1b820f4887e45a0577253de, type: 3}
   m_PrefabInstance: {fileID: 1640226674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1262014537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1065387615865077992, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+  m_PrefabInstance: {fileID: 422212421}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1330144500
 PrefabInstance:
@@ -1516,6 +1531,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+--- !u!1 &1911678252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1065387615865077992, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+  m_PrefabInstance: {fileID: 1950577559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1950577559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1642,7 +1662,7 @@ PrefabInstance:
       objectReference: {fileID: 2058561915}
     - target: {fileID: 3350368829577038292, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
       propertyPath: currentDifficulty
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
@@ -1725,7 +1745,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b094ce51deb7ce447a91ad433d3c5a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerNodes: []
+  difficulty: 10
+  bufferDifficulty: 0
+  spawnerNodes:
+  - {fileID: 257675986}
+  - {fileID: 1911678252}
+  - {fileID: 42913874}
+  - {fileID: 1262014537}
+  timer: 0
 --- !u!1001 &2123215422
 PrefabInstance:
   m_ObjectHideFlags: 0
