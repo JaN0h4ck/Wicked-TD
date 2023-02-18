@@ -18,7 +18,6 @@ public class TowerData : ScriptableObject
 
     public float fBuildCost;
 
-    [Tooltip("!!DO NOT USE!! Currently not in use, will be programmed later")]
     public GameObject[] Skills;
 
 

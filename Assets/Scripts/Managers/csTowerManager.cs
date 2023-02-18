@@ -20,6 +20,9 @@ public class csTowerManager : MonoBehaviour
     [SerializeField]
     public bool bShowTowerRange;
 
+    [SerializeField]
+    public bool bShowSiren;
+
     #endregion
 
     #region Money
