@@ -7,13 +7,16 @@ using static MenueController;
 [CreateAssetMenu(fileName = "MenueController", menuName = "ScriptableObjects/Controller/MenueController")]
 public class MenueController : ScriptableObject {
     [SerializeField] private GameEvent _onOpenShopMenue;
-    [SerializeField] private GameEvent _onColoseShopMenue;
+    [SerializeField] private GameEvent _onCloseShopMenue;
 
     [SerializeField] private GameEvent _onOpenTowerMenue;
     [SerializeField] private GameEvent _onCloseTowerMenue;
 
     [SerializeField] private GameEvent _onOpenTowerInfo;
     [SerializeField] private GameEvent _onCloseTowerInfo;
+
+    [SerializeField] private GameEvent _onOpenPauseMenue;
+    [SerializeField] private GameEvent _onClosePauseMenue;
 
     public void onOpenMenue(MenueType menueType) { 
         switch(menueType) {
@@ -26,6 +29,9 @@ public class MenueController : ScriptableObject {
             case MenueType.TowerInfo:
                 _onOpenTowerInfo.Invoke();
             break;
+            case MenueType.PauseMenue:
+                _onOpenPauseMenue.Invoke();
+            break;
         }
     }
 
@@ -33,13 +39,16 @@ public class MenueController : ScriptableObject {
         switch (menueType)
         {
             case MenueType.ShopMenue:
-                _onColoseShopMenue.Invoke();
+                _onCloseShopMenue.Invoke();
                 break;
             case MenueType.TowerMenue:
                 _onCloseTowerMenue.Invoke();
                 break;
             case MenueType.TowerInfo:
                 _onCloseTowerInfo.Invoke();
+                break;
+            case MenueType.PauseMenue:
+                _onClosePauseMenue.Invoke();
                 break;
         }
     }
@@ -48,5 +57,6 @@ public class MenueController : ScriptableObject {
         ShopMenue = 0,
         TowerMenue = 1,
         TowerInfo = 2,
+        PauseMenue = 3,
     }
 }
