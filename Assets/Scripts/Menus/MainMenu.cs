@@ -11,6 +11,9 @@ public class MainMenu : MonoBehaviour {
     private GameObject m_settingsMenu;
     private CanvasGroup m_settingsMenuCanvasGroup;
 
+    [SerializeField]
+    private string[] m_scenes;
+
     private void Start() {
         h_CanvasGroupAndGameObjectSetupForStartMethod();
     }
@@ -19,8 +22,9 @@ public class MainMenu : MonoBehaviour {
 
     public void StartGame() {
         Debug.Log("Starting Game...");
-        //Auskommentieren oder Ändern, wenn Szenenhierarchie im Build Index drin ist
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        foreach (string scene in m_scenes) {
+            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+        }
     }
 
     public void gotoSettingsMenu() {
