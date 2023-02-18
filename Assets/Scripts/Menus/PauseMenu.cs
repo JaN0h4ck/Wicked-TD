@@ -30,6 +30,7 @@ public class PauseMenu : MonoBehaviour {
         GameObject.Find("InputSystem").GetComponent<PlayerInput>().actions["TogglePauseMenu"].performed += _ => TogglePauseMenu();
     }
 
+    #region PauseMenu
     public void Resume() {
         m_pauseMenuAnimator.enabled = true;
         m_pauseMenuUI.SetActive(false);
@@ -57,12 +58,6 @@ public class PauseMenu : MonoBehaviour {
         m_settingsMenuUI.SetActive(true);
     }
 
-    public void returnToPauseMenu() {
-        m_settingsMenuUI.SetActive(false);
-        m_pauseMenuCanvasGroup.alpha = 1;
-        m_pauseMenuCanvasGroup.interactable = true;
-    }
-
     public void LoadMenu() {
         Debug.Log("Loading Menu...");
     }
@@ -71,4 +66,21 @@ public class PauseMenu : MonoBehaviour {
         Debug.Log("Quitting Game...");
         Application.Quit();
     }
+    #endregion
+
+    #region SettingsMenu
+    public void returnToPauseMenu() {
+        m_settingsMenuUI.SetActive(false);
+        m_pauseMenuCanvasGroup.alpha = 1;
+        m_pauseMenuCanvasGroup.interactable = true;
+    }
+
+    public void SetQuality(int qualityIndex) {
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
+
+    public void SetFullscreen(bool isFullscreen) {
+        Screen.fullScreen = isFullscreen;
+    }
+    #endregion
 }
