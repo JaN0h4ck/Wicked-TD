@@ -24,6 +24,9 @@ public class MapController : Utils.Singleton<MapController> {
 
         _leftMouseClick_Tower.action.performed += OpenTowerMenue;
         _leftMouseClick_Map.action.performed += OpenShopMenue;
+
+        PauseMenu.onPauseMenuWasOpened += DisableController;
+        PauseMenu.onPauseMenuWasClosed += EneableController;
     }
     private void OnDestroy() {
         TowerController.Instance._onTowerWasBought -= EneableController;
@@ -100,8 +103,7 @@ public class MapController : Utils.Singleton<MapController> {
     private void EneableController() {
         this.enabled = true;
     }
-    private void DisableController()
-    {
+    private void DisableController() {
         this.enabled = false;
     }
 }
