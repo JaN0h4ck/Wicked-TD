@@ -4632,7 +4632,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 682924299}
   _interactiveMap: {fileID: 337750676}
-  _hoverTile: {fileID: 11400000, guid: 72485625332c7354a8120241e03a9405, type: 2}
+  _buildable: {fileID: 1291506620}
+  _hoverTile: {fileID: 11400000, guid: c99767b01271c214c8cb9b9c972b6cdf, type: 2}
+  _buildTile: {fileID: 11400000, guid: 72485625332c7354a8120241e03a9405, type: 2}
   _menueController: {fileID: 11400000, guid: 1a4935fad5173044da2014c782fc9bcb, type: 2}
   _leftMouseClick_Tower: {fileID: 5105456086985929399, guid: cf18e1617ca6b414288ed9302185582a, type: 3}
   _leftMouseClick_Map: {fileID: 8773500058151407490, guid: cf18e1617ca6b414288ed9302185582a, type: 3}

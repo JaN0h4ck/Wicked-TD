@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using TowerShop;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static csTowerBaseScript;
 
 public class TowerController : Utils.Singleton<TowerController> {
     [SerializeField] private SelectedShopItem _selectedShopItem;
 
     private float _offsetOfPrefabToTile = 0.5f;
 
-    public event Action _onTowerWasBought;
+    public event Action<string, int> _onTowerWasBought;
+    public event Action _onTowerWasBought2;
     public event Action _onTowerWasDestroyed;
 
     public void BuyTower() {
@@ -18,15 +20,41 @@ public class TowerController : Utils.Singleton<TowerController> {
             Debug.LogError("Tryed to spawn a tower but there was no tower prefab selected");
         }
 
-        GameObject instantiatedTower = Instantiate(_selectedShopItem.Object.ItemData._towerPrefab);
+        csTowerBaseScript tower = _selectedShopItem.Object.ItemData._towerPrefab.GetComponent<csTowerBaseScript>();
 
-        Vector3 newPosition = MapController.Instance._previousTileMapMousePosition;
-        newPosition.x += _offsetOfPrefabToTile;
-        newPosition.y += _offsetOfPrefabToTile;
+        CurrencyEnum currency = tower.GetCurrencyType();
+        Currency Coin;
+        int amount = (int)tower.GetBuildCosts();
 
-        instantiatedTower.transform.position = newPosition;
+        string coinType = "";
+        switch (currency)
+        {
+            case (CurrencyEnum.Gold):
+                coinType = "Gold";
+                break;
+            case (CurrencyEnum.C6):
+                coinType = "C6";
+                break;
+            case (CurrencyEnum.Neoplasma):
+                coinType = "Neoplasma";
+                break;
+        }
 
-        _onTowerWasBought?.Invoke();
+        Shop.Instance.currencyMap.TryGetValue(coinType, out Coin);
+
+        if (Coin.GetBalance() - amount > 0) {
+            //Buy tower
+            GameObject instantiatedTower = Instantiate(_selectedShopItem.Object.ItemData._towerPrefab);
+
+            Vector3 newPosition = MapController.Instance._previousTileMapMousePosition;
+            newPosition.x += _offsetOfPrefabToTile;
+            newPosition.y += _offsetOfPrefabToTile;
+
+            instantiatedTower.transform.position = newPosition;
+
+            _onTowerWasBought?.Invoke(coinType, amount);
+            _onTowerWasBought2?.Invoke();
+        }            
     }
 
     public void DestroyTower() {
