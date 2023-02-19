@@ -4,28 +4,38 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 
-
 [AddComponentMenu("UI/MyButton")]
-public class MyButton : Button {
+public class MyButton : Button
+{
 
     UnityEvent mOnDown = new UnityEvent();
     UnityEvent mOnUp = new UnityEvent();
 
-    public override void OnPointerDown(PointerEventData eventData) {
+    public override void OnPointerDown(PointerEventData eventData)
+    {
         base.OnPointerDown(eventData);
         mOnDown.Invoke();
+
+        // FMOD-Event abspielen
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MainMenu/MainMenuClickFinal", transform.position);
     }
 
-    public override void OnPointerUp(PointerEventData eventData) {
+    public override void OnPointerUp(PointerEventData eventData)
+    {
         base.OnPointerUp(eventData);
         mOnUp.Invoke();
     }
 
-    public UnityEvent onDown {
+    public UnityEvent onDown
+    {
         get { return mOnDown; }
     }
 
-    public UnityEvent onUp {
+    public UnityEvent onUp
+    {
         get { return mOnUp; }
     }
 }
+
+
+
