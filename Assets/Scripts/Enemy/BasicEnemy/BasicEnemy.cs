@@ -32,6 +32,7 @@ public class BasicEnemy : csEnemyHealth {
         
         this.gameObject.transform.position = _path.First();
         FinalNode = _path.Last();
+        spriteRenderer.flipX = !h_calculateFaceDirection();
 
         this.gameObject.transform.GetComponent<SpriteRenderer>().enabled = true;
     }
