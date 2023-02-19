@@ -41,7 +41,7 @@ public class csWeapon : MonoBehaviour
     private GameObject gRangeIndicatorPrefab;
 
     [SerializeField]
-    private int iCurrencyGainOnShot;
+    private float fCurrencyGainOnShot;
 
     [SerializeField]
     private Transform tsFirePoint;
@@ -51,7 +51,7 @@ public class csWeapon : MonoBehaviour
 
 
     
-    private int iStoredCurrency;
+    private float fStoredCurrency;
     
 
     private List<Transform> tslTargets;
@@ -214,7 +214,7 @@ public class csWeapon : MonoBehaviour
 
     private void AddMoney()
     {
-        iStoredCurrency += iCurrencyGainOnShot;
+        fStoredCurrency += fCurrencyGainOnShot;
     }
     /// <summary>
     /// Displays a siren under the tower
@@ -237,13 +237,13 @@ public class csWeapon : MonoBehaviour
         }
     }
 
-    public int GetStoredCurrency()
+    public float GetStoredCurrency()
     {
-        return iStoredCurrency;
+        return fStoredCurrency;
     }
     public void ResetStoredCurrency()
     {
-        iStoredCurrency = 0;
+        fStoredCurrency = 0;
     }
     #endregion
 

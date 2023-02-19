@@ -287,8 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a63e544e4600544e844a050afa37346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fBuildCost: 10
+  fBuildCost: 150
   eBuildCurrency: 1
+  iDropDecrease: 1
   fRefundPercentage: 50
   iFireMode: 1
   v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
@@ -297,12 +298,12 @@ MonoBehaviour:
   - {fileID: 623368271568796179, guid: c4be5376989c78e489665b9682ae0b55, type: 3}
   - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
   gaSkillPrefabs:
-  - {fileID: 204747137393549878, guid: dd4cc5ad83e4f934f9315805c103938b, type: 3}
-  - {fileID: 204747137393549878, guid: dd4cc5ad83e4f934f9315805c103938b, type: 3}
   - {fileID: 7459808221633123206, guid: 9a96c49f210bc59429526f7fc96003c5, type: 3}
+  - {fileID: 3270140492000724064, guid: add34c5df5755c941a576b34c28808dd, type: 3}
+  - {fileID: 967700559658790185, guid: 161cb301b2bbbcd46bb7f441228a6d30, type: 3}
   gExplosionEffectPrefab: {fileID: 7723929907739548047, guid: 9b195b4dd1017ae40ab53475067b7386, type: 3}
   gDamageIndicatorPrefab: {fileID: 11900282100008816, guid: 8cfb88113f07d604c8eddcf7541b766d, type: 3}
-  fExplosionDamage: 100
+  fExplosionDamage: 40
 --- !u!114 &9012173906277577453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,20 +317,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fDamage: 40
-  fFireSpeed: 2
-  fShootRange: 10
-  fBulletSpeed: 20
+  fFireSpeed: 3
+  fShootRange: 7
+  fBulletSpeed: 40
   iTargetAmount: 1
   fFireSpeedDeacrease: 0.4
   gaPrefabBullets:
   - {fileID: 988432995199586303, guid: 36b961e40dffb534ba92d35927a5539f, type: 3}
-  - {fileID: 988432995199586303, guid: 36b961e40dffb534ba92d35927a5539f, type: 3}
-  - {fileID: 988432995199586303, guid: 36b961e40dffb534ba92d35927a5539f, type: 3}
+  - {fileID: 988432995199586303, guid: 01a2033e565bde9458d104d1600cd7a8, type: 3}
+  - {fileID: 988432995199586303, guid: 9aef255b424213f4fb75b9d1bed17b3b, type: 3}
   lmEnemy:
     serializedVersion: 2
     m_Bits: 55
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
-  iCurrencyGainOnShot: 1
+  fCurrencyGainOnShot: 10
   tsFirePoint: {fileID: 8925066964074896533}
   bSplashDamage: 1
 --- !u!114 &1624344753651208687
@@ -402,7 +403,7 @@ BoxCollider2D:
   m_Offset: {x: 0.000000059604645, y: 0.011535972}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.02}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.048, y: 2.048}
     newSize: {x: 2.048, y: 2.048}
     adaptiveTilingThreshold: 0.5
