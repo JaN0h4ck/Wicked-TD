@@ -22,7 +22,11 @@ public class HealthBar : MonoBehaviour {
         double health = Nexus.instance.getHealth() / Nexus.instance.maxHealth;
         double numberOfSegments = health * m_healthBar.Length;
         double numberOfSegmentsBeforeDecimal = Math.Truncate(numberOfSegments);
-        double numberOfSegmentsAfterDecimal = (numberOfSegments - numberOfSegmentsBeforeDecimal) * 10;
+        double numberOfSegmentsAfterDecimal = (numberOfSegments - numberOfSegmentsBeforeDecimal) * (m_healthBar.Length * 2);
+
+        if(numberOfSegmentsBeforeDecimal >= m_healthBar.Length) {
+            numberOfSegmentsBeforeDecimal = m_healthBar.Length;
+        }
 
         for (int i = 0; i < numberOfSegmentsBeforeDecimal; i++) {
             m_healthBar[i].sprite = m_healthBarStates[2];
