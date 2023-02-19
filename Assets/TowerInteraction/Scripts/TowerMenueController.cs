@@ -5,6 +5,7 @@ using Utils.Menue;
 
 public class TowerMenueController : MenueNavigation
 {
+    [SerializeField] private GameObject _destroyTowerIcon;
     [Header("Infos")]
     [SerializeField] private TextMeshProUGUI m_towerName;
     [SerializeField] private TextMeshProUGUI m_damage;
@@ -16,19 +17,33 @@ public class TowerMenueController : MenueNavigation
 
     private csTowerBaseScript _tower;
     private csWeapon _towerWeapon;
+    private float _towerDestroyIconOffsetPosY = 160f;
 
     private void Awake() {
+        TowerController.Instance._onTowerWasDestroyed += CloseMenue;
         CloseMenue();
+    }
+    private void OnDestroy()
+    {
+        TowerController.Instance._onTowerWasDestroyed -= CloseMenue;
     }
 
     public override void OpenMenue() {
         InitializeTowerMenue();
+        SetDestroyTowerIcon();
         base.OpenMenue();
     }
 
     public override void CloseMenue() { 
         StopCoroutine(UpdateTowerMenue());
         base.CloseMenue();
+    }
+
+    private void SetDestroyTowerIcon() {
+        var worldPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, MapController.Instance._selectedTower.transform.position);
+        var anchoredPoint = _destroyTowerIcon.transform.parent.InverseTransformPoint(worldPoint);
+        anchoredPoint.y += _towerDestroyIconOffsetPosY;
+        ((RectTransform)_destroyTowerIcon.transform).anchoredPosition = anchoredPoint;
     }
 
     private void InitializeTowerMenue() {
@@ -68,5 +83,9 @@ public class TowerMenueController : MenueNavigation
 
             yield return new WaitForSeconds(0.5f);
         }       
+    }
+
+    public void OnDestroyTower() {
+        TowerController.Instance.DestroyTower();
     }
 }
