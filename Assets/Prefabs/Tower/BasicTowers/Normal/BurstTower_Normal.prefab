@@ -116,6 +116,7 @@ MonoBehaviour:
   - {fileID: 7459808221633123206, guid: 9a96c49f210bc59429526f7fc96003c5, type: 3}
   - {fileID: 3270140492000724064, guid: add34c5df5755c941a576b34c28808dd, type: 3}
   - {fileID: 204747137393549878, guid: dd4cc5ad83e4f934f9315805c103938b, type: 3}
+  sTowerName: Tesla
 --- !u!114 &978813792635838893
 MonoBehaviour:
   m_ObjectHideFlags: 0

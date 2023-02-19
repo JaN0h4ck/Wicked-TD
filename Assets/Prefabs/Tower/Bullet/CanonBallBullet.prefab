@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2843726507343425928}
   - component: {fileID: 579002742252665580}
   m_Layer: 0
-  m_Name: 3CloudBullet
+  m_Name: CanonBallBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 988432995199586303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.9709547, y: -1.2913021, z: 0}
-  m_LocalScale: {x: 0.26019403, y: 0.3350258, z: 0.26019403}
+  m_LocalScale: {x: 0.20661946, y: 0.20661946, z: 0.26880574}
   m_Children:
   - {fileID: 3377874267292200121}
   m_Father: {fileID: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e08adc666db4d754abfa983dcefeb6d1, type: 3}
-  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 0.62352943}
+  m_Sprite: {fileID: 21300000, guid: 80e6890becb4f3c4b975b74bc995f264, type: 3}
+  m_Color: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -113,9 +113,9 @@ MonoBehaviour:
   iShootCost: 1
   bAttachEffectToObject: 1
   gDamageIndicatorPrefab: {fileID: 11900282100008816, guid: 8cfb88113f07d604c8eddcf7541b766d, type: 3}
-  fDamageModifier: 50
-  fBulletspeedModifier: -36
-  fFireSpeedModifier: 1.5
+  fDamageModifier: 20
+  fBulletspeedModifier: -10
+  fFireSpeedModifier: 1
 --- !u!1001 &1820010166036921234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,11 +133,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4008598555166545707, guid: 6c8c5de60df5ac9419809739de74d9b2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.038973
+      value: 1.9943438
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008598555166545707, guid: 6c8c5de60df5ac9419809739de74d9b2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9195329
       objectReference: {fileID: 0}
     - target: {fileID: 4008598555166545707, guid: 6c8c5de60df5ac9419809739de74d9b2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.17266835
+      value: 0.5842339
       objectReference: {fileID: 0}
     - target: {fileID: 4008598555166545707, guid: 6c8c5de60df5ac9419809739de74d9b2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -145,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4008598555166545707, guid: 6c8c5de60df5ac9419809739de74d9b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.73
+      value: 1.59
       objectReference: {fileID: 0}
     - target: {fileID: 4008598555166545707, guid: 6c8c5de60df5ac9419809739de74d9b2, type: 3}
       propertyPath: m_LocalPosition.z

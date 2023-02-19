@@ -258,7 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fBuildCost: 200
   eBuildCurrency: 1
-  iDropDecrease: 1
+  fDropDecrease: 0
   fRefundPercentage: 30
   iFireMode: 1
   v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
@@ -270,6 +270,7 @@ MonoBehaviour:
   - {fileID: 204747137393549878, guid: dd4cc5ad83e4f934f9315805c103938b, type: 3}
   - {fileID: 1481891421522604067, guid: a58252dba6486ef4c9772097607be15a, type: 3}
   - {fileID: 7459808221633123206, guid: 9a96c49f210bc59429526f7fc96003c5, type: 3}
+  sTowerName: Smash&Squeeze
   gExplosionEffectPrefab: {fileID: 7723929907739548047, guid: 9b195b4dd1017ae40ab53475067b7386, type: 3}
   gDamageIndicatorPrefab: {fileID: 11900282100008816, guid: 8cfb88113f07d604c8eddcf7541b766d, type: 3}
   fExplosionDamage: 80

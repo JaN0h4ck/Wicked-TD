@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 3439725846309814322}
   - component: {fileID: -6911535479943661267}
   m_Layer: 7
-  m_Name: Normal
+  m_Name: Basetower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,6 +261,7 @@ MonoBehaviour:
   - {fileID: 3270140492000724064, guid: add34c5df5755c941a576b34c28808dd, type: 3}
   - {fileID: 1481891421522604067, guid: a58252dba6486ef4c9772097607be15a, type: 3}
   - {fileID: 204747137393549878, guid: dd4cc5ad83e4f934f9315805c103938b, type: 3}
+  sTowerName: BaseTower
 --- !u!114 &3439725845545446005
 MonoBehaviour:
   m_ObjectHideFlags: 0

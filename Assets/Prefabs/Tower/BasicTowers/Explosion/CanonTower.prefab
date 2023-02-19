@@ -289,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fBuildCost: 150
   eBuildCurrency: 1
-  iDropDecrease: 1
+  fDropDecrease: 0
   fRefundPercentage: 50
   iFireMode: 1
   v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
@@ -301,6 +301,7 @@ MonoBehaviour:
   - {fileID: 7459808221633123206, guid: 9a96c49f210bc59429526f7fc96003c5, type: 3}
   - {fileID: 3270140492000724064, guid: add34c5df5755c941a576b34c28808dd, type: 3}
   - {fileID: 967700559658790185, guid: 161cb301b2bbbcd46bb7f441228a6d30, type: 3}
+  sTowerName: Canontower
   gExplosionEffectPrefab: {fileID: 7723929907739548047, guid: 9b195b4dd1017ae40ab53475067b7386, type: 3}
   gDamageIndicatorPrefab: {fileID: 11900282100008816, guid: 8cfb88113f07d604c8eddcf7541b766d, type: 3}
   fExplosionDamage: 40

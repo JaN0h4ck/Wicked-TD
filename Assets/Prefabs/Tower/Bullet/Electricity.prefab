@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2843726507343425928}
   - component: {fileID: 579002742252665580}
   m_Layer: 0
-  m_Name: SparkBullet
+  m_Name: Electricity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

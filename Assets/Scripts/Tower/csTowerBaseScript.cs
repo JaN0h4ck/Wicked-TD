@@ -50,6 +50,7 @@ public class csTowerBaseScript : MonoBehaviour
     [Tooltip("Put in here all Skillprefabs. The tower ill be able to use them by calling TriggerSKill(index)")]
     private GameObject[] gaSkillPrefabs;
 
+    public string sTowerName;
 
     private int iGenerationMode;
     #endregion

@@ -143,6 +143,7 @@ MonoBehaviour:
   gaSkillPrefabs:
   - {fileID: 1481891421522604067, guid: a58252dba6486ef4c9772097607be15a, type: 3}
   - {fileID: 1481891421522604067, guid: a58252dba6486ef4c9772097607be15a, type: 3}
+  sTowerName: Mine
   fCurrencyGenerationSpeed: 1
   fCurrencyGenerationAmount: 4
 --- !u!114 &5715238443691183860
