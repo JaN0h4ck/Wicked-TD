@@ -27,6 +27,9 @@ public class csTowerBaseScript : MonoBehaviour
     private CurrencyEnum eBuildCurrency;
 
     [SerializeField]
+    private float fDropDecrease;
+
+    [SerializeField]
     [Tooltip("The Money that will be refunded form the buildcosts on destruction")]
     [Range(0,100)]
     private float fRefundPercentage;
@@ -47,6 +50,7 @@ public class csTowerBaseScript : MonoBehaviour
     [Tooltip("Put in here all Skillprefabs. The tower ill be able to use them by calling TriggerSKill(index)")]
     private GameObject[] gaSkillPrefabs;
 
+    public string sTowerName;
 
     private int iGenerationMode;
     #endregion
@@ -121,9 +125,9 @@ public class csTowerBaseScript : MonoBehaviour
     #endregion
 
     #region Currency
-    private void AddCurrency(int iIndex,int iAmount)
+    private void AddCurrency(int iIndex,float fAmount)
     {
-        iaStoredCurrencies[iIndex]+= iAmount;
+        iaStoredCurrencies[iIndex]+= (int)fAmount;
     }
 
     public void PullCurrency()
@@ -143,7 +147,12 @@ public class csTowerBaseScript : MonoBehaviour
         PullCurrency();
         for(int i = 2;i>=0;i--)
         {
-            csTowerManager.current.AddCurrencyToBalance(i,iaStoredCurrencies[i]);
+            if(fDropDecrease==0)
+            {
+                fDropDecrease = 1;
+            }
+            csTowerManager.current.AddCurrencyToBalance(i,(int)((float)iaStoredCurrencies[i]/fDropDecrease));
+            Debug.LogWarning("%"+ (int)iaStoredCurrencies[i]/fDropDecrease);
         }
         RefundBuildCosts();
     }

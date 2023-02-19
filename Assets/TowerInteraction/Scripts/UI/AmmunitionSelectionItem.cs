@@ -5,7 +5,7 @@ using TowerShop;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class AmmunitionSelectionItem : SelectionItem, IPointerEnterHandler
+public class AmmunitionSelectionItem : SelectionItem, IPointerEnterHandler, IPointerClickHandler
 {
     [SerializeField] private SelectedShopItem _selectedShopItem;
     [SerializeField] private int _ammunitionIndex;
@@ -28,5 +28,15 @@ public class AmmunitionSelectionItem : SelectionItem, IPointerEnterHandler
                                    "Bulletspeed: " + ammunition.GetBulletspeedModifier() + "\n" +
                                    "FireSpeed: " + -ammunition.GetFireSpeedModifier() + "\n";
         base.OnPointerEnter(eventData);
+    }
+
+    public new void OnPointerClick(PointerEventData eventData) {
+
+        var tower = MapController.Instance._selectedTower.GetComponent<csTowerBaseScript>();
+        var ammunition = tower.GetComponent<csWeapon>();
+
+        ammunition.ChangeBullet(_ammunitionIndex);
+
+        base.OnPointerClick(eventData);
     }
 }

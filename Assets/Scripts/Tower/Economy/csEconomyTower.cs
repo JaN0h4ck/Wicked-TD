@@ -27,7 +27,7 @@ public class csEconomyTower : csTowerBaseScript
         {
             Debug.Log("~Generated currency");
             yield return new WaitForSecondsRealtime(fCurrencyGenerationSpeed);
-            csTowerManager.current.AddCurrencyToBalance(iFireMode,fCurrencyGenerationAmount);
+            csTowerManager.current.AddCurrencyToBalance(0,fCurrencyGenerationAmount);
         }
     }
 

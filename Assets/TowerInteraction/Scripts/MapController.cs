@@ -6,8 +6,10 @@ public class MapController : Utils.Singleton<MapController> {
     [Header("Tilemaps")]
     [SerializeField] private Grid _grid;
     [SerializeField] private Tilemap _interactiveMap;
+    [SerializeField] private Tilemap _buildable;
     [Header("Tiles")]
     [SerializeField] private Tile _hoverTile;
+    [SerializeField] private Tile _buildTile;
     [Header("Controller")]
     [SerializeField] private MenueController _menueController;
     [Header("Hotkeys")]
@@ -19,7 +21,7 @@ public class MapController : Utils.Singleton<MapController> {
     public GameObject _selectedTower { get; private set; }
 
     private void Awake() {
-        TowerController.Instance._onTowerWasBought += EneableController;
+        TowerController.Instance._onTowerWasBought2 += EneableController;
         TowerController.Instance._onTowerWasDestroyed += EneableController;
 
         _leftMouseClick_Tower.action.performed += OpenTowerMenue;
@@ -31,7 +33,7 @@ public class MapController : Utils.Singleton<MapController> {
         Nexus.instance.onGameOver += DisableController;
     }
     private void OnDestroy() {
-        TowerController.Instance._onTowerWasBought -= EneableController;
+        TowerController.Instance._onTowerWasBought2 -= EneableController;
         TowerController.Instance._onTowerWasDestroyed -= EneableController;
     }
 
@@ -50,24 +52,30 @@ public class MapController : Utils.Singleton<MapController> {
     private void Update() {
         Vector3Int currentMousePosition = GetMousePosition();
 
-        //Hover effect
-        if (!currentMousePosition.Equals(_previousTileMapMousePosition))
-        {
+        if (!currentMousePosition.Equals(_previousTileMapMousePosition)) {
             //Reset the old tile
             _interactiveMap.SetTile(_previousTileMapMousePosition, null);
-            //Set the new tile
-            _interactiveMap.SetTile(currentMousePosition, _hoverTile);
-            //Set the new mouse position
-            _previousTileMapMousePosition = currentMousePosition;
+            //Buildable icon
+            if (_buildable.GetTile(currentMousePosition) != null) {
+                //Set the new mouse position
+                _previousTileMapMousePosition = currentMousePosition;
+                if (CheckIfMouseIsOverTower()) {
+                    //Set the new tile
+                    _interactiveMap.SetTile(currentMousePosition, _hoverTile);
+                }
+                else {
+                    //Set the new tile
+                    _interactiveMap.SetTile(currentMousePosition, _buildTile);
+                }               
+            }
         }
-
     }
 
     #region Menue
     private void OpenShopMenue(InputAction.CallbackContext context) {
         if (context.phase != InputActionPhase.Performed) { return; }
 
-        if (!CheckIfMouseIsOverTower()) {
+        if (_interactiveMap.GetTile(_previousTileMapMousePosition) != null) {
             DisableController();
             _menueController.onOpenMenue(MenueController.MenueType.ShopMenue);
         }

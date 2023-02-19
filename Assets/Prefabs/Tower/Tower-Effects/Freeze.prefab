@@ -4845,7 +4845,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4882,7 +4882,7 @@ GameObject:
   - component: {fileID: 7459808221633123207}
   - component: {fileID: 7647538073899323938}
   m_Layer: 0
-  m_Name: FreezeEffect
+  m_Name: Freeze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4916,8 +4916,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076ce477154c13846af9275d4916ee3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fDuration: 6
-  v2Size: {x: 4, y: 4}
+  fDuration: 5
+  v2Size: {x: 3, y: 3}
   sDescription: This skill freezes all enemies in range  for some seconds
 --- !u!1 &7459808221846656711
 GameObject:
@@ -9764,7 +9764,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

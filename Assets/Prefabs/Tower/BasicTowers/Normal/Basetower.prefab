@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 3439725846309814322}
   - component: {fileID: -6911535479943661267}
   m_Layer: 7
-  m_Name: Normal
+  m_Name: Basetower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,9 +247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187ca6dfcf05ed84e9303ccf415ac192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fBuildCost: 10
+  fBuildCost: 50
   eBuildCurrency: 0
-  fRefundPercentage: 50
+  fDropDecrease: 1.5
+  fRefundPercentage: 80
   iFireMode: 0
   v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
   gCurrencyAnimationPrefabs:
@@ -258,8 +259,9 @@ MonoBehaviour:
   - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
   gaSkillPrefabs:
   - {fileID: 3270140492000724064, guid: add34c5df5755c941a576b34c28808dd, type: 3}
-  - {fileID: 967700559658790185, guid: 161cb301b2bbbcd46bb7f441228a6d30, type: 3}
   - {fileID: 1481891421522604067, guid: a58252dba6486ef4c9772097607be15a, type: 3}
+  - {fileID: 204747137393549878, guid: dd4cc5ad83e4f934f9315805c103938b, type: 3}
+  sTowerName: BaseTower
 --- !u!114 &3439725845545446005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,21 +274,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764e47148dcfdbf4c93af50a5f876aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fDamage: 10
-  fFireSpeed: 0.5
+  fDamage: 5
+  fFireSpeed: 0.3
   fShootRange: 15
   fBulletSpeed: 40
   iTargetAmount: 1
   fFireSpeedDeacrease: 0.025
   gaPrefabBullets:
-  - {fileID: 988432995199586303, guid: 36b961e40dffb534ba92d35927a5539f, type: 3}
   - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
-  - {fileID: 988432995199586303, guid: 01a2033e565bde9458d104d1600cd7a8, type: 3}
+  - {fileID: 988432995199586303, guid: 772b39587cb255342946d1f5f0b2f753, type: 3}
+  - {fileID: 988432995199586303, guid: f330187e7dcb0db4eb85feb7f38e1425, type: 3}
   lmEnemy:
     serializedVersion: 2
     m_Bits: 55
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
-  iCurrencyGainOnShot: 1
+  fCurrencyGainOnShot: 1
   tsFirePoint: {fileID: 3439725847016174242}
   bSplashDamage: 0
 --- !u!114 &6149301374258703615
@@ -340,7 +342,7 @@ BoxCollider2D:
   m_Offset: {x: 0.01995337, y: 0.01596272}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.02}
+    pivot: {x: 0.5, y: 0.2}
     oldSize: {x: 2.048, y: 2.048}
     newSize: {x: 10.24, y: 10.24}
     adaptiveTilingThreshold: 0.5

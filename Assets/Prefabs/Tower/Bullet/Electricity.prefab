@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2843726507343425928}
   - component: {fileID: 579002742252665580}
   m_Layer: 0
-  m_Name: SparkBullet
+  m_Name: Electricity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   iShootCost: 1
   bAttachEffectToObject: 0
   gDamageIndicatorPrefab: {fileID: 11900282100008816, guid: 8cfb88113f07d604c8eddcf7541b766d, type: 3}
-  fDamageModifier: 0
+  fDamageModifier: 5
   fBulletspeedModifier: 0
   fFireSpeedModifier: 0
 --- !u!1001 &3051139970046379213

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9085680934198032653}
   - component: {fileID: 3718416509557573275}
   m_Layer: 0
-  m_Name: GiftEffect
+  m_Name: Posion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
   v2Size: {x: 5, y: 5}
   sDescription: This skill poisons all enemies in range and deals damage over time
     to them
-  fDamageOverTime: 4
+  fDamageOverTime: 3
 --- !u!1 &5597752325906185572
 GameObject:
   m_ObjectHideFlags: 0
@@ -4859,7 +4859,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_RenderMode: 1
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -9672,7 +9672,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_RenderMode: 1
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -14534,7 +14534,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
