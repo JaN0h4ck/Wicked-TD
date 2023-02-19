@@ -3733,7 +3733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fBuildCost: 10
-  eBuildCurrency: 0
+  eBuildCurrency: 2
   fRefundPercentage: 50
   iFireMode: 0
   v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
