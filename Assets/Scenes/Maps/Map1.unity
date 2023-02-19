@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (9)
@@ -788,6 +792,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (2)
@@ -857,7 +865,7 @@ GameObject:
   - component: {fileID: 454985829}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -972,6 +980,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (8)
@@ -1034,6 +1046,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (10)
@@ -1096,6 +1112,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint
@@ -1290,6 +1310,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (6)
@@ -1371,7 +1395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166636773}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2998838, y: -0.31040955, z: 0.03186035}
+  m_LocalPosition: {x: 1.2998838, y: -0.31040955, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 484487602}
@@ -1437,8 +1461,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212304105}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5412824, y: 0.8634734, z: -58.631947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.51, y: 0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1166636774}
@@ -3415,6 +3439,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (1)
@@ -3477,6 +3505,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (3)
@@ -3539,6 +3571,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (7)
@@ -3549,7 +3585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9048746353194219276, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.71
+      value: 6.78
       objectReference: {fileID: 0}
     - target: {fileID: 9048746353194219276, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3601,6 +3637,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (5)
@@ -3663,6 +3703,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (11)
@@ -3725,6 +3769,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1166636774}
     m_Modifications:
+    - target: {fileID: -4446685623527019865, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8978353193145633507, guid: 8e6daa8cae168b047aad3b55df3fc25f, type: 3}
       propertyPath: m_Name
       value: Waypoint (4)
