@@ -47,6 +47,8 @@ public class csTowerBaseScript : MonoBehaviour
     [Tooltip("Put in here all Skillprefabs. The tower ill be able to use them by calling TriggerSKill(index)")]
     private GameObject[] gaSkillPrefabs;
 
+
+    private int iGenerationMode;
     #endregion
     #region Setup
     private void Start()
@@ -57,9 +59,35 @@ public class csTowerBaseScript : MonoBehaviour
     {
         Debug.Log("(Tower): Running setup on " + gameObject.name);
         TowerManager = csTowerManager.current;
+        SetGenerationMode();
+        SetupExplosionTowerBugFix();
         Invoke("WeaponSetup", 0.01f);
     }
 
+    private void SetupExplosionTowerBugFix()
+    {
+        if(gameObject.name == "Explosion"|| gameObject.name == "Explosion(Clone)")
+        {
+            Debug.LogWarning("ya");
+            this.transform.position = new Vector3(0,0.1f,0.1f);
+        }
+    }
+    protected void SetGenerationMode()
+    {
+        switch(eBuildCurrency)
+        {
+            case (CurrencyEnum.Gold):
+                iGenerationMode = 0;
+                break;
+            case (CurrencyEnum.C6):
+                iGenerationMode = 1;
+                break;
+            case (CurrencyEnum.Neoplasma):
+                iGenerationMode = 2;
+                break;
+        }
+
+    }
     private void WeaponSetup()
     {
 
@@ -100,7 +128,7 @@ public class csTowerBaseScript : MonoBehaviour
 
     public void PullCurrency()
     {
-        AddCurrency(iFireMode,WeaponManager.GetStoredCurrency());
+        AddCurrency(iGenerationMode,WeaponManager.GetStoredCurrency());
         WeaponManager.ResetStoredCurrency();
     }
 
@@ -260,6 +288,11 @@ public class csTowerBaseScript : MonoBehaviour
         return WeaponManager;
     }
 
+
+    public int GetWeaponMode()
+    {
+        return iGenerationMode;
+    }
     #endregion
 
 }
