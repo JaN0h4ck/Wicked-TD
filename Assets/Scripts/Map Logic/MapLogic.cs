@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+
 public class MapLogic : MonoBehaviour
 {
     private Nexus nexusNode;
@@ -11,8 +12,11 @@ public class MapLogic : MonoBehaviour
     private float timer;
 
     public bool gameRunning = true;
-    
-    private float timeBetweenWaves = 10f;
+
+    private float timeBetweenWaves = 30f;
+    private bool alertSoundPlayed = false;
+    private bool incomingVeryHardPlayed = false; 
+
     void Start()
     {
         nexusNode = this.gameObject.transform.GetChild(0).GetComponent<Nexus>();
@@ -25,6 +29,10 @@ public class MapLogic : MonoBehaviour
         {
             Logic();
         }
+        else
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveComplete", transform.position);
+        }
     }
 
     private void Logic()
@@ -36,9 +44,20 @@ public class MapLogic : MonoBehaviour
 
         if (WaveSpawnSignal)
         {
+            if (!alertSoundPlayed && timer >= timeBetweenWaves - 5f)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveAlert", transform.position);
+                alertSoundPlayed = true;
+            }
+
+            if (difficulty > 100 && !incomingVeryHardPlayed && timer >= timeBetweenWaves - 5f)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveIncomingVeryHard", transform.position);
+                incomingVeryHardPlayed = true;
+            }
+
             h_divideDifficultyToPaths();
         }
-       
     }
 
     bool h_checkIfAnySpawnerGotChildren()
@@ -55,13 +74,17 @@ public class MapLogic : MonoBehaviour
     {
         return i ? (ushort)1 : (ushort)0;
     }
-    
+
     private bool h_timerCountdown()
     {
         timer += Time.deltaTime;
         bool state = (timer >= timeBetweenWaves);
         if (state)
+        {
             timer = 0f;
+            alertSoundPlayed = false;
+            incomingVeryHardPlayed = false;
+        }
         return state;
     }
 
@@ -69,19 +92,19 @@ public class MapLogic : MonoBehaviour
     {
         return timer;
     }
-    
+
     private void h_divideDifficultyToPaths()
     {
         difficulty += 10;
         bufferDifficulty = difficulty;
 
-        for (int i = 0 ; i < Random.Range(2, Random.Range(0,15) * spawnerNodes.Count()); i++)
+        for (int i = 0; i < Random.Range(2, Random.Range(0, 15) * spawnerNodes.Count()); i++)
         {
             int a = Random.Range(0, spawnerNodes.Length);
             int b = Random.Range(0, spawnerNodes.Length);
             (spawnerNodes[a], spawnerNodes[b]) = (spawnerNodes[b], spawnerNodes[a]);
         }
-        
+
         for (int i = 0; i < spawnerNodes.Count(); i++)
         {
             uint generatedRange = (uint)Random.Range(0, bufferDifficulty);
