@@ -305,9 +305,14 @@ public class csWeapon : MonoBehaviour
 
     public void ModifyDamage(float fFireSpeedModifier)
     {
-        if(fFireSpeedModifier != fModifiedFireSpeed)
+        if(fFireSpeedModifier != fModifiedFireSpeed&&fFireSpeed-fModifiedFireSpeed>0)
         {
             fModifiedFireSpeed = fFireSpeedModifier;
+
+        }
+        else
+        {
+            Debug.LogWarning("Your firespeed modifier was too high it will be ignored");
         }
     }
 
