@@ -23,6 +23,8 @@ public class csTowerVisuals : MonoBehaviour
 
     private bool bFinalStageReached = false;
 
+    private int iFaktor = 10;
+
     #endregion
 
     /*
@@ -61,29 +63,31 @@ public class csTowerVisuals : MonoBehaviour
 
     private void UpdateToNextSprite()
     {
-        sprTowerRenderer.sprite = splTowerLooks[iSpriteIndex];
-        iSpriteIndex++;
-        gameObject.GetComponent<csWeapon>().UpdateAnimationTimeProgressionToNextStage();
+        if (iSpriteIndex < splTowerLooks.Count)
+        {
+            sprTowerRenderer.sprite = splTowerLooks[iSpriteIndex];
+            iSpriteIndex++;
+            gameObject.GetComponent<csWeapon>().UpdateAnimationTimeProgressionToNextStage();
+            gameObject.GetComponent<csWeapon>().PlayIdleAnimation();
+        }
     }
     #endregion
 
     #region SpeedChecks
     private bool DidTowerEnterNewProgressionState()
     {
-        if(iSpriteIndex>splTowerLooks.Count)
-        {
-            bFinalStageReached = true;
-        }
-        if(iTime>iTimeTreshold&& splTowerLooks.Count>=iSpriteIndex+1)
-        {
-            iTime = 0;
-            return true;
-        }
-        else
-        {
+        TowerScript.PullCurrency();
+       for(int i=0; i< TowerScript.GetPoints().Length; i++)
+       {
+            if(TowerScript.GetPoints()[i]>iFaktor)
+            {
+                iFaktor *= 2;
+                return true;
+            }
+       }
             return false;
-        }
-    }
+     }
+   
 
     private float GetCurrentFireSpeed()
     {

@@ -69,6 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fDuration: 20
   v2Size: {x: 5, y: 5}
+  sDescription: This skill poisons all enemies in range and deals damage over time
+    to them
   fDamageOverTime: 4
 --- !u!1 &5597752325906185572
 GameObject:

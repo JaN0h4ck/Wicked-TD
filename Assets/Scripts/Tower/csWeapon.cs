@@ -45,6 +45,11 @@ public class csWeapon : MonoBehaviour
 
     [SerializeField]
     private Transform tsFirePoint;
+
+    [SerializeField]
+    private bool bSplashDamage;
+
+
     
     private int iStoredCurrency;
     
@@ -256,9 +261,10 @@ public class csWeapon : MonoBehaviour
 
                 csBullet Bullet = gTemp.GetComponent<csBullet>();
 
-                Bullet.SetDamage(fDamage);
+                Bullet.SetDamage(fDamage,bSplashDamage);
                 Bullet.SetIndicatorEmpty(gIndicatorEmpty);
                 Bullet.SetStartWeapon(this);
+                Bullet.SetSplashRadius(new Vector2(2,2));
 
                 if (Bullet != null)
                 {
@@ -299,9 +305,14 @@ public class csWeapon : MonoBehaviour
 
     public void ModifyDamage(float fFireSpeedModifier)
     {
-        if(fFireSpeedModifier != fModifiedFireSpeed)
+        if(fFireSpeedModifier != fModifiedFireSpeed&&fFireSpeed-fModifiedFireSpeed>0)
         {
             fModifiedFireSpeed = fFireSpeedModifier;
+
+        }
+        else
+        {
+            Debug.LogWarning("Your firespeed modifier was too high it will be ignored");
         }
     }
 
@@ -380,14 +391,16 @@ public class csWeapon : MonoBehaviour
     {
         if (aclAnimations.Count >= 2)
         {
+            Debug.LogWarning("§Playngattack " + iAnimationTimeProgresion);
             amAnimator.Play(aclAnimations[1+iAnimationTimeProgresion].name);
         }
     }
 
-    protected void PlayIdleAnimation()
+    public void PlayIdleAnimation()
     {
         if (aclAnimations.Count != 0)
         {
+            Debug.LogWarning("§Plaingidle " + iAnimationTimeProgresion);
             amAnimator.Play(aclAnimations[0 + iAnimationTimeProgresion].name);
         }
     }
