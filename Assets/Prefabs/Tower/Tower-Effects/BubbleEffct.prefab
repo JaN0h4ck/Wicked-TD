@@ -60,6 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fDuration: 10
   v2Size: {x: 4, y: 2}
+  sDescription: Spawns a bubblebeam which does damage over time. The beam is shoot
+    towards the last enemy-position
   fDamage: 1
 --- !u!1 &967700560663584274
 GameObject:
