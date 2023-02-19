@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7920831510968230428}
   - component: {fileID: 7920831510968230429}
   - component: {fileID: 7920831510968230418}
+  - component: {fileID: 5371027756259141572}
   m_Layer: 0
   m_Name: WalkingAlien
   m_TagString: Untagged
@@ -117,3 +118,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: []
+--- !u!61 &5371027756259141572
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920831510968230430}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.15684307, y: 1.4126981}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.52, y: 0.2}
+    oldSize: {x: 10.24, y: 10.24}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.972261, y: 3.4301445}
+  m_EdgeRadius: 0
