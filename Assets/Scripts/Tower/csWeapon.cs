@@ -318,7 +318,14 @@ public class csWeapon : MonoBehaviour
     public void SkillModifyFireSpeed(float fSkillSpeedModifier)
     {
         Debug.LogWarning("%Iamhere");
-        fSkillFireSpeedModifier = fSkillSpeedModifier;
+        if (fSkillSpeedModifier - fFireSpeed < 0)
+        {
+            fFireSpeed = 0.1f;
+        }
+        else
+        {
+            fSkillFireSpeedModifier = fSkillSpeedModifier;
+        }
     }
     public void ResetFireSpeedModifier()
     {

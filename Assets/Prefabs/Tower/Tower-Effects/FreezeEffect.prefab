@@ -4916,8 +4916,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076ce477154c13846af9275d4916ee3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fDuration: 6
-  v2Size: {x: 4, y: 4}
+  fDuration: 5
+  v2Size: {x: 3, y: 3}
   sDescription: This skill freezes all enemies in range  for some seconds
 --- !u!1 &7459808221846656711
 GameObject:
