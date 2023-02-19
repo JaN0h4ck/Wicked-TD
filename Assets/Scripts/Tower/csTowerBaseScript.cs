@@ -60,10 +60,18 @@ public class csTowerBaseScript : MonoBehaviour
         Debug.Log("(Tower): Running setup on " + gameObject.name);
         TowerManager = csTowerManager.current;
         SetGenerationMode();
+        SetupExplosionTowerBugFix();
         Invoke("WeaponSetup", 0.01f);
     }
 
-
+    private void SetupExplosionTowerBugFix()
+    {
+        if(gameObject.name == "Explosion"|| gameObject.name == "Explosion(Clone)")
+        {
+            Debug.LogWarning("ya");
+            this.transform.position = new Vector3(0,0.1f,0.1f);
+        }
+    }
     protected void SetGenerationMode()
     {
         switch(eBuildCurrency)
@@ -280,6 +288,11 @@ public class csTowerBaseScript : MonoBehaviour
         return WeaponManager;
     }
 
+
+    public int GetWeaponMode()
+    {
+        return iGenerationMode;
+    }
     #endregion
 
 }
