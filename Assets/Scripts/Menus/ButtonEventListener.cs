@@ -16,7 +16,7 @@ public class ButtonEventListener : MonoBehaviour {
 
     private void OnButtonDown() {
         if (m_text) {
-            Vector3 tempVector = m_text.transform.position;
+            Vector3 tempVector = m_text.transform.position; 
             tempVector.y -= 12.5f;
             m_text.transform.position = tempVector;
 
