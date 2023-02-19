@@ -109,7 +109,6 @@ public class csWeapon : MonoBehaviour
             Shoot();
             
             fFireSpeed += fFireSpeedDeacrease;
-            Debug.LogWarning("%Waiting for " + fFireSpeed+" " + fModifiedFireSpeed+" " + fSkillFireSpeedModifier);
             yield return new WaitForSecondsRealtime(fFireSpeed+fModifiedFireSpeed+fSkillFireSpeedModifier);
         }
     }

@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fBuildCost: 50
   eBuildCurrency: 0
-  iDropDecrease: 3
+  fDropDecrease: 1.5
   fRefundPercentage: 80
   iFireMode: 0
   v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
@@ -287,7 +287,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
-  fCurrencyGainOnShot: 0
+  fCurrencyGainOnShot: 1
   tsFirePoint: {fileID: 3439725847016174242}
   bSplashDamage: 0
 --- !u!114 &6149301374258703615

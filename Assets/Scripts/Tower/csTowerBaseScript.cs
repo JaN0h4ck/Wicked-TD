@@ -27,7 +27,7 @@ public class csTowerBaseScript : MonoBehaviour
     private CurrencyEnum eBuildCurrency;
 
     [SerializeField]
-    private int iDropDecrease;
+    private float fDropDecrease;
 
     [SerializeField]
     [Tooltip("The Money that will be refunded form the buildcosts on destruction")]
@@ -146,12 +146,12 @@ public class csTowerBaseScript : MonoBehaviour
         PullCurrency();
         for(int i = 2;i>=0;i--)
         {
-            if(iDropDecrease==0)
+            if(fDropDecrease==0)
             {
-                iDropDecrease = 1;
+                fDropDecrease = 1;
             }
-            csTowerManager.current.AddCurrencyToBalance(i,iaStoredCurrencies[i]/iDropDecrease);
-            Debug.LogWarning("%"+ iaStoredCurrencies[i]/iDropDecrease);
+            csTowerManager.current.AddCurrencyToBalance(i,(int)((float)iaStoredCurrencies[i]/fDropDecrease));
+            Debug.LogWarning("%"+ (int)iaStoredCurrencies[i]/fDropDecrease);
         }
         RefundBuildCosts();
     }
