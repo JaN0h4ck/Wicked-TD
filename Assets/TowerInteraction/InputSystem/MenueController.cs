@@ -18,6 +18,12 @@ public class MenueController : ScriptableObject {
     [SerializeField] private GameEvent _onOpenPauseMenue;
     [SerializeField] private GameEvent _onClosePauseMenue;
 
+    [SerializeField] private GameEvent _onOpenTowerMenueToolTip;
+    [SerializeField] private GameEvent _onCloseTowerMenueToolTip;
+
+    [SerializeField] private GameEvent _onOpenTowerInfoToolTip;
+    [SerializeField] private GameEvent _onCloseTowerInfoToolTip;
+
     public void onOpenMenue(MenueType menueType) { 
         switch(menueType) {
             case MenueType.ShopMenue:
@@ -32,6 +38,12 @@ public class MenueController : ScriptableObject {
             case MenueType.PauseMenue:
                 _onOpenPauseMenue.Invoke();
             break;
+            case MenueType.TowerMenueToolTip:
+                _onOpenTowerMenueToolTip.Invoke();
+            break;
+            case MenueType.TowerInfoToolTip:
+                _onOpenTowerInfoToolTip.Invoke();
+            break;
         }
     }
 
@@ -40,16 +52,22 @@ public class MenueController : ScriptableObject {
         {
             case MenueType.ShopMenue:
                 _onCloseShopMenue.Invoke();
-                break;
+            break;
             case MenueType.TowerMenue:
                 _onCloseTowerMenue.Invoke();
-                break;
+            break;
             case MenueType.TowerInfo:
                 _onCloseTowerInfo.Invoke();
-                break;
+            break;
             case MenueType.PauseMenue:
                 _onClosePauseMenue.Invoke();
-                break;
+            break;
+            case MenueType.TowerMenueToolTip:
+                _onCloseTowerMenueToolTip.Invoke();
+            break;
+            case MenueType.TowerInfoToolTip:
+                _onCloseTowerInfoToolTip.Invoke();
+            break;
         }
     }
 
@@ -58,5 +76,7 @@ public class MenueController : ScriptableObject {
         TowerMenue = 1,
         TowerInfo = 2,
         PauseMenue = 3,
+        TowerMenueToolTip = 4,
+        TowerInfoToolTip = 5,
     }
 }
