@@ -193,6 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 505504661}
   - component: {fileID: 505504660}
+  - component: {fileID: 505504662}
   m_Layer: 0
   m_Name: Tower Shop Info Controller
   m_TagString: Untagged
@@ -235,6 +236,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &505504662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505504659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823e6741336e66c4bbbbb4eb184c8412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menue: {fileID: 549333406}
 --- !u!1001 &549333395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -708,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7415535082442509535, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0008857769
+      value: 0.000026410284
       objectReference: {fileID: 0}
     - target: {fileID: 7415535083340302528, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
       propertyPath: m_Pivot.x
@@ -948,6 +962,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7415535083340302540, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
   m_PrefabInstance: {fileID: 549333395}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &549333406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8735900943605942880, guid: d30d850764eb67840a1f00eeff905db0, type: 3}
+  m_PrefabInstance: {fileID: 549333395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &924287624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1028,8 @@ GameObject:
   - component: {fileID: 1487974054}
   - component: {fileID: 1487974056}
   - component: {fileID: 1487974055}
+  - component: {fileID: 1487974058}
+  - component: {fileID: 1487974057}
   m_Layer: 0
   m_Name: Game Event Listener
   m_TagString: Untagged
@@ -1185,6 +1206,62 @@ MonoBehaviour:
       - m_Target: {fileID: 505504660}
         m_TargetAssemblyTypeName: Utils.Menue.MenueNavigation, Assembly-CSharp
         m_MethodName: CloseMenue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1487974057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487974050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6096f3ebe2304e46bf87712427a822a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_event: {fileID: 11400000, guid: 370fe73aee322b644a52868bfbf9bd6e, type: 2}
+  m_response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 505504662}
+        m_TargetAssemblyTypeName: Utils.Menue.MenueNavigation, Assembly-CSharp
+        m_MethodName: CloseMenue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1487974058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487974050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6096f3ebe2304e46bf87712427a822a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_event: {fileID: 11400000, guid: 842e0c4bfefbd4a4eb04775b4fe20027, type: 2}
+  m_response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 505504662}
+        m_TargetAssemblyTypeName: Utils.Menue.MenueNavigation, Assembly-CSharp
+        m_MethodName: OpenMenue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

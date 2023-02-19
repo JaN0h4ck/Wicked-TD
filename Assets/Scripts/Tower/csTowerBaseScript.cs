@@ -214,7 +214,6 @@ public class csTowerBaseScript : MonoBehaviour
     /// <returns></returns>
     public GameObject[] GetCurrentAmmunition()
     {
-
         return WeaponManager.GetBullets();
     }
 

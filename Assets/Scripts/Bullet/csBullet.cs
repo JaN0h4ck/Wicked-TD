@@ -160,6 +160,7 @@ public class csBullet : MonoBehaviour
   
 
     #endregion
+
     #region Utility
     public int GetAmmoCosts()
     {
@@ -178,6 +179,23 @@ public class csBullet : MonoBehaviour
     public void SetSplashRadius(Vector2 v2Radius)
     {
         v2SplashDamageSize = v2Radius;
+    }
+    #endregion
+
+    #region Getter
+    public float GetDamageModifier()
+    {
+        return fDamageModifier;
+    }
+
+    public float GetBulletspeedModifier()
+    {
+        return fBulletspeedModifier;
+    }
+
+    public float GetFireSpeedModifier()
+    {
+        return fFireSpeedModifier;
     }
     #endregion
 }

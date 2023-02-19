@@ -25,4 +25,9 @@ public class csSkillBaseScript : MonoBehaviour
     {
         Invoke("DestroySkill", fDuration);
     }
+
+    public string GetDescription()
+    {
+        return sDescription;
+    }
 }
