@@ -177,7 +177,7 @@ Transform:
   m_GameObject: {fileID: 3439725845545446004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.34, y: 2.88, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 3439725846214881887}
   - {fileID: 3439725847016174242}
@@ -288,6 +288,7 @@ MonoBehaviour:
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
   iCurrencyGainOnShot: 1
   tsFirePoint: {fileID: 3439725847016174242}
+  bSplashDamage: 0
 --- !u!114 &6149301374258703615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +337,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.01995337, y: 0.01596272}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -347,7 +348,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.048, y: 2.048}
+  m_Size: {x: 0.78427815, y: 2.0160744}
   m_EdgeRadius: 0
 --- !u!1 &3439725846214881886
 GameObject:
