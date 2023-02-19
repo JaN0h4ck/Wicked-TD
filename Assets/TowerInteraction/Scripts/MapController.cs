@@ -27,6 +27,8 @@ public class MapController : Utils.Singleton<MapController> {
 
         PauseMenu.onPauseMenuWasOpened += DisableController;
         PauseMenu.onPauseMenuWasClosed += EneableController;
+
+        Nexus.instance.onGameOver += DisableController;
     }
     private void OnDestroy() {
         TowerController.Instance._onTowerWasBought -= EneableController;

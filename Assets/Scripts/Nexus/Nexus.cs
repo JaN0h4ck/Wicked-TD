@@ -8,13 +8,20 @@ public class Nexus : csEnemyHealth {
 
     [SerializeField]
     private float m_maxHealth = 20;
-
     public float maxHealth {
         get { return m_maxHealth; }
     }
 
+    public event Action onHealthLost;
+
+    public event Action onGameOver;
+
+    public bool alive = true;
+
     private SpriteRenderer _spriteRenderer;
     public Sprite[] sprites;
+
+
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -41,9 +48,6 @@ public class Nexus : csEnemyHealth {
         }
     }
 
-    public event Action onHealthLost;
-
-    public bool alive = true;
 
     protected override void CheckForDeath()
     {
@@ -51,8 +55,8 @@ public class Nexus : csEnemyHealth {
         {
             alive = false;
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            TransitionToGameOver();
         }
-        TransitionToGameOver();
     }
 
     public float getHealth()
@@ -68,6 +72,7 @@ public class Nexus : csEnemyHealth {
 
     private void TransitionToGameOver()
     {
+        onGameOver?.Invoke();
         //TODO Dillon will game over screen implementieren
     }
 
