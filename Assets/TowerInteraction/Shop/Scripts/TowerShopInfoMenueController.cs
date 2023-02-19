@@ -22,13 +22,13 @@ namespace TowerShop {
         [SerializeField] private TextMeshProUGUI _neoplasma;
 
         private void Awake() {
-            TowerController.Instance._onTowerWasBought += CloseMenue;
+            TowerController.Instance._onTowerWasBought2 += CloseMenue;
 
             CloseMenue();
         }
 
         private void OnDestroy() {
-            TowerController.Instance._onTowerWasBought -= CloseMenue;
+            TowerController.Instance._onTowerWasBought2 -= CloseMenue;
         }
 
         public override void OpenMenue() {

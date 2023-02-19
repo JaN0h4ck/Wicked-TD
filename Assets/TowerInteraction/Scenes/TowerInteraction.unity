@@ -929,7 +929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1178561995}
   _interactiveMap: {fileID: 1032988956}
-  _hoverTile: {fileID: 11400000, guid: 72485625332c7354a8120241e03a9405, type: 2}
+  _hoverTile: {fileID: 11400000, guid: 6fbd33d4f7819ac4fbf19734b6d22e0e, type: 2}
   _menueController: {fileID: 11400000, guid: 1a4935fad5173044da2014c782fc9bcb, type: 2}
   _leftMouseClick_Tower: {fileID: 5105456086985929399, guid: cf18e1617ca6b414288ed9302185582a, type: 3}
   _leftMouseClick_Map: {fileID: 8773500058151407490, guid: cf18e1617ca6b414288ed9302185582a, type: 3}
@@ -4106,7 +4106,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.2}
     oldSize: {x: 2.048, y: 2.048}
     newSize: {x: 10.24, y: 10.24}
     adaptiveTilingThreshold: 0.5

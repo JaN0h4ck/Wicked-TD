@@ -13,14 +13,14 @@ namespace TowerShop {
 
         private void Awake()
         {
-            TowerController.Instance._onTowerWasBought += CloseMenue;
+            TowerController.Instance._onTowerWasBought2 += CloseMenue;
 
             CloseMenue();
         }
 
         private void OnDestroy()
         {
-            TowerController.Instance._onTowerWasBought -= CloseMenue;
+            TowerController.Instance._onTowerWasBought2 -= CloseMenue;
         }
 
         private void Start() {

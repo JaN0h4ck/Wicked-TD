@@ -5,10 +5,12 @@ using TowerShop;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SkillSelectionItem : SelectionItem, IPointerEnterHandler
+public class SkillSelectionItem : SelectionItem, IPointerEnterHandler, IPointerClickHandler
 {
     [SerializeField] private SelectedShopItem _selectedShopItem;
     [SerializeField] private int _skillIndex;
+
+    private bool _skillIsOnCooldown = false;
 
     public new void OnPointerEnter(PointerEventData eventData)
     {
@@ -26,4 +28,24 @@ public class SkillSelectionItem : SelectionItem, IPointerEnterHandler
         base.OnPointerEnter(eventData);
     }
 
+    public new void OnPointerClick(PointerEventData eventData) {
+        if (_skillIsOnCooldown == false)
+        {
+            var tower = MapController.Instance._selectedTower.GetComponent<csTowerBaseScript>();
+
+            tower.ActivateSkill(_skillIndex);
+
+            base.OnPointerClick(eventData);
+
+            _skillIsOnCooldown = true;
+
+            StartCoroutine(Timer());
+        }
+    }
+
+    private IEnumerator Timer() {
+        float timer = UnityEngine.Random.Range(15, 30);
+        yield return new WaitForSeconds(timer);
+        _skillIsOnCooldown = false;
+    }
 }

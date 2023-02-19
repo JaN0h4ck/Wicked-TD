@@ -18,6 +18,16 @@ public class Shop : Singleton<Shop> {
 
     private bool m_isUnlimitedMoneyEnabled = false;
 
+    private void Awake()
+    {
+        TowerController.Instance._onTowerWasBought += BuyTower;
+    }
+
+    private void OnDestroy()
+    {
+        TowerController.Instance._onTowerWasBought -= BuyTower;
+    }
+
     private void Start() {
         /*
         m_shopUI = GetComponent<CanvasGroup>();
@@ -47,10 +57,10 @@ public class Shop : Singleton<Shop> {
     }
 
     [Obsolete]
-    public void BuyTower(string CoinType) {
+    public void BuyTower(string CoinType, int amount) {
         Currency Coin;
         if(currencyMap.TryGetValue(CoinType, out Coin)) {
-            if(Coin.SubstractBalance(10))
+            if(Coin.SubstractBalance(amount))
                 Debug.Log("Tower bought");
             else
                 Debug.Log("Not enough money");
