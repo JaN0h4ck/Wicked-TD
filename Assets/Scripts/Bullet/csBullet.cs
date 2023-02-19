@@ -40,6 +40,8 @@ public class csBullet : MonoBehaviour
     private Transform tsEnemy;
 
     private bool bDoSoroundDamage=false;
+
+    private float fDistanceKillValue=0.1f;
     #endregion
 
     #region Setup
@@ -101,7 +103,7 @@ public class csBullet : MonoBehaviour
     private bool WasTargetHit(Transform tsTarget) {
         if (tsTarget != null)
         {
-            if (tsTarget.position == this.transform.position)
+            if (Vector3.Distance(tsTarget.position,this.transform.position)<fDistanceKillValue)
             {
                 return true;
             }
