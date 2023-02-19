@@ -69,7 +69,7 @@ public class csTowerBaseScript : MonoBehaviour
         if(gameObject.name == "Explosion"|| gameObject.name == "Explosion(Clone)")
         {
             Debug.LogWarning("ya");
-            this.transform.position = new Vector3(0,0.1f,0.1f);
+            this.transform.position += new Vector3(0,0.5f,0.0f);
         }
     }
     protected void SetGenerationMode()
