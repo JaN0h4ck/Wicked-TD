@@ -184,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 9012173906277577449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.24, y: -0.89, z: 0}
-  m_LocalScale: {x: 1.21068, y: 1.21068, z: 1.21068}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 9012173907005428207}
   - {fileID: 2714993716077121580}
@@ -300,6 +300,7 @@ MonoBehaviour:
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
   iCurrencyGainOnShot: 1
   tsFirePoint: {fileID: 2714993716077121580}
+  bSplashDamage: 0
 --- !u!114 &1624344753651208687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,10 +372,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.15152882, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.02}
     oldSize: {x: 2.048, y: 2.048}
     newSize: {x: 2.048, y: 2.048}
     adaptiveTilingThreshold: 0.5
@@ -382,7 +383,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.048, y: 2.048}
+  m_Size: {x: 0.9853804, y: 2.048}
   m_EdgeRadius: 0
 --- !u!1001 &8215504256733539186
 PrefabInstance:
