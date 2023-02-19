@@ -20,9 +20,5 @@ public class TowerData : ScriptableObject
 
     public GameObject[] Skills;
 
-
-
     #endregion
-
-
 }

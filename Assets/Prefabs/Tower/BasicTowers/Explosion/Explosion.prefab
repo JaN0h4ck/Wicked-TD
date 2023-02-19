@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 2714993715724660388}
   - component: {fileID: 8203759992527680390}
   - component: {fileID: -1122290060286778963}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,8 +354,8 @@ MonoBehaviour:
   - {fileID: 7309294969110395990}
   - {fileID: 7194331145646213999}
   m_Bounds:
-    m_Center: {x: 0.18234563, y: -0.0010963678, z: 0}
-    m_Extent: {x: 0.605646, y: 1.0229034, z: 0}
+    m_Center: {x: 0.18234566, y: -0.001096487, z: 0}
+    m_Extent: {x: 0.6056461, y: 1.0229034, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!61 &-1122290060286778963

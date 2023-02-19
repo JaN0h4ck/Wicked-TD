@@ -16,7 +16,7 @@ public class csTowerBaseScript : MonoBehaviour
     [SerializeField]
     private float fBuildCost;
    
-    private enum CurrencyEnum
+    public enum CurrencyEnum
     {
         Gold,
         C6,
@@ -199,6 +199,11 @@ public class csTowerBaseScript : MonoBehaviour
     {
         CheckWeaponForNull();
         return WeaponManager.GetRange();
+    }
+
+    public CurrencyEnum GetCurrencyType()
+    {
+        return eBuildCurrency;
     }
 
 
