@@ -130,18 +130,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a6302f562fa8f40924bc9ceca93b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fBuildCost: 10
-  eBuildCurrency: 0
-  fRefundPercentage: 50
+  fBuildCost: 200
+  eBuildCurrency: 2
+  fDropDecrease: 1
+  fRefundPercentage: 60
   iFireMode: 2
   v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
   gCurrencyAnimationPrefabs:
   - {fileID: 623368271568796179, guid: b7201f6c9c36bf34a9e0e1983c9c32d5, type: 3}
   - {fileID: 623368271568796179, guid: c4be5376989c78e489665b9682ae0b55, type: 3}
   - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
-  gaSkillPrefabs: []
+  gaSkillPrefabs:
+  - {fileID: 1481891421522604067, guid: a58252dba6486ef4c9772097607be15a, type: 3}
+  - {fileID: 1481891421522604067, guid: a58252dba6486ef4c9772097607be15a, type: 3}
+  sTowerName: Mine
   fCurrencyGenerationSpeed: 1
-  fCurrencyGenerationAmount: 1
+  fCurrencyGenerationAmount: 4
 --- !u!114 &5715238443691183860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,8 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fDamage: 10
-  fFireSpeed: 4
-  fShootRange: 6
+  fFireSpeed: 2.5
+  fShootRange: 7
   fBulletSpeed: 20
   iTargetAmount: 2
   fFireSpeedDeacrease: 0.025
@@ -168,7 +172,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
-  iCurrencyGainOnShot: 2
+  fCurrencyGainOnShot: 4
   tsFirePoint: {fileID: 5715238443011007105}
   bSplashDamage: 0
 --- !u!114 &7530224973978315574
@@ -203,7 +207,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.2}
-    oldSize: {x: 2.048, y: 2.048}
+    oldSize: {x: 1.6, y: 1.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

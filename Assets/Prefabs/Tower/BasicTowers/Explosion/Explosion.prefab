@@ -256,9 +256,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a63e544e4600544e844a050afa37346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fBuildCost: 10
+  fBuildCost: 200
   eBuildCurrency: 1
-  fRefundPercentage: 50
+  fDropDecrease: 0
+  fRefundPercentage: 30
   iFireMode: 1
   v2RandomSpawnvaluesMinMaxOnDeath: {x: 2, y: 4}
   gCurrencyAnimationPrefabs:
@@ -267,11 +268,12 @@ MonoBehaviour:
   - {fileID: 623368271568796179, guid: 32eb5775ab9d77144a640d7c256e0969, type: 3}
   gaSkillPrefabs:
   - {fileID: 204747137393549878, guid: dd4cc5ad83e4f934f9315805c103938b, type: 3}
-  - {fileID: 204747137393549878, guid: dd4cc5ad83e4f934f9315805c103938b, type: 3}
+  - {fileID: 1481891421522604067, guid: a58252dba6486ef4c9772097607be15a, type: 3}
   - {fileID: 7459808221633123206, guid: 9a96c49f210bc59429526f7fc96003c5, type: 3}
+  sTowerName: Smash&Squeeze
   gExplosionEffectPrefab: {fileID: 7723929907739548047, guid: 9b195b4dd1017ae40ab53475067b7386, type: 3}
   gDamageIndicatorPrefab: {fileID: 11900282100008816, guid: 8cfb88113f07d604c8eddcf7541b766d, type: 3}
-  fExplosionDamage: 100
+  fExplosionDamage: 80
 --- !u!114 &9012173906277577453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,21 +286,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764e47148dcfdbf4c93af50a5f876aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fDamage: 40
-  fFireSpeed: 1.2
-  fShootRange: 10
-  fBulletSpeed: 50
+  fDamage: 100
+  fFireSpeed: 5
+  fShootRange: 5
+  fBulletSpeed: 15
   iTargetAmount: 1
-  fFireSpeedDeacrease: 0.4
+  fFireSpeedDeacrease: 0.6
   gaPrefabBullets:
   - {fileID: 988432995199586303, guid: c283000e8a5f4c845966edda2e6d81bb, type: 3}
-  - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
-  - {fileID: 988432995199586303, guid: d79ae8f0fa3d2d64eb32bec8bd7a910c, type: 3}
+  - {fileID: 988432995199586303, guid: c283000e8a5f4c845966edda2e6d81bb, type: 3}
+  - {fileID: 988432995199586303, guid: c283000e8a5f4c845966edda2e6d81bb, type: 3}
   lmEnemy:
     serializedVersion: 2
     m_Bits: 55
   gRangeIndicatorPrefab: {fileID: 7678784370262812219, guid: 4e9bb233a06e66542818dc174a797e06, type: 3}
-  iCurrencyGainOnShot: 1
+  fCurrencyGainOnShot: 10
   tsFirePoint: {fileID: 2714993716077121580}
   bSplashDamage: 0
 --- !u!114 &1624344753651208687

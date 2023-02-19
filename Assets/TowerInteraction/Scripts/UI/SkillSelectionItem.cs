@@ -25,4 +25,5 @@ public class SkillSelectionItem : SelectionItem, IPointerEnterHandler
         _toolTipDescription.text = skill.GetDescription();
         base.OnPointerEnter(eventData);
     }
+
 }
