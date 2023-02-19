@@ -45,6 +45,11 @@ public class csWeapon : MonoBehaviour
 
     [SerializeField]
     private Transform tsFirePoint;
+
+    [SerializeField]
+    private bool bSplashDamage;
+
+
     
     private int iStoredCurrency;
     
@@ -66,6 +71,8 @@ public class csWeapon : MonoBehaviour
 
     private bool bLookDirectiom = false;
     private bool bCompareLookDirection = false;
+
+
     #endregion
 
     #region Setup
@@ -254,9 +261,10 @@ public class csWeapon : MonoBehaviour
 
                 csBullet Bullet = gTemp.GetComponent<csBullet>();
 
-                Bullet.SetDamage(fDamage);
+                Bullet.SetDamage(fDamage,bSplashDamage);
                 Bullet.SetIndicatorEmpty(gIndicatorEmpty);
                 Bullet.SetStartWeapon(this);
+                Bullet.SetSplashRadius(new Vector2(2,2));
 
                 if (Bullet != null)
                 {
