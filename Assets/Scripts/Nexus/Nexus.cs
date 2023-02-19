@@ -6,18 +6,6 @@ using UnityEngine;
 public class Nexus : csEnemyHealth {
     public static Nexus instance;
 
-    private void Awake() {
-        if (instance == null) {
-            instance = this;
-        }
-        fHealth = m_maxHealth;
-    }
-
-
-    public event Action onHealthLost;
-
-    public bool alive = true;
-
     [SerializeField]
     private float m_maxHealth = 20;
 
