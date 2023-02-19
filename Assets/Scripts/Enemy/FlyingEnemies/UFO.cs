@@ -5,7 +5,7 @@ using UnityEngine;
 public class UFO : BasicFlyingEnemy
 {
     
-    void Start()
+    new void Start()
     {
         movementSpeed = 1.5f;
         damageToNexus = 4f;
@@ -13,7 +13,7 @@ public class UFO : BasicFlyingEnemy
         base.Start();
     }
 
-    void Update()
+    new void Update()
     {
         base.Update();
     }

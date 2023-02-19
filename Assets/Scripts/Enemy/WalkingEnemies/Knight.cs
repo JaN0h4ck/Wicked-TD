@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Knight : WalkingEnemy
 {
-    void Start()
+    new void Start()
     {
         movementSpeed = 0.5f;
         damageToNexus = 0.5f;
         base.Start();
     }
 
-    void Update()
+    new void Update()
     {
         base.Update();
     }
