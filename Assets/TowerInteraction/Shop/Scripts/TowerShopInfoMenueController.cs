@@ -40,7 +40,7 @@ namespace TowerShop {
             var tower = _selectedShopItem.Object.ItemData._towerPrefab.GetComponent<csTowerBaseScript>();
 
             //Infos
-            _name.text = tower.GetTowerName();
+            _name.text = tower.sTowerName;
             _damage.text = tower.GetDamage().ToString();
             _attackSpeed.text = tower.GetFireSpeed().ToString();
             _range.text = tower.GetRange().ToString();
