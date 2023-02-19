@@ -184,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 9012173906277577449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.24, y: -0.89, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 9012173907005428207}
   - {fileID: 2714993716077121580}
@@ -287,7 +287,7 @@ MonoBehaviour:
   fDamage: 40
   fFireSpeed: 1.2
   fShootRange: 10
-  fBulletSpeed: 10
+  fBulletSpeed: 50
   iTargetAmount: 1
   fFireSpeedDeacrease: 0.4
   gaPrefabBullets:
@@ -375,7 +375,7 @@ BoxCollider2D:
   m_Offset: {x: 0.15152882, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.02}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.048, y: 2.048}
     newSize: {x: 2.048, y: 2.048}
     adaptiveTilingThreshold: 0.5
