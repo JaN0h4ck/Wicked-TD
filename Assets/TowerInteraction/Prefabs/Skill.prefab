@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4796422014879021979}
   - component: {fileID: 7892136192300826615}
   - component: {fileID: 4156360773912892804}
+  - component: {fileID: 6422587775743589469}
   m_Layer: 5
   m_Name: Skill
   m_TagString: Untagged
@@ -75,3 +76,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6422587775743589469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6645358741609026522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f3cb0c15e1cb34595ef5eeea157c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectionGroup: {fileID: 0}
+  _defaultIcon: {fileID: 0}
+  _selectedIcon: {fileID: 0}
+  _defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  _hoveredColor: {r: 0, g: 0, b: 0, a: 0}

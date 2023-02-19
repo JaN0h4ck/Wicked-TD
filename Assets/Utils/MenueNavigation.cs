@@ -17,5 +17,7 @@ namespace Utils.Menue {
         {
             _menue.SetActive(false);
         }
+
+        public virtual void Initialize() { }
     }
 }

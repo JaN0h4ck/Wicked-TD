@@ -20,3 +20,7 @@ MonoBehaviour:
   _onCloseTowerInfo: {fileID: 11400000, guid: da9d599225048df4899fb5c19dd887a1, type: 2}
   _onOpenPauseMenue: {fileID: 11400000, guid: 156c68ffede96a849929aafe22424a4c, type: 2}
   _onClosePauseMenue: {fileID: 11400000, guid: 23fe99109d9476c419863555de4fe747, type: 2}
+  _onOpenTowerMenueToolTip: {fileID: 11400000, guid: 5dadfa4c6a2035445aaaa7db117b16dd, type: 2}
+  _onCloseTowerMenueToolTip: {fileID: 11400000, guid: 5e2c5ab652f15c14b9c4812602912bf1, type: 2}
+  _onOpenTowerInfoToolTip: {fileID: 11400000, guid: 842e0c4bfefbd4a4eb04775b4fe20027, type: 2}
+  _onCloseTowerInfoToolTip: {fileID: 11400000, guid: 370fe73aee322b644a52868bfbf9bd6e, type: 2}

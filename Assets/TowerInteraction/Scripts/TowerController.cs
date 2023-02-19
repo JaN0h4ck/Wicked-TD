@@ -11,6 +11,7 @@ public class TowerController : Utils.Singleton<TowerController> {
     private float _offsetOfPrefabToTile = 0.5f;
 
     public event Action _onTowerWasBought;
+    public event Action _onTowerWasDestroyed;
 
     public void BuyTower() {
         if (_selectedShopItem.Object.ItemData._towerPrefab == null) {
@@ -25,7 +26,7 @@ public class TowerController : Utils.Singleton<TowerController> {
 
         instantiatedTower.transform.position = newPosition;
 
-        _onTowerWasBought.Invoke();
+        _onTowerWasBought?.Invoke();
     }
 
     public void DestroyTower() {
@@ -34,6 +35,9 @@ public class TowerController : Utils.Singleton<TowerController> {
         Vector2 direction = new Vector2(0, 0);
         RaycastHit2D hit = Physics2D.Raycast(start, direction, _offsetOfPrefabToTile);
 
-        if (hit) { Destroy(hit.collider.gameObject); }
+        if (hit) { 
+            Destroy(hit.collider.gameObject);
+            _onTowerWasDestroyed?.Invoke();
+        }
     }
 }

@@ -16,17 +16,18 @@ public class MapController : Utils.Singleton<MapController> {
 
     private float _offsetOfPrefabToTile = 0.5f;
     public Vector3Int _previousTileMapMousePosition { get; private set; }
-    public Vector3 _previousWorldMousePosition { get; private set; }
     public GameObject _selectedTower { get; private set; }
 
     private void Awake() {
         TowerController.Instance._onTowerWasBought += EneableController;
+        TowerController.Instance._onTowerWasDestroyed += EneableController;
 
         _leftMouseClick_Tower.action.performed += OpenTowerMenue;
         _leftMouseClick_Map.action.performed += OpenShopMenue;
     }
     private void OnDestroy() {
         TowerController.Instance._onTowerWasBought -= EneableController;
+        TowerController.Instance._onTowerWasDestroyed -= EneableController;
     }
 
     private void OnEnable() {
@@ -92,9 +93,8 @@ public class MapController : Utils.Singleton<MapController> {
     }
 
     private Vector3Int GetMousePosition() {
-        Debug.Log(Mouse.current.position.ReadValue());
-       _previousWorldMousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        return _grid.WorldToCell(_previousWorldMousePosition);
+       var mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        return _grid.WorldToCell(mousePosition);
     }
 
     private void EneableController() {

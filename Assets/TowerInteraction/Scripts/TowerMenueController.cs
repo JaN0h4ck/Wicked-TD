@@ -17,9 +17,15 @@ public class TowerMenueController : MenueNavigation
 
     private csTowerBaseScript _tower;
     private csWeapon _towerWeapon;
+    private float _towerDestroyIconOffsetPosY = 160f;
 
     private void Awake() {
+        TowerController.Instance._onTowerWasDestroyed += CloseMenue;
         CloseMenue();
+    }
+    private void OnDestroy()
+    {
+        TowerController.Instance._onTowerWasDestroyed -= CloseMenue;
     }
 
     public override void OpenMenue() {
@@ -35,8 +41,8 @@ public class TowerMenueController : MenueNavigation
 
     private void SetDestroyTowerIcon() {
         var worldPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, MapController.Instance._selectedTower.transform.position);
-        var anchoredPoint = _destroyTowerIcon.transform.InverseTransformPoint(worldPoint);
-        //anchoredPoint.y += 150f;
+        var anchoredPoint = _destroyTowerIcon.transform.parent.InverseTransformPoint(worldPoint);
+        anchoredPoint.y += _towerDestroyIconOffsetPosY;
         ((RectTransform)_destroyTowerIcon.transform).anchoredPosition = anchoredPoint;
     }
 
@@ -77,5 +83,9 @@ public class TowerMenueController : MenueNavigation
 
             yield return new WaitForSeconds(0.5f);
         }       
+    }
+
+    public void OnDestroyTower() {
+        TowerController.Instance.DestroyTower();
     }
 }
