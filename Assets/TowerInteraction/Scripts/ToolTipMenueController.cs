@@ -5,5 +5,8 @@ using Utils.Menue;
 
 public class ToolTipMenueController : MenueNavigation
 {
-    
+    private void Awake()
+    {
+        CloseMenue();
+    }
 }

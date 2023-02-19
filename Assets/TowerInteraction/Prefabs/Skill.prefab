@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4796422014879021979}
   - component: {fileID: 7892136192300826615}
   - component: {fileID: 4156360773912892804}
-  - component: {fileID: 6422587775743589469}
+  - component: {fileID: 8065568578879823454}
   m_Layer: 5
   m_Name: Skill
   m_TagString: Untagged
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6422587775743589469
+--- !u!114 &8065568578879823454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,11 +85,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6645358741609026522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f3cb0c15e1cb34595ef5eeea157c66, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e3c0a354efa8dc44bbe583d8685009c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _menueController: {fileID: 11400000, guid: 1a4935fad5173044da2014c782fc9bcb, type: 2}
+  _onHoverMenueType: 4
   _selectionGroup: {fileID: 0}
-  _defaultIcon: {fileID: 0}
-  _selectedIcon: {fileID: 0}
-  _defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  _hoveredColor: {r: 0, g: 0, b: 0, a: 0}
+  _defaultIcon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
+  _selectedIcon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
+  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  _hoveredColor: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
+  _toolTipHeader: {fileID: 0}
+  _toolTipDescription: {fileID: 0}
+  _skillIndex: 0

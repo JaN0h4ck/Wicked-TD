@@ -19,6 +19,8 @@ public class SelectionItem : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     [Header("ToolTip")]
     [SerializeField] protected TextMeshProUGUI _toolTipHeader;
     [SerializeField] protected TextMeshProUGUI _toolTipDescription;
+    [Header("Variables")]
+    [SerializeField] protected bool _isSelectable;
 
     private Image _image;
 
@@ -40,7 +42,9 @@ public class SelectionItem : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        _selectionGroup.SelectItem(this);
+        if (_isSelectable) {
+            _selectionGroup.SelectItem(this);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData) {

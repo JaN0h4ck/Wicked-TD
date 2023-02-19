@@ -2456,40 +2456,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _skillIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _toolTipHeader
+      value: 
+      objectReference: {fileID: 5480270386053321311}
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _selectionGroup
+      value: 
+      objectReference: {fileID: 3905158601146004769}
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _toolTipDescription
+      value: 
+      objectReference: {fileID: 682078212366872296}
+    m_RemovedComponents:
+    - {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
 --- !u!224 &4950341551582828565 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4796422014879021979, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
   m_PrefabInstance: {fileID: 442325836495414158}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6492637671916957780 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6645358741609026522, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-  m_PrefabInstance: {fileID: 442325836495414158}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7714313606604278387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6492637671916957780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3c0a354efa8dc44bbe583d8685009c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menueController: {fileID: 11400000, guid: 1a4935fad5173044da2014c782fc9bcb, type: 2}
-  _onHoverMenueType: 4
-  _selectionGroup: {fileID: 3905158601146004769}
-  _defaultIcon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
-  _selectedIcon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
-  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  _hoveredColor: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
-  _toolTipHeader: {fileID: 5480270386053321311}
-  _toolTipDescription: {fileID: 682078212366872296}
-  _skillIndex: 1
 --- !u!1001 &1651150035074656583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2721,27 +2711,6 @@ MonoBehaviour:
   _toolTipHeader: {fileID: 5480270386053321311}
   _toolTipDescription: {fileID: 682078212366872296}
   _ammunitionIndex: 0
---- !u!114 &8397831657410160959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2696214916730126903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f3cb0c15e1cb34595ef5eeea157c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menueController: {fileID: 11400000, guid: 1a4935fad5173044da2014c782fc9bcb, type: 2}
-  _onHoverMenueType: 4
-  _selectionGroup: {fileID: 208372641302186519}
-  _defaultIcon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
-  _selectedIcon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
-  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  _hoveredColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
-  _toolTipHeader: {fileID: 0}
-  _toolTipDescription: {fileID: 0}
 --- !u!1001 &3210525065256463514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3045,96 +3014,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _defaultIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _selectedIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _defaultColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _defaultColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _defaultColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _defaultColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _hoveredColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _hoveredColor.b
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _hoveredColor.g
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _hoveredColor.r
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _selectionGroup
-      value: 
-      objectReference: {fileID: 3905158601146004769}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _menueController
-      value: 
-      objectReference: {fileID: 11400000, guid: 1a4935fad5173044da2014c782fc9bcb, type: 2}
-    - target: {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-      propertyPath: _onHoverMenueType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6645358741609026522, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
       propertyPath: m_Name
       value: Skill 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _skillIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _toolTipHeader
+      value: 
+      objectReference: {fileID: 5480270386053321311}
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _selectionGroup
+      value: 
+      objectReference: {fileID: 3905158601146004769}
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _toolTipDescription
+      value: 
+      objectReference: {fileID: 682078212366872296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
---- !u!1 &8068313679485877175 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6645358741609026522, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-  m_PrefabInstance: {fileID: 3729374229041948781}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8165367466297431030 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4796422014879021979, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
   m_PrefabInstance: {fileID: 3729374229041948781}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8065568578879823454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8068313679485877175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3c0a354efa8dc44bbe583d8685009c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menueController: {fileID: 11400000, guid: 1a4935fad5173044da2014c782fc9bcb, type: 2}
-  _onHoverMenueType: 4
-  _selectionGroup: {fileID: 3905158601146004769}
-  _defaultIcon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
-  _selectedIcon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
-  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  _hoveredColor: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
-  _toolTipHeader: {fileID: 5480270386053321311}
-  _toolTipDescription: {fileID: 682078212366872296}
-  _skillIndex: 2
 --- !u!1001 &4965933108219159529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3282,40 +3188,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _skillIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _toolTipHeader
+      value: 
+      objectReference: {fileID: 5480270386053321311}
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _selectionGroup
+      value: 
+      objectReference: {fileID: 3905158601146004769}
+    - target: {fileID: 8065568578879823454, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
+      propertyPath: _toolTipDescription
+      value: 
+      objectReference: {fileID: 682078212366872296}
+    m_RemovedComponents:
+    - {fileID: 6422587775743589469, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
---- !u!1 &1788922224387141683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6645358741609026522, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
-  m_PrefabInstance: {fileID: 4965933108219159529}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &466924866029426802 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4796422014879021979, guid: 5634c60b784eedc468f3d7961359f22a, type: 3}
   m_PrefabInstance: {fileID: 4965933108219159529}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1487486159178356093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788922224387141683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3c0a354efa8dc44bbe583d8685009c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menueController: {fileID: 11400000, guid: 1a4935fad5173044da2014c782fc9bcb, type: 2}
-  _onHoverMenueType: 4
-  _selectionGroup: {fileID: 3905158601146004769}
-  _defaultIcon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
-  _selectedIcon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
-  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  _hoveredColor: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
-  _toolTipHeader: {fileID: 5480270386053321311}
-  _toolTipDescription: {fileID: 682078212366872296}
-  _skillIndex: 0
 --- !u!1001 &5727609970930679149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3413,37 +3309,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84161a5a1051c3943ba1cdc843993601, type: 3}
---- !u!1 &5211233327010699538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 517504895392719999, guid: 84161a5a1051c3943ba1cdc843993601, type: 3}
-  m_PrefabInstance: {fileID: 5727609970930679149}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6000707562779935648 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2034014392033574605, guid: 84161a5a1051c3943ba1cdc843993601, type: 3}
   m_PrefabInstance: {fileID: 5727609970930679149}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7015000555165621441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!1 &5211233327010699538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 517504895392719999, guid: 84161a5a1051c3943ba1cdc843993601, type: 3}
+  m_PrefabInstance: {fileID: 5727609970930679149}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5211233327010699538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f3cb0c15e1cb34595ef5eeea157c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menueController: {fileID: 11400000, guid: 1a4935fad5173044da2014c782fc9bcb, type: 2}
-  _onHoverMenueType: 4
-  _selectionGroup: {fileID: 208372641302186519}
-  _defaultIcon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
-  _selectedIcon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
-  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  _hoveredColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
-  _toolTipHeader: {fileID: 0}
-  _toolTipDescription: {fileID: 0}
 --- !u!114 &8753246275458387753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3673,14 +3548,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84161a5a1051c3943ba1cdc843993601, type: 3}
---- !u!224 &7880941721463514414 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2034014392033574605, guid: 84161a5a1051c3943ba1cdc843993601, type: 3}
-  m_PrefabInstance: {fileID: 8170937019515673571}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8523752892811362204 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 517504895392719999, guid: 84161a5a1051c3943ba1cdc843993601, type: 3}
+  m_PrefabInstance: {fileID: 8170937019515673571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &7880941721463514414 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2034014392033574605, guid: 84161a5a1051c3943ba1cdc843993601, type: 3}
   m_PrefabInstance: {fileID: 8170937019515673571}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &6673543596992560774
@@ -3705,27 +3580,6 @@ MonoBehaviour:
   _toolTipHeader: {fileID: 5480270386053321311}
   _toolTipDescription: {fileID: 682078212366872296}
   _ammunitionIndex: 2
---- !u!114 &7934440480093620888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8523752892811362204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f3cb0c15e1cb34595ef5eeea157c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menueController: {fileID: 11400000, guid: 1a4935fad5173044da2014c782fc9bcb, type: 2}
-  _onHoverMenueType: 4
-  _selectionGroup: {fileID: 208372641302186519}
-  _defaultIcon: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
-  _selectedIcon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
-  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  _hoveredColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
-  _toolTipHeader: {fileID: 0}
-  _toolTipDescription: {fileID: 0}
 --- !u!1001 &8932723020786660985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3855,6 +3709,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d8ddb5d884ebe54bb001fa2a1b0f34c, type: 3}
+--- !u!224 &5092042373270662347 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4421965071416662706, guid: 8d8ddb5d884ebe54bb001fa2a1b0f34c, type: 3}
+  m_PrefabInstance: {fileID: 8932723020786660985}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5480270386053321311 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4033743828341777446, guid: 8d8ddb5d884ebe54bb001fa2a1b0f34c, type: 3}
@@ -3866,11 +3725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &5092042373270662347 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4421965071416662706, guid: 8d8ddb5d884ebe54bb001fa2a1b0f34c, type: 3}
-  m_PrefabInstance: {fileID: 8932723020786660985}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &682078212366872296 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8250685535079127185, guid: 8d8ddb5d884ebe54bb001fa2a1b0f34c, type: 3}
