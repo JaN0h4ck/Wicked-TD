@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rocket : BasicFlyingEnemy
 {
     
-    void Start()
+    new void Start()
     {
         movementSpeed = 2f;
         damageToNexus = 2f;
@@ -14,7 +14,7 @@ public class Rocket : BasicFlyingEnemy
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
         base.Update();
     }
