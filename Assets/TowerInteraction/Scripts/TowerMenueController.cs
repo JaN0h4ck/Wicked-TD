@@ -55,7 +55,7 @@ public class TowerMenueController : MenueNavigation
             return;
         }
 
-        m_towerName.text = _tower.GetTowerName();
+        m_towerName.text = _tower.sTowerName;
         m_damage.text = _towerWeapon.GetDamage().ToString();
         m_attackSpeed.text = _towerWeapon.GetFireSpeed().ToString();
         m_range.text = _towerWeapon.GetRange().ToString();
