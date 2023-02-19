@@ -205,6 +205,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5181040930096993679, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181040930096993679, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5181040930185113370, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -260,6 +268,14 @@ PrefabInstance:
     - target: {fileID: 5181040930980128905, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181040931241176800, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 275025800}
+    - target: {fileID: 5181040931241176800, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseMenue
       objectReference: {fileID: 0}
     - target: {fileID: 5181040931241176804, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
       propertyPath: m_AnchorMax.x
@@ -407,23 +423,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5181040931807551644, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5181040931807551644, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5181040931807551644, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5181040931836948039, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5181040931836948039, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5181040931939579232, guid: 969afa07df325c84ca85b73fcbcba047, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
