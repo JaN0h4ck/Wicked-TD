@@ -19,14 +19,10 @@ public class HealthBar : MonoBehaviour {
     }
 
     private void UpdateHealthBar() {
-        Debug.Log("health: " + Nexus.instance.getHealth() + " maxhealth: " + Nexus.instance.maxHealth);
         double health = Nexus.instance.getHealth() / Nexus.instance.maxHealth;
-        Debug.Log("health: " + health);
         double numberOfSegments = health * m_healthBar.Length;
-        Debug.Log(numberOfSegments);
         double numberOfSegmentsBeforeDecimal = Math.Truncate(numberOfSegments);
         double numberOfSegmentsAfterDecimal = (numberOfSegments - numberOfSegmentsBeforeDecimal) * 10;
-        Debug.Log(numberOfSegmentsAfterDecimal);
 
         for (int i = 0; i < numberOfSegmentsBeforeDecimal; i++) {
             m_healthBar[i].sprite = m_healthBarStates[2];
