@@ -66,8 +66,6 @@ public class csWeapon : MonoBehaviour
 
     private bool bLookDirectiom = false;
     private bool bCompareLookDirection = false;
-
-
     #endregion
 
     #region Setup
@@ -380,14 +378,16 @@ public class csWeapon : MonoBehaviour
     {
         if (aclAnimations.Count >= 2)
         {
+            Debug.LogWarning("§Playngattack " + iAnimationTimeProgresion);
             amAnimator.Play(aclAnimations[1+iAnimationTimeProgresion].name);
         }
     }
 
-    protected void PlayIdleAnimation()
+    public void PlayIdleAnimation()
     {
         if (aclAnimations.Count != 0)
         {
+            Debug.LogWarning("§Plaingidle " + iAnimationTimeProgresion);
             amAnimator.Play(aclAnimations[0 + iAnimationTimeProgresion].name);
         }
     }

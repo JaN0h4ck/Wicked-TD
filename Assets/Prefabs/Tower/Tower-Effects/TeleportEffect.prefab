@@ -5158,6 +5158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fDuration: 5
   v2Size: {x: 4, y: 4}
+  sDescription: This kill teleports all enemies to a set location
 --- !u!1 &204747137633764307
 GameObject:
   m_ObjectHideFlags: 0
