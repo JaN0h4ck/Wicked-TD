@@ -31,13 +31,15 @@ public class csBullet : MonoBehaviour
     [Tooltip("This ill be multiplied ith the orginal firespeed value")]
     private float fFireSpeedModifier;
 
+    private Vector2 v2SplashDamageSize ;
+
     private csWeapon WeaponManager;
 
     private GameObject gIndicatorEmpty;
 
     private Transform tsEnemy;
 
-
+    private bool bDoSoroundDamage=false;
     #endregion
 
     #region Setup
@@ -118,9 +120,13 @@ public class csBullet : MonoBehaviour
 
     #region Damage
 
-    public  void SetDamage(float fBulletDamage)
+    public void SetDamage(float fBulletDamage, bool bSoroundDamage = false)
     {
         fDamage = fBulletDamage;
+        if(bSoroundDamage==true)
+        {
+            bDoSoroundDamage = true;
+        }
     }
 
 
@@ -131,9 +137,26 @@ public class csBullet : MonoBehaviour
         {
             tsEnemy.gameObject.GetComponent<csEnemyHealth>().LooseHealth(fDamage+fDamageModifier);
         }
+        if(bDoSoroundDamage==true)
+        {
+            Debug.LogWarning("IamHere");
+            SoroundDamage();
+        }
         csDamageManager.current.ShowDamageAt(this.transform, fDamage + fDamageModifier);
     }
 
+    private void SoroundDamage()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(this.transform.position, v2SplashDamageSize, 0.0f, WeaponManager.GetEnemieLayer());
+        foreach(Collider2D hit2d in hitColliders)
+        {
+            if (tsEnemy.gameObject.GetComponent<csEnemyHealth>() != null)
+            {
+                tsEnemy.gameObject.GetComponent<csEnemyHealth>().LooseHealth(fDamage + fDamageModifier);
+            }
+            csDamageManager.current.ShowDamageAt(hit2d.gameObject.transform, fDamage + fDamageModifier);
+        }
+    }
   
 
     #endregion
@@ -150,6 +173,11 @@ public class csBullet : MonoBehaviour
     private void OnDestroy()
     {
         WeaponManager.ResetFireSpeedModifier();
+    }
+
+    public void SetSplashRadius(Vector2 v2Radius)
+    {
+        v2SplashDamageSize = v2Radius;
     }
     #endregion
 }

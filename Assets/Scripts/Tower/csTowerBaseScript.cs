@@ -98,9 +98,10 @@ public class csTowerBaseScript : MonoBehaviour
         iaStoredCurrencies[iIndex]+= iAmount;
     }
 
-    private void PullCurrency()
+    public void PullCurrency()
     {
         AddCurrency(iFireMode,WeaponManager.GetStoredCurrency());
+        WeaponManager.ResetStoredCurrency();
     }
 
     private void OnDestroy()
@@ -252,6 +253,11 @@ public class csTowerBaseScript : MonoBehaviour
         {
             WeaponManager = this.gameObject.GetComponent<csWeapon>();
         }
+    }
+
+    public csWeapon GetWeapon()
+    {
+        return WeaponManager;
     }
 
     #endregion
