@@ -15,17 +15,19 @@ public class MapController : Utils.Singleton<MapController> {
     public InputActionReference _leftMouseClick_Map;
 
     private float _offsetOfPrefabToTile = 0.5f;
-    public Vector3Int _previousMousePosition { get; private set; }
+    public Vector3Int _previousTileMapMousePosition { get; private set; }
     public GameObject _selectedTower { get; private set; }
 
     private void Awake() {
         TowerController.Instance._onTowerWasBought += EneableController;
+        TowerController.Instance._onTowerWasDestroyed += EneableController;
 
         _leftMouseClick_Tower.action.performed += OpenTowerMenue;
         _leftMouseClick_Map.action.performed += OpenShopMenue;
     }
     private void OnDestroy() {
         TowerController.Instance._onTowerWasBought -= EneableController;
+        TowerController.Instance._onTowerWasDestroyed -= EneableController;
     }
 
     private void OnEnable() {
@@ -44,14 +46,14 @@ public class MapController : Utils.Singleton<MapController> {
         Vector3Int currentMousePosition = GetMousePosition();
 
         //Hover effect
-        if (!currentMousePosition.Equals(_previousMousePosition))
+        if (!currentMousePosition.Equals(_previousTileMapMousePosition))
         {
             //Reset the old tile
-            _interactiveMap.SetTile(_previousMousePosition, null);
+            _interactiveMap.SetTile(_previousTileMapMousePosition, null);
             //Set the new tile
             _interactiveMap.SetTile(currentMousePosition, _hoverTile);
             //Set the new mouse position
-            _previousMousePosition = currentMousePosition;
+            _previousTileMapMousePosition = currentMousePosition;
         }
 
     }
@@ -77,8 +79,8 @@ public class MapController : Utils.Singleton<MapController> {
     #endregion
 
     private bool CheckIfMouseIsOverTower() {
-        Vector2 start = new Vector2(_previousMousePosition.x + _offsetOfPrefabToTile,
-                                        _previousMousePosition.y + _offsetOfPrefabToTile);
+        Vector2 start = new Vector2(_previousTileMapMousePosition.x + _offsetOfPrefabToTile,
+                                        _previousTileMapMousePosition.y + _offsetOfPrefabToTile);
         Vector2 direction = new Vector2(0, 0);
 
         RaycastHit2D hit = Physics2D.Raycast(start, direction, 0.5f, LayerMask.GetMask("Tower"));
@@ -91,8 +93,8 @@ public class MapController : Utils.Singleton<MapController> {
     }
 
     private Vector3Int GetMousePosition() {
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        return _grid.WorldToCell(mouseWorldPosition);
+       var mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        return _grid.WorldToCell(mousePosition);
     }
 
     private void EneableController() {
