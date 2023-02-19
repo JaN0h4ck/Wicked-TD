@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fDuration: 2
   v2Size: {x: 0, y: 0}
+  sDescription: This skill boosts the firespeed of the tower for a hort duration
   fBoostFactor: -2
 --- !u!1 &9024886844907663415
 GameObject:

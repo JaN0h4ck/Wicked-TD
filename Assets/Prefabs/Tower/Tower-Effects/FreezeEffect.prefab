@@ -4918,6 +4918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fDuration: 6
   v2Size: {x: 4, y: 4}
+  sDescription: This skill freezes all enemies in range  for some seconds
 --- !u!1 &7459808221846656711
 GameObject:
   m_ObjectHideFlags: 0

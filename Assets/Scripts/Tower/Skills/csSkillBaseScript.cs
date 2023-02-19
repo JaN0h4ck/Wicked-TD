@@ -12,6 +12,9 @@ public class csSkillBaseScript : MonoBehaviour
     [SerializeField]
     protected Vector2 v2Size;
 
+    [SerializeField]
+    protected string sDescription;
+
     #endregion
     protected void DetroySkill()
     {
