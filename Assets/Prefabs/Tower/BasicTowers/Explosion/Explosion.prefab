@@ -287,7 +287,7 @@ MonoBehaviour:
   fDamage: 40
   fFireSpeed: 1.2
   fShootRange: 10
-  fBulletSpeed: 10
+  fBulletSpeed: 50
   iTargetAmount: 1
   fFireSpeedDeacrease: 0.4
   gaPrefabBullets:
