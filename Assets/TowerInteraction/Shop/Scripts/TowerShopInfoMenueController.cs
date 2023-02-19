@@ -64,6 +64,6 @@ namespace TowerShop {
                     _neoplasma.text = tower.GetBuildCosts().ToString();
                     break;
             }
-        }
+        }       
     }
 }

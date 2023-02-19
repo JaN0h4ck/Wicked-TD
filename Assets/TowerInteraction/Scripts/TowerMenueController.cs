@@ -5,6 +5,7 @@ using Utils.Menue;
 
 public class TowerMenueController : MenueNavigation
 {
+    [SerializeField] private GameObject _destroyTowerIcon;
     [Header("Infos")]
     [SerializeField] private TextMeshProUGUI m_towerName;
     [SerializeField] private TextMeshProUGUI m_damage;
@@ -23,12 +24,20 @@ public class TowerMenueController : MenueNavigation
 
     public override void OpenMenue() {
         InitializeTowerMenue();
+        SetDestroyTowerIcon();
         base.OpenMenue();
     }
 
     public override void CloseMenue() { 
         StopCoroutine(UpdateTowerMenue());
         base.CloseMenue();
+    }
+
+    private void SetDestroyTowerIcon() {
+        var worldPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, MapController.Instance._selectedTower.transform.position);
+        var anchoredPoint = _destroyTowerIcon.transform.InverseTransformPoint(worldPoint);
+        //anchoredPoint.y += 150f;
+        ((RectTransform)_destroyTowerIcon.transform).anchoredPosition = anchoredPoint;
     }
 
     private void InitializeTowerMenue() {

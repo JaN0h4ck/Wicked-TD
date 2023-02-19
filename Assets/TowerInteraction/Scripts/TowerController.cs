@@ -19,7 +19,7 @@ public class TowerController : Utils.Singleton<TowerController> {
 
         GameObject instantiatedTower = Instantiate(_selectedShopItem.Object.ItemData._towerPrefab);
 
-        Vector3 newPosition = MapController.Instance._previousMousePosition;
+        Vector3 newPosition = MapController.Instance._previousTileMapMousePosition;
         newPosition.x += _offsetOfPrefabToTile;
         newPosition.y += _offsetOfPrefabToTile;
 
@@ -29,8 +29,8 @@ public class TowerController : Utils.Singleton<TowerController> {
     }
 
     public void DestroyTower() {
-        Vector2 start = new Vector2(MapController.Instance._previousMousePosition.x + _offsetOfPrefabToTile,
-                                        MapController.Instance._previousMousePosition.y + _offsetOfPrefabToTile);
+        Vector2 start = new Vector2(MapController.Instance._previousTileMapMousePosition.x + _offsetOfPrefabToTile,
+                                        MapController.Instance._previousTileMapMousePosition.y + _offsetOfPrefabToTile);
         Vector2 direction = new Vector2(0, 0);
         RaycastHit2D hit = Physics2D.Raycast(start, direction, _offsetOfPrefabToTile);
 
