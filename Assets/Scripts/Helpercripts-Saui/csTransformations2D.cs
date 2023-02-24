@@ -91,7 +91,9 @@ public class csTransformations2D : MonoBehaviour
                         fTime--;
                     }
                 }
-                catch (Exception e) { }
+                catch (Exception e) {
+                    Debug.LogWarning(e);
+                }
             }
             yield return new WaitForSecondsRealtime(0.01f);
         }

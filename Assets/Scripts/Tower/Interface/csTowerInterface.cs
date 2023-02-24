@@ -80,19 +80,14 @@ public class csTowerInterface : MonoBehaviour
         {
             case (TowerTypes.NormalTower):
                 return 0;
-                break;
             case (TowerTypes.ExplosionTower):
                 return 1;
-                break;
             case (TowerTypes.EconomyTower):
                 return 2;
-                break;
             case (TowerTypes.SparkyTower):
                 return 3;
-                break;
             default:
                 return -1;
-                break;
         }
     }
     #endregion

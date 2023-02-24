@@ -11,7 +11,6 @@ public class TowerController : Utils.Singleton<TowerController> {
 
     private float _offsetOfPrefabToTile = 0.5f;
 
-    public event Action<string, int> _onTowerWasBought;
     public event Action _onTowerWasBought2;
     public event Action _onTowerWasDestroyed;
 
@@ -52,7 +51,6 @@ public class TowerController : Utils.Singleton<TowerController> {
 
             instantiatedTower.transform.position = newPosition;
 
-            _onTowerWasBought?.Invoke(coinType, amount);
             _onTowerWasBought2?.Invoke();
         }            
     }
