@@ -7,6 +7,8 @@ public class ButtonEventListener : MonoBehaviour {
     private MyButton m_button;
     private GameObject m_text;
 
+    private float m_ButtonDisplacementMultiplier = 0.0045f;
+
     private void Start() {
         m_button = GetComponent<MyButton>();
         m_text = m_button.transform.GetChild(0).gameObject;
@@ -17,7 +19,8 @@ public class ButtonEventListener : MonoBehaviour {
     private void OnButtonDown() {
         if (m_text) {
             Vector3 tempVector = m_text.transform.position;
-            tempVector.y -= 12.5f;
+            tempVector.y -= (float)Screen.currentResolution.height * m_ButtonDisplacementMultiplier;
+            //tempVector.y -= 12.5f;
             m_text.transform.position = tempVector;
 
             float h, s, v;
@@ -31,7 +34,7 @@ public class ButtonEventListener : MonoBehaviour {
     private void OnButtonUp() {
         if (m_text) {
             Vector3 temp = m_text.transform.position;
-            temp.y += 12.5f;
+            temp.y += (float)Screen.currentResolution.height * m_ButtonDisplacementMultiplier;
             m_text.transform.position = temp;
 
             float h, s, v;
