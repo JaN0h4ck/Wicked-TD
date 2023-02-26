@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -20,11 +21,14 @@ public class MapLogic : MonoBehaviour
     void Start()
     {
         nexusNode = this.gameObject.transform.GetChild(0).GetComponent<Nexus>();
+
+        StartCoroutine(NewLogic());
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (nexusNode.alive)
         {
             Logic();
@@ -33,11 +37,46 @@ public class MapLogic : MonoBehaviour
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveComplete", transform.position);
         }
+        */
+    }
+    private IEnumerator NewLogic() {
+        while (nexusNode.alive) {
+            if (!h_checkIfAnySpawnerHasChildren()) {
+                StartCoroutine(DisplayTimeBetweenFrames());
+                yield return new WaitForSeconds(timeBetweenWaves);
+                if (!alertSoundPlayed)// && timer >= timeBetweenWaves - 5f)
+                {
+                    Debug.Log("Wave Alert Sound played");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveAlert", transform.position);
+                    alertSoundPlayed = true;
+                }
+
+                if (difficulty > 100 && !incomingVeryHardPlayed)// && timer >= timeBetweenWaves - 5f)
+                {
+                    Debug.Log("Wave Alert Sound played -- VERY HARD");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveIncomingVeryHard", transform.position);
+                    incomingVeryHardPlayed = true;
+                }
+
+                h_divideDifficultyToPaths();
+            } else {
+                yield return new WaitForSeconds(.1f);
+            }
+        }
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveComplete", transform.position);
+    }
+
+    private IEnumerator DisplayTimeBetweenFrames() {
+        for(int i = (int)timeBetweenWaves; i >= 0; i--) {
+            Debug.Log("Time until next Wave: " + i);
+            yield return new WaitForSeconds(1.0f);
+        }
     }
 
     private void Logic()
     {
-        if (!h_checkIfAnySpawnerGotChildren())
+        if (!h_checkIfAnySpawnerHasChildren())
         {
             WaveSpawnSignal = h_timerCountdown();
         }
@@ -62,7 +101,7 @@ public class MapLogic : MonoBehaviour
         }
     }
 
-    bool h_checkIfAnySpawnerGotChildren()
+    bool h_checkIfAnySpawnerHasChildren()
     {
         ushort evaluationBuffer = 0;
         foreach (var node in spawnerNodes)
