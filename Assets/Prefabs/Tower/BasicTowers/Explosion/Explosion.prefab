@@ -318,6 +318,7 @@ MonoBehaviour:
   splTowerLooks:
   - {fileID: 21300000, guid: 9361502bfe58b7b4289c16b11c0fb4f9, type: 3}
   - {fileID: 21300000, guid: c5cf9572d2be32f4484a7b8d2f3c25d2, type: 3}
+  - {fileID: 21300000, guid: 670cbc74e3d0bd24c905a993206c6c2d, type: 3}
 --- !u!95 &2714993715724660388
 Animator:
   serializedVersion: 5
@@ -357,8 +358,8 @@ MonoBehaviour:
   - {fileID: 7309294969110395990}
   - {fileID: 7194331145646213999}
   m_Bounds:
-    m_Center: {x: 0.18234566, y: -0.001096487, z: 0}
-    m_Extent: {x: 0.6056461, y: 1.0229034, z: 0}
+    m_Center: {x: 0.18234563, y: -0.0010963678, z: 0}
+    m_Extent: {x: 0.6056461, y: 1.0229037, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!61 &-1122290060286778963

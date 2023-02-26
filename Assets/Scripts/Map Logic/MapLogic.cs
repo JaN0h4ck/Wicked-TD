@@ -44,14 +44,16 @@ public class MapLogic : MonoBehaviour
 
         if (WaveSpawnSignal)
         {
-            if (!alertSoundPlayed && timer >= timeBetweenWaves - 5f)
+            if (!alertSoundPlayed)// && timer >= timeBetweenWaves - 5f)
             {
+                Debug.Log("Wave Alert Sound played");
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveAlert", transform.position);
                 alertSoundPlayed = true;
             }
 
-            if (difficulty > 100 && !incomingVeryHardPlayed && timer >= timeBetweenWaves - 5f)
+            if (difficulty > 100 && !incomingVeryHardPlayed)// && timer >= timeBetweenWaves - 5f)
             {
+                Debug.Log("Wave Alert Sound played -- VERY HARD");
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveIncomingVeryHard", transform.position);
                 incomingVeryHardPlayed = true;
             }
