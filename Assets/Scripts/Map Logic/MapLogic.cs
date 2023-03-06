@@ -39,6 +39,7 @@ public class MapLogic : MonoBehaviour {
     }
 
     private IEnumerator NewLogic() {
+        yield return new WaitForSeconds(0.5f);
         while (nexusNode.alive) {
             if (!h_checkIfAnySpawnerHasChildren()) {
                 onTimerStarted?.Invoke();
