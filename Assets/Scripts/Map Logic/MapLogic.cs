@@ -1,8 +1,12 @@
+using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class MapLogic : MonoBehaviour
-{
+public class MapLogic : MonoBehaviour {
+    public static MapLogic instance;
+
     private Nexus nexusNode;
     public uint difficulty = 10;
     public uint bufferDifficulty;
@@ -14,55 +18,58 @@ public class MapLogic : MonoBehaviour
     public bool gameRunning = true;
 
     private float timeBetweenWaves = 30f;
+    public float getTimeBetweenWaves() { return timeBetweenWaves; }
+
     private bool alertSoundPlayed = false;
-    private bool incomingVeryHardPlayed = false; 
+    private bool incomingVeryHardPlayed = false;
+
+    public event Action onTimerStarted;
+
+    private void Awake() {
+        if (instance == null) {
+            instance = this;
+        }
+    }
 
     void Start()
     {
         nexusNode = this.gameObject.transform.GetChild(0).GetComponent<Nexus>();
+
+        StartCoroutine(NewLogic());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (nexusNode.alive)
-        {
-            Logic();
-        }
-        else
-        {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveComplete", transform.position);
-        }
-    }
+    private IEnumerator NewLogic() {
+        yield return new WaitForSeconds(0.5f);
+        while (nexusNode.alive) {
+            if (!h_checkIfAnySpawnerHasChildren()) {
+                onTimerStarted?.Invoke();
+                yield return new WaitForSeconds(timeBetweenWaves);
+                if (!alertSoundPlayed)// && timer >= timeBetweenWaves - 5f)
+                {
+                    Debug.Log("Wave Alert Sound played");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveAlert", transform.position);
+                    alertSoundPlayed = true;
+                }
 
-    private void Logic()
-    {
-        if (!h_checkIfAnySpawnerGotChildren())
-        {
-            WaveSpawnSignal = h_timerCountdown();
-        }
+                if (difficulty > 100 && !incomingVeryHardPlayed)// && timer >= timeBetweenWaves - 5f)
+                {
+                    Debug.Log("Wave Alert Sound played -- VERY HARD");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveIncomingVeryHard", transform.position);
+                    incomingVeryHardPlayed = true;
+                }
 
-        if (WaveSpawnSignal)
-        {
-            if (!alertSoundPlayed)// && timer >= timeBetweenWaves - 5f)
-            {
-                Debug.Log("Wave Alert Sound played");
-                FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveAlert", transform.position);
-                alertSoundPlayed = true;
+                h_divideDifficultyToPaths();
+            } else {
+                yield return new WaitForEndOfFrame();
             }
-
-            if (difficulty > 100 && !incomingVeryHardPlayed)// && timer >= timeBetweenWaves - 5f)
-            {
-                Debug.Log("Wave Alert Sound played -- VERY HARD");
-                FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveIncomingVeryHard", transform.position);
-                incomingVeryHardPlayed = true;
-            }
-
-            h_divideDifficultyToPaths();
         }
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveComplete", transform.position);
     }
 
-    bool h_checkIfAnySpawnerGotChildren()
+   
+
+    bool h_checkIfAnySpawnerHasChildren()
     {
         ushort evaluationBuffer = 0;
         foreach (var node in spawnerNodes)
@@ -121,4 +128,31 @@ public class MapLogic : MonoBehaviour
                 spawnerNodes[i].gameObject.transform.GetComponent<Spawner>().currentDifficulty = generatedRange;
         }
     }
+
+    #region Deprecated
+    [Obsolete("Use NewLogic() instead", true)]
+    private void Logic() {
+        if (!h_checkIfAnySpawnerHasChildren()) {
+            WaveSpawnSignal = h_timerCountdown();
+        }
+
+        if (WaveSpawnSignal) {
+            if (!alertSoundPlayed)// && timer >= timeBetweenWaves - 5f)
+            {
+                Debug.Log("Wave Alert Sound played");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveAlert", transform.position);
+                alertSoundPlayed = true;
+            }
+
+            if (difficulty > 100 && !incomingVeryHardPlayed)// && timer >= timeBetweenWaves - 5f)
+            {
+                Debug.Log("Wave Alert Sound played -- VERY HARD");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveIncomingVeryHard", transform.position);
+                incomingVeryHardPlayed = true;
+            }
+
+            h_divideDifficultyToPaths();
+        }
+    }
+    #endregion
 }
