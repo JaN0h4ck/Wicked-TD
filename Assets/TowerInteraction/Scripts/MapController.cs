@@ -32,13 +32,14 @@ public class MapController : Utils.Singleton<MapController> {
 
         
     }
+    /*
     private void OnDestroy() {
         TowerController.Instance._onTowerWasBought2 -= EneableController;
         TowerController.Instance._onTowerWasDestroyed -= EneableController;
 
         Nexus.instance.onGameOver += DisableController;
     }
-
+    */
     private void OnEnable() {
         _leftMouseClick_Tower.action.Enable();
         _leftMouseClick_Map.action.Enable();

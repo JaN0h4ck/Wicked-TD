@@ -18,6 +18,7 @@ public class csExplosionTower : csTowerBaseScript
     public static float fExploionRange =10;
 
     #endregion
+    /*
     /// <summary>
     /// In this case The on destroy Command is used to summon a explosion effect
     /// </summary>
@@ -29,16 +30,16 @@ public class csExplosionTower : csTowerBaseScript
         PLayExplosionEffect();
         ExplosionDamage();
         Debug.LogWarning(csTowerInterface.current.GetSpecificTowerData(csTowerInterface.current.NormalTower).Damage);
-    }
+    }*/
 
 
     #region Explosion
-    private void PLayExplosionEffect()
+    public void PLayExplosionEffect()
     {
         Instantiate(gExplosionEffectPrefab, this.transform.position, Quaternion.identity);
     }
 
-    private void ExplosionDamage()
+    public void ExplosionDamage()
     {
         DoDamageToTarget(GetHitEnemies());   
     }

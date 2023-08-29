@@ -96,7 +96,8 @@ public class csBullet : MonoBehaviour
             DoDamageToTarget();
         }
         Transformation.StopMoveTowardsLoop(this.transform);
-        
+
+        WeaponManager.ResetFireSpeedModifier();
         Destroy(this.gameObject);
     }
 
@@ -114,6 +115,7 @@ public class csBullet : MonoBehaviour
         }
         else
         {
+            WeaponManager.ResetFireSpeedModifier();
             Destroy(this.gameObject);
             return false;
         }
@@ -172,10 +174,6 @@ public class csBullet : MonoBehaviour
     public void SetIndicatorEmpty(GameObject gDamageIndicatorEmpty)
     {
         gIndicatorEmpty = gDamageIndicatorEmpty;
-    }
-    private void OnDestroy()
-    {
-        WeaponManager.ResetFireSpeedModifier();
     }
 
     public void SetSplashRadius(Vector2 v2Radius)

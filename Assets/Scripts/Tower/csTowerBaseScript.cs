@@ -136,13 +136,8 @@ public class csTowerBaseScript : MonoBehaviour
         WeaponManager.ResetStoredCurrency();
     }
 
-    private void OnDestroy()
-    {
-        DropMoneyOnDeath();
-        CurrencyDropAnimation();
-        
-    }
-    protected void DropMoneyOnDeath()
+
+    public void DropMoneyOnDeath()
     {
         PullCurrency();
         for(int i = 2;i>=0;i--)
@@ -157,7 +152,7 @@ public class csTowerBaseScript : MonoBehaviour
         RefundBuildCosts();
     }
     
-    protected void CurrencyDropAnimation()
+    public void CurrencyDropAnimation()
     {
         for (int u = 2; u >= 0; u--)
         {
