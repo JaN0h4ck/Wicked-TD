@@ -37,8 +37,8 @@ public class BasicEnemy : csEnemyHealth {
         this.gameObject.transform.GetComponent<SpriteRenderer>().enabled = true;
     }
 
-    // Update is called once per frame
     public void Update() {
+        //what could go wrong?
         var nexusNode = this.gameObject
             .transform.parent.gameObject
             .transform.parent.gameObject
@@ -97,6 +97,8 @@ public class BasicEnemy : csEnemyHealth {
 
     protected bool h_calculateFaceDirection()
     {
+        if (_path.Count <= 0)   // Waypoints are removed during movement. Prevents a invalid operation.
+            return true;
         if (h_InRange(transform.position.y, _path.First().y, 0.02f))
         {
             return transform.position.x > _path[1].x;
