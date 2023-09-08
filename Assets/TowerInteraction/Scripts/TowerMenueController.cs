@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Utils.Menue;
 
 public class TowerMenueController : MenueNavigation
@@ -21,6 +22,7 @@ public class TowerMenueController : MenueNavigation
 
     private void Awake() {
         TowerController.Instance._onTowerWasDestroyed += CloseMenue;
+        GameObject.Find("Input Controller").GetComponent<PlayerInput>().actions["TogglePauseMenu"].performed += _ => CloseMenue();
         CloseMenue();
     }
 

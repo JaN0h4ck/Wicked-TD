@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Utils.Menue;
 
 namespace TowerShop {
@@ -15,6 +16,7 @@ namespace TowerShop {
         {
             TowerController.Instance._onTowerWasBought2 += CloseMenue;
 
+            GameObject.Find("Input Controller").GetComponent<PlayerInput>().actions["TogglePauseMenu"].performed += _ => CloseMenue();
             CloseMenue();
         }
 
