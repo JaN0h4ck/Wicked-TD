@@ -60,15 +60,11 @@ public class TowerController : Utils.Singleton<TowerController> {
                                         MapController.Instance._previousTileMapMousePosition.y + _offsetOfPrefabToTile);
         Vector2 direction = new Vector2(0, 0);
         RaycastHit2D hit = Physics2D.Raycast(start, direction, _offsetOfPrefabToTile);
+        _onTowerWasDestroyed?.Invoke();
 
         if (hit) {
             GameObject hitObject = hit.collider.gameObject;
-            hitObject.GetComponent<csTowerBaseScript>().DropMoneyOnDeath();
-            hitObject.GetComponent<csTowerBaseScript>().CurrencyDropAnimation();
-            if(hitObject.GetComponent<csExplosionTower>() != null) {
-                hitObject.GetComponent<csExplosionTower>().PLayExplosionEffect();
-                hitObject.GetComponent<csExplosionTower>().ExplosionDamage();
-            }
+            hitObject.GetComponent<csTowerBaseScript>().OnTowerDeath();
             Destroy(hitObject);
         }
     }

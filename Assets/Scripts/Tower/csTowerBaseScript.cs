@@ -68,6 +68,11 @@ public class csTowerBaseScript : MonoBehaviour
         Invoke("WeaponSetup", 0.01f);
     }
 
+    public virtual void OnTowerDeath() {
+        DropMoneyOnDeath();
+        CurrencyDropAnimation();
+    }
+
     private void SetupExplosionTowerBugFix()
     {
         if(gameObject.name == "Explosion"|| gameObject.name == "Explosion(Clone)")
@@ -137,7 +142,7 @@ public class csTowerBaseScript : MonoBehaviour
     }
 
 
-    public void DropMoneyOnDeath()
+    protected void DropMoneyOnDeath()
     {
         PullCurrency();
         for(int i = 2;i>=0;i--)
@@ -152,7 +157,7 @@ public class csTowerBaseScript : MonoBehaviour
         RefundBuildCosts();
     }
     
-    public void CurrencyDropAnimation()
+    protected void CurrencyDropAnimation()
     {
         for (int u = 2; u >= 0; u--)
         {

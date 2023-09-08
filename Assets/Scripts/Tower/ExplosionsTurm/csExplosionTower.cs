@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class csExplosionTower : csTowerBaseScript
-{
+public class csExplosionTower : csTowerBaseScript {
     #region Variables
     [SerializeField]
     private GameObject gExplosionEffectPrefab;
@@ -15,31 +14,23 @@ public class csExplosionTower : csTowerBaseScript
     [SerializeField]
     private float fExplosionDamage;
 
-    public static float fExploionRange =10;
+    public static float fExploionRange = 10;
 
     #endregion
-    /*
-    /// <summary>
-    /// In this case The on destroy Command is used to summon a explosion effect
-    /// </summary>
-    private void OnDestroy()
-    {
-        Debug.Log("(ExplosionTower): exploding " + gameObject.name);
-        DropMoneyOnDeath();
-        CurrencyDropAnimation();
+
+    public override void OnTowerDeath() {
+        base.OnTowerDeath();
         PLayExplosionEffect();
         ExplosionDamage();
-        Debug.LogWarning(csTowerInterface.current.GetSpecificTowerData(csTowerInterface.current.NormalTower).Damage);
-    }*/
-
+    }
 
     #region Explosion
-    public void PLayExplosionEffect()
+    protected void PLayExplosionEffect()
     {
         Instantiate(gExplosionEffectPrefab, this.transform.position, Quaternion.identity);
     }
 
-    public void ExplosionDamage()
+    protected void ExplosionDamage()
     {
         DoDamageToTarget(GetHitEnemies());   
     }

@@ -27,9 +27,6 @@ namespace TowerShop {
             CloseMenue();
         }
 
-        private void OnDestroy() {
-            TowerController.Instance._onTowerWasBought2 -= CloseMenue;
-        }
 
         public override void OpenMenue() {
             SetTowerInfo();

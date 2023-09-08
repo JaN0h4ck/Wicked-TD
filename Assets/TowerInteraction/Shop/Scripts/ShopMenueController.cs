@@ -18,11 +18,6 @@ namespace TowerShop {
             CloseMenue();
         }
 
-        private void OnDestroy()
-        {
-            TowerController.Instance._onTowerWasBought2 -= CloseMenue;
-        }
-
         private void Start() {
             for (int i = 0; i < _shopContent.list.Count; i++) {
                 CreateNewListItem(_shopContent.list[i]);

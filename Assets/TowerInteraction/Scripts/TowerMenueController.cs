@@ -23,10 +23,6 @@ public class TowerMenueController : MenueNavigation
         TowerController.Instance._onTowerWasDestroyed += CloseMenue;
         CloseMenue();
     }
-    private void OnDestroy()
-    {
-        TowerController.Instance._onTowerWasDestroyed -= CloseMenue;
-    }
 
     public override void OpenMenue() {
         InitializeTowerMenue();
