@@ -12,7 +12,7 @@ public class WaveTimer : MonoBehaviour {
         m_timer = GameObject.Find("Timer");
         m_text = m_timer.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
-        MapLogic.instance.onTimerStarted += h_WaveCountdown;
+        MapLogic.Instance.OnTimerStarted += h_WaveCountdown;
         m_timer.SetActive(false);
     }
 
@@ -22,7 +22,7 @@ public class WaveTimer : MonoBehaviour {
 
     private IEnumerator DisplayWaveCountdown() {
         m_timer.SetActive(true);
-        int time = (int)MapLogic.instance.getTimeBetweenWaves();
+        int time = (int)MapLogic.Instance.getTimeBetweenWaves();
         while (time > 0) {
             m_text.text = "Next Wave in: " + time.ToString();
             yield return new WaitForSeconds(1f);

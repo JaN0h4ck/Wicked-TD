@@ -4,8 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MapLogic : MonoBehaviour {
-    public static MapLogic instance;
+public class MapLogic : Utils.Singleton<MapLogic> {
 
     private Nexus nexusNode;
     public uint difficulty = 10;
@@ -23,13 +22,9 @@ public class MapLogic : MonoBehaviour {
     private bool alertSoundPlayed = false;
     private bool incomingVeryHardPlayed = false;
 
-    public event Action onTimerStarted;
+    public event Action OnTimerStarted;
 
-    private void Awake() {
-        if (instance == null) {
-            instance = this;
-        }
-    }
+    public event Action OnWaveStarted;
 
     void Start()
     {
@@ -42,7 +37,7 @@ public class MapLogic : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         while (nexusNode.alive) {
             if (!h_checkIfAnySpawnerHasChildren()) {
-                onTimerStarted?.Invoke();
+                OnTimerStarted?.Invoke();
                 yield return new WaitForSeconds(timeBetweenWaves);
                 if (!alertSoundPlayed)// && timer >= timeBetweenWaves - 5f)
                 {
@@ -59,6 +54,7 @@ public class MapLogic : MonoBehaviour {
                 }
 
                 h_divideDifficultyToPaths();
+                OnWaveStarted?.Invoke();
             } else {
                 yield return new WaitForEndOfFrame();
             }
