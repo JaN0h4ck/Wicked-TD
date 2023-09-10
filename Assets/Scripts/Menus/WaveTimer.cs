@@ -13,6 +13,7 @@ public class WaveTimer : MonoBehaviour {
         m_text = m_timer.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
         MapLogic.Instance.OnTimerStarted += h_WaveCountdown;
+        MapLogic.Instance.OnTimerInterrupt += StopCountdown;
         m_timer.SetActive(false);
     }
 
@@ -28,6 +29,11 @@ public class WaveTimer : MonoBehaviour {
             yield return new WaitForSeconds(1f);
             time--;
         }
+        m_timer.SetActive(false);
+    }
+
+    private void StopCountdown() {
+        StopAllCoroutines();
         m_timer.SetActive(false);
     }
 }

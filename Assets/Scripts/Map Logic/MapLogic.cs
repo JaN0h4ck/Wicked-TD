@@ -11,6 +11,7 @@ public class MapLogic : Utils.Singleton<MapLogic> {
     public uint bufferDifficulty;
     public GameObject[] spawnerNodes;
 
+
     private bool WaveSpawnSignal = false;
     private float timer;
 
@@ -22,7 +23,10 @@ public class MapLogic : Utils.Singleton<MapLogic> {
     private bool alertSoundPlayed = false;
     private bool incomingVeryHardPlayed = false;
 
+    private bool isStartWaveRunning = false;
+
     public event Action OnTimerStarted;
+    public event Action OnTimerInterrupt;
 
     public event Action OnWaveStarted;
 
@@ -52,7 +56,6 @@ public class MapLogic : Utils.Singleton<MapLogic> {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveIncomingVeryHard", transform.position);
                     incomingVeryHardPlayed = true;
                 }
-
                 h_divideDifficultyToPaths();
                 OnWaveStarted?.Invoke();
             } else {
@@ -63,7 +66,27 @@ public class MapLogic : Utils.Singleton<MapLogic> {
         FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveComplete", transform.position);
     }
 
-   
+    public void StartWaveManual() {
+        if (isStartWaveRunning)
+            return;
+        isStartWaveRunning = true;
+        StopAllCoroutines();
+        StartCoroutine(StartWaveDuringTimer());
+    }
+
+    //Will skip waves, if you try manually spawning them with the coroutine
+   private IEnumerator StartWaveDuringTimer() {
+        OnTimerInterrupt?.Invoke();
+        h_divideDifficultyToPaths();
+        OnWaveStarted?.Invoke();
+        if (!alertSoundPlayed) {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Wave/WaveAlert", transform.position);
+            alertSoundPlayed = true;
+        }
+        yield return new WaitForSeconds(2);
+        StartCoroutine(NewLogic());
+        isStartWaveRunning = false;
+    }
 
     bool h_checkIfAnySpawnerHasChildren()
     {

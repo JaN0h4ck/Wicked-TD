@@ -14,9 +14,6 @@ public class Spawner : MonoBehaviour
 
     public uint currentDifficulty;
     private MapLogic _mapLogic;
-    [SerializeField]
-    [Range(0f, 1f)]
-    private float _timeDelayBuffer;
 
     private void Start()
     {
@@ -26,7 +23,6 @@ public class Spawner : MonoBehaviour
     }
 
     private IEnumerator SpawnWave() {
-        yield return new WaitForSeconds(_timeDelayBuffer);
         const uint easy = 1;
         const uint medium = 5;
         const uint hard = 9;

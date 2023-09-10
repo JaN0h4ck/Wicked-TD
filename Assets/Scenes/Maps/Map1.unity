@@ -2624,6 +2624,7 @@ GameObject:
   - component: {fileID: 1239282996}
   - component: {fileID: 1239282995}
   - component: {fileID: 1239282994}
+  - component: {fileID: 1239282999}
   m_Layer: 0
   m_Name: Game Event Listener
   m_TagString: Untagged
@@ -2757,6 +2758,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1239282999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239282993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6096f3ebe2304e46bf87712427a822a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_event: {fileID: 11400000, guid: 088791e8770d5364abb1f6f58565d7a4, type: 2}
+  m_response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 682924301}
+        m_TargetAssemblyTypeName: MapLogic, Assembly-CSharp
+        m_MethodName: StartWaveManual
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1291506617
 GameObject:
   m_ObjectHideFlags: 0
