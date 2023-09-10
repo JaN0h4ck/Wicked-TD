@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Utils.Menue;
@@ -20,6 +18,9 @@ namespace TowerShop {
         [SerializeField] private TextMeshProUGUI _gold;
         [SerializeField] private TextMeshProUGUI _c6;
         [SerializeField] private TextMeshProUGUI _neoplasma;
+        [Header("UI")]
+        [SerializeField] private GameObject _buyButton;
+        [SerializeField] private TextMeshProUGUI _notEnoughWarning;
 
         private void Awake() {
             TowerController.Instance._onTowerWasBought2 += CloseMenue;
@@ -31,6 +32,12 @@ namespace TowerShop {
         public override void OpenMenue() {
             SetTowerInfo();
             base.OpenMenue();
+        }
+
+        public override void CloseMenue() {
+            _buyButton.SetActive(true);
+            _notEnoughWarning.gameObject.SetActive(false);
+            base.CloseMenue();
         }
 
         private void SetTowerInfo() {
@@ -49,18 +56,36 @@ namespace TowerShop {
                     _gold.text = tower.GetBuildCosts().ToString();
                     _c6.text = "0";
                     _neoplasma.text = "0";
-                break;
+                    HandleBuyButton("Gold", tower.GetBuildCosts());
+                    break;
                 case csTowerBaseScript.CurrencyEnum.C6:
                     _gold.text = "0";
                     _c6.text = tower.GetBuildCosts().ToString();
                     _neoplasma.text = "0";
+                    HandleBuyButton("C6", tower.GetBuildCosts());
                     break;
                 case csTowerBaseScript.CurrencyEnum.Neoplasma:
                     _gold.text = "0";
                     _c6.text = "0";
                     _neoplasma.text = tower.GetBuildCosts().ToString();
+                    HandleBuyButton("Neoplasma", tower.GetBuildCosts());
                     break;
             }
-        }       
+        }
+
+        private void HandleBuyButton(string currency, float towerBuildCost) {
+            Currency tempCurrency;
+            if (!Shop.Instance.currencyMap.TryGetValue(currency, out tempCurrency))
+                return;
+            if (towerBuildCost > tempCurrency.GetBalance()) {
+                _buyButton.SetActive(false);
+                _notEnoughWarning.gameObject.SetActive(true);
+                _notEnoughWarning.text = "Not enough " + currency + "!";
+            }
+            else {
+                _buyButton.SetActive(true);
+                _notEnoughWarning.gameObject.SetActive(false);
+            }
+        }
     }
 }
