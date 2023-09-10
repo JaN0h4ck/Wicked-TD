@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WaveCounter : MonoBehaviour
 {
-    private uint currentWave = 0;
+    private uint currentWave = 1;
     private TextMeshProUGUI waveCounter;
 
     private void Awake() {

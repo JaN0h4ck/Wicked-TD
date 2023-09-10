@@ -34,7 +34,7 @@ public class MapLogic : Utils.Singleton<MapLogic> {
     }
 
     private IEnumerator NewLogic() {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         while (nexusNode.alive) {
             if (!h_checkIfAnySpawnerHasChildren()) {
                 OnTimerStarted?.Invoke();

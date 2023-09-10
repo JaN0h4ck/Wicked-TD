@@ -980,6 +980,10 @@ PrefabInstance:
       value: EnemySpawner
       objectReference: {fileID: 0}
     - target: {fileID: 3350368829577038292, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
+      propertyPath: _timeDelayBuffer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350368829577038292, guid: 18cac0fb5d0aa1a4096b79ccba1e37c6, type: 3}
       propertyPath: currentDifficulty
       value: 10
       objectReference: {fileID: 0}
